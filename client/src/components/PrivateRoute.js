@@ -3,7 +3,7 @@ import { useAuth } from "../util/auth";
 
 // Use this component for routes to which only authenticated users should have
 // access. See https://reactrouter.com/web/example/auth-workflow
-function SubmitRoute({ children, ...rest }) {
+function PrivateRoute({ children, ...rest }) {
   const auth = useAuth();
   const render = ({ location }) => {
     if (auth.isLoggedIn()) return children;
@@ -12,4 +12,4 @@ function SubmitRoute({ children, ...rest }) {
   return <Route {...rest} render={render} />;
 }
 
-export default SubmitRoute;
+export default PrivateRoute;
