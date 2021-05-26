@@ -7,7 +7,6 @@ import ShopCard from "../../components/Card/ShopCard";
 import Image from "../../components/ImageContainer/image";
 import pic from "./placeholder150x150.jpg";
 import pic300 from "./300.png";
-// import "./style.css";
 
 
 
@@ -49,7 +48,7 @@ function HomePage() {
             />
           </div>
         </section>
-        <section className="container-fluid border border-dark">
+        <section className="container-fluid border border-dark m-2">
           Section to Map over However Many Shops:
           <div className="row d-flex justify-content-around">
             <ShopCard

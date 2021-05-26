@@ -21,7 +21,7 @@ function Navbar() {
               <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/findashop">Find A Taco Shop</NavLink>
+              <NavLink className="nav-link" to="/shop">Find A Taco Shop</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/submit">Submit A Taco Shop</NavLink>
