@@ -15,13 +15,6 @@ const ReviewSchema = new mongoose.Schema({
     trim: true,
     minLength: 2,
   },
-  rating: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    minLength: 2,
-  },
   username: {
     type: String,
     required: true,
