@@ -15,8 +15,9 @@ const ReviewSchema = new mongoose.Schema({
     trim: true,
     minLength: 2,
   },
-  username: {
-    type: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
     unique: true,
     trim: true,
