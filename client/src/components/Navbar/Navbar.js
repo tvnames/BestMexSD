@@ -9,7 +9,7 @@ function Navbar() {
         <Nav exact to="/">
           Home
         </Nav>
-        <Nav to="/private">Private</Nav>
+        <Nav to="/private">Submit Taco Shop (Gracias!)</Nav>
         <Nav to="/login">Login</Nav>
         <Nav to="/signup">Sign Up</Nav>
         <button onClick={() => auth.logout()}>Logout</button>
