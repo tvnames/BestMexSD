@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./util/auth";
 import { get as getUser } from "./util/userApi";
 import HomePage from "./pages/HomePage";
-import ShopSubmitPage from "./pages/ShopSubmit"
+import SubmitShopPage from "./pages/SubmitShop"
 import ShopPage from "./pages/Shop"
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
@@ -27,12 +27,15 @@ function App() {
           <Route path="/shop">
             <ShopPage />
           </Route>
-          <PrivateRoute path="/shop">
+          <Route path="/submitshop">
+            <SubmitShopPage />
+          </Route>
+          {/* <PrivateRoute path="/shop">
             <ShopPage />
-          </PrivateRoute>
-          <PrivateRoute path="/shopsubmit">
-            <ShopSubmitPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          {/* <PrivateRoute path="/submitshop">
+            <SubmitShopPage />
+          </PrivateRoute> */}
           <Route path="/signup">
             <SignupPage />
           </Route>
