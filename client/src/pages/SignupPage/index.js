@@ -29,7 +29,7 @@ function SignupPage() {
     : auth.error || "Please complete the form and click submit.";
 
   return (
-    <>
+    <div className="container-fluid">
       {/* redirect to home page if user is logged in */}
       {auth.isLoggedIn() && <Redirect to="/" />}
       <h1>Sign Up</h1>
@@ -69,7 +69,7 @@ function SignupPage() {
         </button>
       </form>
       <p>{message}</p>
-    </>
+    </div>
   );
 }
 
