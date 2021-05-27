@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation, Redirect } from "react-router";
 import { useAuth } from "../../util/auth";
 
 function LoginPage() {
@@ -8,6 +8,7 @@ function LoginPage() {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   // Use from to redirect user back to page which preceded the login page or
   // home page. See https://reactrouter.com/web/example/auth-workflow.
@@ -29,10 +30,10 @@ function LoginPage() {
     : auth.error || "Please complete the form and click submit.";
 
   return (
-    <>
-      <h1>Login</h1>
+    <div className="container-fluid">
+      <h1>Login Below for Access</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email:</label>
         <br />
         <input
           id="email"
@@ -57,7 +58,7 @@ function LoginPage() {
         </button>
       </form>
       <p>{message}</p>
-    </>
+    </div>
   );
 }
 
