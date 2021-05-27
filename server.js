@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = require("./router");
+const mongoose = require("mongoose");
 const connectDb = require("./config/connectDb");
 const session = require("./config/session");
 const errorMiddleware = require("./util/errorMiddleware");
@@ -27,6 +28,11 @@ const PORT = process.env.PORT || 3001;
       router,
       errorMiddleware
     );
+
+    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bestmexsd", {
+      useNewUrlParser: true,
+    });
+
     app.listen(PORT, () => {
       console.log(`🌎 ==> Server listening on port ${PORT}!`);
     });
