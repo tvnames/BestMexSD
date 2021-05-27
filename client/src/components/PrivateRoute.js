@@ -7,7 +7,7 @@ function PrivateRoute({ children, ...rest }) {
   const auth = useAuth();
   const render = ({ location }) => {
     if (auth.isLoggedIn()) return children;
-    // return <Redirect to={{ pathname: "/login", state: { from: location } }} />;
+    return <Redirect to={{ pathname: "/login", state: { from: location } }} />;
   };
   return <Route {...rest} render={render} />;
 }

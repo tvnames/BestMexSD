@@ -24,18 +24,12 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/shop">
+          <PrivateRoute path="/shop">
             <ShopPage />
-          </Route>
-          <Route path="/submitshop">
+          </PrivateRoute>
+          <PrivateRoute path="/submitshop">
             <SubmitShopPage />
-          </Route>
-          {/* <PrivateRoute path="/shop">
-            <ShopPage />
-          </PrivateRoute> */}
-          {/* <PrivateRoute path="/submitshop">
-            <SubmitShopPage />
-          </PrivateRoute> */}
+          </PrivateRoute>
           <Route path="/signup">
             <SignupPage />
           </Route>
