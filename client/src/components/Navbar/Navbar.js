@@ -64,6 +64,7 @@ function Navbar() {
         {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
       </nav>
     </>
+
   );
 }
 
