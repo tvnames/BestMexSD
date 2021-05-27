@@ -35,7 +35,7 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/submit">
+              <NavLink className="nav-link" to="/submitshop">
                 Submit A Taco Shop
               </NavLink>
             </li>

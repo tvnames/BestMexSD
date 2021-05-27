@@ -1,12 +1,17 @@
 import { useState } from "react";
-import { Redirect } from "react-router";
 import { useAuth } from "../../util/auth";
+import { Redirect } from "react-router";
+import useLoginRedirect from "../../util/useLoginRedirect";
 
 function SignupPage() {
   const auth = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+
+  // custom hook redirects to previous page or default page if user is logged in
+  useLoginRedirect();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

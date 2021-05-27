@@ -8,7 +8,7 @@ import ShopPage from "./pages/Shop";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
-import PrivatePage from "./pages/PrivatePage";
+// import PrivatePage from "./pages/PrivatePage";
 import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
 
