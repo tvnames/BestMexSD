@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import style from "./style.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import taco1 from "./taco1.jpg";
 import taco2 from "./taco2.jpg";
 import taco3 from "./taco3.jpg";
