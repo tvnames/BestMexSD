@@ -6,8 +6,6 @@ import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "./images/VallartasExpress.png";
 import SombrerosPic from "./images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
-import pic from "./placeholder150x150.jpg";
-import pic300 from "./300.png";
 
 function HomePage() {
   const history = useHistory();
@@ -15,18 +13,6 @@ function HomePage() {
   console.log("!auth.isLoggedIn():", !auth.isLoggedIn());
   console.log("auth.user", auth.user);
 
-
-
-  function MapRestaurantList([]) {
-
-    restaurants.map((restaurant) => {
-      <ShopCard
-        src={restaurant.src}
-        shopName={restaurant.shopName}
-        location={restaurant.location}
-      />
-    })
-  };
 
 
   return (
@@ -42,6 +28,7 @@ function HomePage() {
             <FeaturedCard
               shopName={restaurants[0].shopName}
               description={restaurants[0].description}
+              rating={restaurants[0].rating}
               address={restaurants[0].address}
               location={restaurants[0].location}
               phone={restaurants[0].phone}
@@ -52,8 +39,6 @@ function HomePage() {
         <section className="container-fluid border border-dark m-2">
           {/* Section to Map over However Many Shops: */}
           <div className="row d-flex justify-content-around">
-            {console.log(restaurants)}
-
             {restaurants.map((restaurant) => (
               <ShopCard
                 src={restaurant.src}
@@ -62,15 +47,12 @@ function HomePage() {
                 featuredFood={restaurant.featuredFood}
               />
             ))}
-
-
-
-
-
           </div>
         </section>
       </main>
     </div>
+
+
   );
 }
 
@@ -82,6 +64,7 @@ const restaurants = [
     "shopName": "Vallarta's Express",
     "featuredFood": "Carne Asada Burrito",
     "src": VallartasPic,
+    "rating": "10/10",
     "description": "The Best Mexican Food In town",
     "location": "Pacific Beach",
     "phone": "555-555-5555",
@@ -94,6 +77,7 @@ const restaurants = [
     "shopName": "Sombreros",
     "featuredFood": "Pollo Asado Quesadilla",
     "src": SombrerosPic,
+    "rating": "8/10",
     "description": "Mexican Food",
     "location": "South Park",
     "phone": "555-555-5555",
@@ -106,6 +90,7 @@ const restaurants = [
     "shopName": "Hilberto's Mexican Food",
     "featuredFood": "Chimichangas",
     "src": VallartasPic,
+    "rating": "8/10",
     "description": "Mexican Food for Everybody",
     "location": "El Cajon",
     "phone": "555-555-5555",
@@ -118,6 +103,7 @@ const restaurants = [
     "shopName": "JV's Mexican Food",
     "featuredFood": "Surf & Turf Burrito",
     "description": "You WILL be Full",
+    "rating": "9/10",
     "src": SombrerosPic,
     "location": "Bay Park",
     "phone": "555-555-5555",
@@ -130,6 +116,7 @@ const restaurants = [
     "shopName": "Taco Bell",
     "featuredFood": "Crunch Wrap Supreme",
     "description": "Late Nite Mexican Food",
+    "rating": "7/10",
     "src": VallartasPic,
     "location": "Kearney Mesa",
     "phone": "555-555-5555",

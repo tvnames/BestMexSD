@@ -40,24 +40,24 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <button className="nav-buttons" onClick={() => auth.logout()}>
-            Logout
-          </button>
           {/* hide actions if user is logged in */}
           {!auth.isLoggedIn() && (
             <>
-              <button
+
+              {/* <button
                 className="nav-buttons"
                 onClick={() => history.push("/login")}
               >
                 Login
               </button>
+
+
               <button
                 className="nav-buttons"
                 onClick={() => history.push("/signup")}
               >
                 Signup
-              </button>
+              </button> */}
             </>
           )}
         </div>
@@ -69,19 +69,33 @@ function Navbar() {
 
 // Renders navigation controls intended for authenticated users
 function UserNavs({ auth }) {
+  const history = useHistory();
   return (
     <>
-      <Nav to="/private">UserNavs</Nav>
+      {/* <Nav to="/private">UserNavs</Nav> */}
       <button onClick={() => auth.logout()}>Logout</button>
     </>
   );
 }
 
 function GuestNavs() {
+  const history = useHistory();
   return (
     <>
-      <Nav to="/login">Login</Nav>
-      <Nav to="/signup">Sign Up</Nav>
+      <button
+        className="nav-buttons"
+        onClick={() => history.push("/login")}
+      >
+        Login
+              </button>
+
+
+      <button
+        className="nav-buttons"
+        onClick={() => history.push("/signup")}
+      >
+        Signup
+              </button>
     </>
   );
 }
