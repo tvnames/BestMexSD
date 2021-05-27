@@ -30,12 +30,6 @@ function App() {
           <Route path="/submitshop">
             <SubmitShopPage />
           </Route>
-          <PrivateRoute path="/shop">
-            <ShopPage />
-          </PrivateRoute>
-          <PrivateRoute path="/submitshop">
-            <SubmitShopPage />
-          </PrivateRoute>
           <Route path="/signup">
             <SignupPage />
           </Route>

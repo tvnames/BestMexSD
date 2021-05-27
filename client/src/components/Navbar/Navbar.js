@@ -61,7 +61,27 @@ function Navbar() {
             </>
           )}
         </div>
+        {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
       </nav>
+    </>
+  );
+}
+
+// Renders navigation controls intended for authenticated users
+function UserNavs({ auth }) {
+  return (
+    <>
+      <Nav to="/private">UserNavs</Nav>
+      <button onClick={() => auth.logout()}>Logout</button>
+    </>
+  );
+}
+
+function GuestNavs() {
+  return (
+    <>
+      <Nav to="/login">Login</Nav>
+      <Nav to="/signup">Sign Up</Nav>
     </>
   );
 }

@@ -4,8 +4,8 @@ import { useAuth } from "../../util/auth";
 // PrivatePage is an example include to demonstrate a route protected from
 // unauthenticated users. See the routing in App.js.
 function SubmitShopPage() {
-  //   const auth = useAuth();
-  //   return <h1>Hello, {auth.user.username}!</h1>;
+  // const auth = useAuth();
+  // return <h1>Hello, {auth.user.username}!</h1>;
   return (
     <div className="container">
       <h2>Submit A Taco Shop to Our Site!</h2>
@@ -117,4 +117,5 @@ function SubmitShopPage() {
     </div>
   );
 }
+
 export default SubmitShopPage;
