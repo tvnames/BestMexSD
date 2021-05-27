@@ -59,11 +59,32 @@ function Navbar() {
         ) : (
           <button className="nav-buttons" onClick={() => auth.logout()}>
             Logout
-          </button>
+          </button
         )}
       </div>
       {/* {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />} */}
     </nav>
+          {/* hide actions if user is logged in */}
+          {!auth.isLoggedIn() && (
+            <>
+              <button
+                className="nav-buttons"
+                onClick={() => history.push("/login")}
+              >
+                Login
+              </button>
+              <button
+                className="nav-buttons"
+                onClick={() => history.push("/signup")}
+              >
+                Signup
+              </button>
+            </>
+          )}
+        </div>
+        {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
+      </nav>
+   
   );
 }
 
