@@ -7,19 +7,6 @@ import styles from "./Nav.module.css";
 function Navbar() {
   const auth = useAuth();
   return (
-<<<<<<< HEAD
-    <nav>
-      <ul>
-        <Nav exact to="/">
-          Home
-        </Nav>
-        <Nav to="/private">Submit Taco Shop (Gracias!)</Nav>
-        <Nav to="/login">Login</Nav>
-        <Nav to="/signup">Sign Up</Nav>
-        <button onClick={() => auth.logout()}>Logout</button>
-      </ul>
-    </nav>
-=======
     <>
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,7 +32,6 @@ function Navbar() {
       </nav>
     </>
 
->>>>>>> a82a4eff27038b66175bc5476d9f8f9c2b6afddf
   );
 }
 
