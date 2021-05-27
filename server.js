@@ -4,6 +4,9 @@ const router = require("./router");
 const connectDb = require("./config/connectDb");
 const session = require("./config/session");
 const errorMiddleware = require("./util/errorMiddleware");
+const checkEnv = require("./config/checkEnv");
+
+checkEnv();
 
 const PORT = process.env.PORT || 3001;
 

@@ -9,7 +9,7 @@
     "start:dev": "concurrently -c magenta,cyan npm:server npm:client",
     "server": "nodemon --ignore client",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "seed": "node seed/index.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
