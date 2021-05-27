@@ -1,4 +1,3 @@
-
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/auth";
 import Hero from "../../components/Hero/Hero";
@@ -8,11 +7,6 @@ import Image from "../../components/ImageContainer/image";
 import pic from "./placeholder150x150.jpg";
 import pic300 from "./300.png";
 
-
-
-
-
-
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
@@ -21,14 +15,6 @@ function HomePage() {
 
   return (
     <div className="container-fluid">
-      {/* hide actions if user is logged in */}
-      {!auth.isLoggedIn() && (
-        <>
-          <button onClick={() => history.push("/login")}>Login</button>
-          <button onClick={() => history.push("/signup")}>Signup</button>
-        </>
-      )}
-
       <Hero>Welcome to Best Mex SD!</Hero>
       <main className="container-fluid">
         <h3>This week's Top Shop:</h3>
@@ -96,14 +82,9 @@ function HomePage() {
               phone="555-555-5555"
               featuredFood="California Burrito"
             />
-
           </div>
         </section>
       </main>
-
-
-
-
     </div>
   );
 }
