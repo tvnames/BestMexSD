@@ -45,7 +45,13 @@ nav {
 }
 
 footer {
-  background-color: #fbd48f;
+  background: rgb(251, 212, 143);
+  background: linear-gradient(
+    0deg,
+    rgba(251, 212, 143, 1) 0%,
+    rgba(252, 217, 156, 1) 67%,
+    rgba(255, 242, 219, 1) 100%
+  );
 }
 
 /* Small devices (landscape phones, 576px and up) */
