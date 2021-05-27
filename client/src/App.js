@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./util/auth";
 import { get as getUser } from "./util/userApi";
 import HomePage from "./pages/HomePage";
-import SubmitShopPage from "./pages/SubmitShop"
-import ShopPage from "./pages/Shop"
+import SubmitShopPage from "./pages/SubmitShop";
+import ShopPage from "./pages/Shop";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -30,12 +30,12 @@ function App() {
           <Route path="/submitshop">
             <SubmitShopPage />
           </Route>
-          {/* <PrivateRoute path="/shop">
+          <PrivateRoute path="/shop">
             <ShopPage />
-          </PrivateRoute> */}
-          {/* <PrivateRoute path="/submitshop">
+          </PrivateRoute>
+          <PrivateRoute path="/submitshop">
             <SubmitShopPage />
-          </PrivateRoute> */}
+          </PrivateRoute>
           <Route path="/signup">
             <SignupPage />
           </Route>
