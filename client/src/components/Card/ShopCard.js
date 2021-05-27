@@ -8,6 +8,7 @@ function ShopCard({ shopName, src, description, location, phone, address, featur
             <div className="card-body">
                 <h5 className="card-title">{shopName}</h5>
                 <p className="card-text">{location}</p>
+                <p className="card-text">Featured Food: {featuredFood}</p>
             </div>
         </div>
 

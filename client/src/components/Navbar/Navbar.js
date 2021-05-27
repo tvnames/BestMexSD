@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
+import logo from "./bestmexlogo.png";
 
 function Navbar() {
   const auth = useAuth();
@@ -22,20 +23,19 @@ function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <i>"LogoHere"</i>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <NavLink className="nav-link" to="/">
-                Home
+                <img src={logo} />
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item nav-control">
               <NavLink className="nav-link" to="/shop">
                 Find A Taco Shop
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/submit">
+            <li className="nav-item nav-control">
+              <NavLink className="nav-link " to="/submitshop">
                 Submit A Taco Shop
               </NavLink>
             </li>
@@ -61,9 +61,29 @@ function Navbar() {
             </>
           )}
         </div>
+        {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
       </nav>
     </>
 
+  );
+}
+
+// Renders navigation controls intended for authenticated users
+function UserNavs({ auth }) {
+  return (
+    <>
+      <Nav to="/private">UserNavs</Nav>
+      <button onClick={() => auth.logout()}>Logout</button>
+    </>
+  );
+}
+
+function GuestNavs() {
+  return (
+    <>
+      <Nav to="/login">Login</Nav>
+      <Nav to="/signup">Sign Up</Nav>
+    </>
   );
 }
 

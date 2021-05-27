@@ -1,4 +1,5 @@
 // validate required env variables are set. Throw helpful errors regarding missing/invalid env vars.
+
 function checkEnv() {
   const { SESSION_SECRET, MONGODB_URI } = process.env;
   if (!SESSION_SECRET) {
@@ -11,4 +12,5 @@ function checkEnv() {
     );
   }
 }
+
 module.exports = checkEnv;
