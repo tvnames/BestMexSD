@@ -56,6 +56,29 @@ userRouter.post("/login", async (req, res, next) => {
   }
 });
 
+
+userRouter.post("/shopsubmit", async (req, res, next) => {
+  try {
+    const { shopName, address, phone, location } = req.body;
+    const newShop = new newShop({ shopName, address, phone, location });
+    await newShop.save();
+
+  } catch (error) {
+    const DUPLICATE_ENTRY_CODE = 11000;
+    if (error.code === DUPLICATE_ENTRY_CODE && error.keyPattern?.shopName) {
+      return res.status(400).json({ message: "Shop already exists." });
+    }
+    if ((error.code = DUPLICATE_ENTRY_CODE && error.keyPattern?.address)) {
+      return res.status(400).json({ message: "Address already exists." });
+    }
+    if ((error.code = DUPLICATE_ENTRY_CODE && error.keyPattern?.phone)) {
+      return res.status(400).json({ message: "Phone Number already exists." });
+    }
+
+    next(error);
+  }
+});
+
 userRouter.delete("/logout", async (req, res, next) => {
   try {
     if (!req.session.user) {
@@ -69,5 +92,7 @@ userRouter.delete("/logout", async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = userRouter;
