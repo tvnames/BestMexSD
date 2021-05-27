@@ -15,7 +15,7 @@ function Hero({ children }) {
         type: "loop",
         autoplay: true,
         autoWidth: true,
-        speed: 500,
+        speed: 400,
         focus: "center",
         padding: 0,
       }}

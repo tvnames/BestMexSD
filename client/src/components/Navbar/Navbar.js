@@ -24,7 +24,7 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link logo-control" to="/">
               <img src={logo} />
             </NavLink>
           </li>
