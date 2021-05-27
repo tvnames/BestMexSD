@@ -34,54 +34,56 @@ function HomePage() {
             />
           </div>
         </section>
-        <section className="container-fluid border border-dark m-2">
-          Section to Map over However Many Shops:
-          <div className="row d-flex justify-content-around">
-            <ShopCard
-              shopName="Vallarta's Express"
-              description="Vallarta's Express - The best Mexican Food in SD"
-              src={pic}
-              address="555 Morena Dr., San Diego, CA, 92109"
-              location="Bay Park"
-              phone="555-555-5555"
-              featuredFood="California Burrito"
-            />
-            <ShopCard
-              shopName="Vallarta's Express"
-              description="Vallarta's Express - The best Mexican Food in SD"
-              src={pic}
-              address="555 Morena Dr., San Diego, CA, 92109"
-              location="Bay Park"
-              phone="555-555-5555"
-              featuredFood="California Burrito"
-            />
-            <ShopCard
-              shopName="Vallarta's Express"
-              description="Vallarta's Express - The best Mexican Food in SD"
-              src={pic}
-              address="555 Morena Dr., San Diego, CA, 92109"
-              location="Bay Park"
-              phone="555-555-5555"
-              featuredFood="California Burrito"
-            />
-            <ShopCard
-              shopName="Vallarta's Express"
-              description="Vallarta's Express - The best Mexican Food in SD"
-              src={pic}
-              address="555 Morena Dr., San Diego, CA, 92109"
-              location="Bay Park"
-              phone="555-555-5555"
-              featuredFood="California Burrito"
-            />
-            <ShopCard
-              shopName="Vallarta's Express"
-              description="Vallarta's Express - The best Mexican Food in SD"
-              src={pic}
-              address="555 Morena Dr., San Diego, CA, 92109"
-              location="Bay Park"
-              phone="555-555-5555"
-              featuredFood="California Burrito"
-            />
+        <section className="row border border-dark m-2">
+          <h3>Section to Map over However Many Shops:</h3>
+          <div className="container-fluid">
+            <div className="row d-flex justify-content-around">
+              <ShopCard
+                shopName="Vallarta's Express"
+                description="Vallarta's Express - The best Mexican Food in SD"
+                src={pic}
+                address="555 Morena Dr., San Diego, CA, 92109"
+                location="Bay Park"
+                phone="555-555-5555"
+                featuredFood="California Burrito"
+              />
+              <ShopCard
+                shopName="Vallarta's Express"
+                description="Vallarta's Express - The best Mexican Food in SD"
+                src={pic}
+                address="555 Morena Dr., San Diego, CA, 92109"
+                location="Bay Park"
+                phone="555-555-5555"
+                featuredFood="California Burrito"
+              />
+              <ShopCard
+                shopName="Vallarta's Express"
+                description="Vallarta's Express - The best Mexican Food in SD"
+                src={pic}
+                address="555 Morena Dr., San Diego, CA, 92109"
+                location="Bay Park"
+                phone="555-555-5555"
+                featuredFood="California Burrito"
+              />
+              <ShopCard
+                shopName="Vallarta's Express"
+                description="Vallarta's Express - The best Mexican Food in SD"
+                src={pic}
+                address="555 Morena Dr., San Diego, CA, 92109"
+                location="Bay Park"
+                phone="555-555-5555"
+                featuredFood="California Burrito"
+              />
+              <ShopCard
+                shopName="Vallarta's Express"
+                description="Vallarta's Express - The best Mexican Food in SD"
+                src={pic}
+                address="555 Morena Dr., San Diego, CA, 92109"
+                location="Bay Park"
+                phone="555-555-5555"
+                featuredFood="California Burrito"
+              />
+            </div>
           </div>
         </section>
       </main>
