@@ -1,15 +1,10 @@
 import { React } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../util/auth";
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
-import VallartasPic from "./images/VallartasExpress.png"
-// import SombrerosPic from "./images/Sombreros.png";
-import restaurants from "./shopSeed.json";
-import "./shopSeed.json";
-import pic from "./300.png";
-
+import VallartasPic from "../../images/VallartasExpress.png";
+import restaurants from "../../shopSeed.json";
 
 function ShopPage() {
 
@@ -33,7 +28,6 @@ function ShopPage() {
             <Image src={VallartasPic} />
           </div>
           <div className="col">
-            {/* shopName, src, description, location, phone, address, featuredFood, otherInfo */}
             <FeaturedCard
               menuURL={selectedShop[0].menuURL}
               shopName={selectedShop[0].shopName}
@@ -44,7 +38,6 @@ function ShopPage() {
               rating={avg.toFixed(1)}
               numOfRatings={selectedShop[0].rating.length}
               featuredFood={selectedShop[0].featuredFood}
-
             />
           </div>
         </div>
@@ -60,14 +53,6 @@ function ShopPage() {
             />
           )
         })}
-        {/* <ReviewCard
-          reviewDate="May 21st, 2021"
-          reviewText={selectedShop[0].reviews}
-        />
-        <ReviewCard
-          reviewDate="February 1st, 2021"
-          reviewText="This place was soooooo nasty"
-        /> */}
       </div>
     </>
   )

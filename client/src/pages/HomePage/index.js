@@ -3,10 +3,11 @@ import { useAuth } from "../../util/auth";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
-import VallartasPic from "./images/VallartasExpress.png";
-import SombrerosPic from "./images/Sombreros.png";
+import VallartasPic from "../../images/VallartasExpress.png";
+import SombrerosPic from "../../images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
-import restaurants from "./shopSeed.json"
+import restaurants from "../../shopSeed.json"
+// import restaurants from "./shopSeed.json"
 
 
 
@@ -24,11 +25,9 @@ function HomePage() {
     return Math.floor(Math.random() * maximum);
   }
   const randomShop = getRandom(5);
-
-
-
-
   const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
+
+  const currentShop = restaurants[randomShop];
 
 
 
@@ -46,14 +45,15 @@ function HomePage() {
           <div className="col border border-dark">
             <FeaturedCard
               src={VallartasPic}
-              shopName={restaurants[randomShop].shopName}
-              description={restaurants[randomShop].description}
+              shopName={currentShop.shopName}
+              menuURL={currentShop.menuURL}
+              description={currentShop.description}
               rating={avg.toFixed(1)}
-              numOfRatings={restaurants[randomShop].rating.length}
-              address={restaurants[randomShop].address}
-              location={restaurants[randomShop].location}
-              phone={restaurants[randomShop].phone}
-              featuredFood={restaurants[randomShop].featuredFood}
+              numOfRatings={currentShop.rating.length}
+              address={currentShop.address}
+              location={currentShop.location}
+              phone={currentShop.phone}
+              featuredFood={currentShop.featuredFood}
             />
           </div>
         </section>
@@ -61,7 +61,6 @@ function HomePage() {
           <div className="row d-flex justify-content-around">
             {restaurants.map((restaurant) => (
               <ShopCard
-
                 id={restaurant.id}
                 src={VallartasPic}
                 shopName={restaurant.shopName}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
+import "./style.css";
 
 // import style from "./style.css";
 
@@ -12,7 +13,7 @@ function ShopCard({ id, shopName, src, location, featuredFood }) {
 
     return (
         <div
-            className="card m-2"
+            className="card m-2 shopCard"
             style={{ width: '15rem' }}
             onClick={redirect}
         >
