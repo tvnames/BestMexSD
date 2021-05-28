@@ -82,4 +82,6 @@ function GuestNavs() {
     </>
   );
 }
+
 export default Navbar;
+
