@@ -10,19 +10,25 @@ import Image from "../../components/ImageContainer/image";
 
 
 
+
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
-  const randomShop = getRandom(5);
+
+  function addRating(newRating) {
+    restaurants[randomShop].rating.push(newRating);
+  }
 
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
+  const randomShop = getRandom(5);
+
+
 
 
   const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
-  console.log(randomShop);
-  console.log(avg.toFixed(1));
+
 
 
 
@@ -42,6 +48,7 @@ function HomePage() {
               shopName={restaurants[randomShop].shopName}
               description={restaurants[randomShop].description}
               rating={avg.toFixed(1)}
+              numOfRatings={restaurants[randomShop].rating.length}
               address={restaurants[randomShop].address}
               location={restaurants[randomShop].location}
               phone={restaurants[randomShop].phone}

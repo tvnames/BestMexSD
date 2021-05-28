@@ -13,9 +13,12 @@ const RatingContainer = () => {
     };
     const onSaveRating = (index) => {
         setRating(index);
+        console.log(index);
+
+
     };
     return (
-        <div className="d-flex justify-content-end"> Rate this Shop!---<span> </span>
+        <div className="d-flex justify-content-end mr-3"><strong>How Many Stars Would You Rate this spot?</strong> ___  <span> </span>
             {[1, 2, 3, 4, 5].map((index) => {
                 return (
                     <RatingIcon
