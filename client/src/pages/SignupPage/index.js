@@ -34,46 +34,54 @@ function SignupPage() {
     : auth.error || "Please complete the form and click submit.";
 
   return (
-    <div className="container-fluid">
-      {/* redirect to home page if user is logged in */}
-      {auth.isLoggedIn() && <Redirect to="/" />}
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <br />
-        <input
-          id="username"
-          type="text"
-          readOnly={auth.pending}
-          value={username}
-          onChange={(e) => setUsername(e.target.value.trim())}
-        />
-        <br />
-        <label htmlFor="email">Email</label>
-        <br />
-        <input
-          id="email"
-          type="email"
-          readOnly={auth.pending}
-          value={email}
-          onChange={(e) => setEmail(e.target.value.trim())}
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          readOnly={auth.pending}
-          value={password}
-          onChange={(e) => setPassword(e.target.value.trim())}
-        />
-        <br />
-        <button className="nav-buttons" type="submit" disabled={auth.pending}>
-          {auth.pending ? "⌛" : "Submit"}
-        </button>
-      </form>
-      <p>{message}</p>
+    <div id="signup-page" className="container">
+      <div className="row justify-content-center">
+        <div className="col-sm-12 col-md-8 col-lg-6">
+          {/* redirect to home page if user is logged in */}
+          {auth.isLoggedIn() && <Redirect to="/" />}
+          <h1>Sign Up</h1>
+          <form id="signup-form" onSubmit={handleSubmit}>
+            <label htmlFor="username">Username</label>
+            <br />
+            <input
+              id="username"
+              type="text"
+              readOnly={auth.pending}
+              value={username}
+              onChange={(e) => setUsername(e.target.value.trim())}
+            />
+            <br />
+            <label htmlFor="email">Email</label>
+            <br />
+            <input
+              id="email"
+              type="email"
+              readOnly={auth.pending}
+              value={email}
+              onChange={(e) => setEmail(e.target.value.trim())}
+            />
+            <br />
+            <label htmlFor="password">Password</label>
+            <br />
+            <input
+              id="password"
+              type="password"
+              readOnly={auth.pending}
+              value={password}
+              onChange={(e) => setPassword(e.target.value.trim())}
+            />
+            <br />
+            <button
+              className="nav-buttons sign-up-button"
+              type="submit"
+              disabled={auth.pending}
+            >
+              {auth.pending ? "⌛" : "Submit"}
+            </button>
+          </form>
+          <p>{message}</p>
+        </div>
+      </div>
     </div>
   );
 }
