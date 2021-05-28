@@ -4,6 +4,7 @@ import RatingContainer from "../StarRating.js/RatingContainer";
 
 function FeaturedCard({
   shopName,
+  menuURL,
   rating,
   numOfRatings,
   src,
@@ -38,16 +39,12 @@ function FeaturedCard({
         </li>
       </ul>
       <div className="card-body d-flex">
-        <a href="https://www.vallartaexpress.com/menu/" className="card-link">
-          Menu
+        <a href={menuURL} className="card-link" target="_blank" rel="noreferrer noopener">
+          View Their Menu
         </a>
-        <a href="https://www.vallartaexpress.com/" className="card-link">
-          View Website
-        </a>
-        <i className="ml-auto"><strong>Average Rating:</strong> {rating} out of 5 stars! ({numOfRatings} Customers)</i>
+        <i className="ml-auto"><strong>Average Rating:</strong> {rating} out of 5 stars! ({numOfRatings} Ratings)</i>
       </div>
       <div className="">
-
         <RatingContainer />
       </div>
     </div>

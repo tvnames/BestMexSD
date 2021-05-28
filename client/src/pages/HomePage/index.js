@@ -6,6 +6,7 @@ import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "./images/VallartasExpress.png";
 import SombrerosPic from "./images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
+import restaurants from "./shopSeed.json"
 
 
 
@@ -62,7 +63,7 @@ function HomePage() {
               <ShopCard
 
                 id={restaurant.id}
-                src={restaurant.src}
+                src={VallartasPic}
                 shopName={restaurant.shopName}
                 location={restaurant.location}
                 featuredFood={restaurant.featuredFood}
@@ -76,77 +77,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
-const restaurants = [
-  {
-    "shopName": "Vallarta's Express",
-    "id": "1",
-    "featuredFood": "Carne Asada Burrito",
-    "src": VallartasPic,
-    "rating": [5, 4, 5, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
-    "description": "The Best Mexican Food In town",
-    "location": "Pacific Beach",
-    "phone": "555-555-5555",
-    "address": "123 Garnet Ave",
-    "city": "San Diego",
-    "state": "California",
-    "zip": "92109"
-  },
-  {
-    "shopName": "Sombreros",
-    "id": "2",
-    "featuredFood": "Pollo Asado Quesadilla",
-    "src": SombrerosPic,
-    "rating": [5, 4, 5, 5, 4, 4, 4, 5, 5, 3, 5],
-    "description": "Mexican Food",
-    "location": "South Park",
-    "phone": "555-555-5555",
-    "address": "222 Fern Ave",
-    "city": "San Diego",
-    "state": "California",
-    "zip": "92104"
-  },
-  {
-    "shopName": "Hilberto's Mexican Food",
-    "featuredFood": "Chimichangas",
-    "id": "3",
-    "src": VallartasPic,
-    "rating": [5, 4, 4, 4, 4, 5, 5, 3, 5],
-    "description": "Mexican Food for Everybody",
-    "location": "El Cajon",
-    "phone": "555-555-5555",
-    "address": "5555 Jamacha Ave",
-    "city": "El Cajon",
-    "state": "California",
-    "zip": "92019"
-  },
-  {
-    "shopName": "JV's Mexican Food",
-    "featuredFood": "Surf & Turf Burrito",
-    "id": "4",
-    "description": "You WILL be Full",
-    "rating": [5, 4, 5, 5, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
-    "src": SombrerosPic,
-    "location": "Bay Park",
-    "phone": "555-555-5555",
-    "address": "999 Morena Blvd.",
-    "city": "San Diego",
-    "state": "California",
-    "zip": "92109"
-  },
-  {
-    "shopName": "Taco Bell",
-    "featuredFood": "Crunch Wrap Supreme",
-    "id": "5",
-    "description": "Late Nite Mexican Food",
-    "rating": [5, 4, 5, 3, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5, 4, 4, 4, 4, 3, 2, 5, 5, 5],
-    "src": VallartasPic,
-    "location": "Kearney Mesa",
-    "phone": "555-555-5555",
-    "address": "333 Balboa Ave.",
-    "city": "San Diego",
-    "state": "California",
-    "zip": "92108"
-  }
-];

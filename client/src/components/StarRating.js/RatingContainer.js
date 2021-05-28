@@ -13,7 +13,7 @@ const RatingContainer = () => {
     };
     const onSaveRating = (index) => {
         setRating(index);
-        console.log(index);
+        window.alert("You've Rated this Restaurant " + index + " out of 5 stars!");
 
 
     };
