@@ -29,9 +29,13 @@ const PORT = process.env.PORT || 3001;
       errorMiddleware
     );
 
-    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bestmexsd", {
-      useNewUrlParser: true,
-    });
+    mongoose.connect(
+      process.env.MONGODB_URI || "mongodb://localhost/bestmexsd",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
 
     app.listen(PORT, () => {
       console.log(`🌎 ==> Server listening on port ${PORT}!`);
