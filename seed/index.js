@@ -180,11 +180,12 @@ const User = [
     {
         userName: [
             {
-                name: "Ben Dover",
+                name: "Ben Daily",
                 email: "bd@email.com",
                 password: "password",
             },
         ],
     },
+]
 
-    module.exports = User;
+module.exports = User;
