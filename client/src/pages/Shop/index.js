@@ -1,51 +1,73 @@
-import React from "react";
-import { useAuth } from "../../util/auth";
+import { React } from "react";
+import { useParams } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom"
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
-import pic from "./300.png";
+import VallartasPic from "../../images/VallartasExpress.png";
+import restaurants from "../../shopSeed.json";
+import HomePage from "../HomePage";
 
-
-
-
-// PrivatePage is an example include to demonstrate a route protected from
-// unauthenticated users. See the routing in App.js.
 function ShopPage() {
-  // const auth = useAuth();
-  // <h1>Hello, {auth.user.username}!</h1>;
+  const id = useParams().id;
+  const selectedShop = restaurants.filter(restaurant => restaurant.id === id);
+  const avg = selectedShop[0].rating.reduce((a, b) => a + b) / selectedShop[0].rating.length;
+
+  function addRating(newRating) {
+    selectedShop[0].rating.push(newRating);
+  }
+
+  function submitForm() {
+    window.alert("Need to get value of input field and submit to review for the selected shop");
+    return <Redirect exact to="/" />
+  }
+
   return (
     <>
       <div className="container-fluid border border-dark m-2">
         <div className="row">
           <div className="col">
-            <Image src={pic} />
+            <Image src={VallartasPic} />
           </div>
           <div className="col">
-            {/* shopName, src, description, location, phone, address, featuredFood, otherInfo */}
             <FeaturedCard
-              shopName="Sombreros"
-              description="A great food place"
-              location="North Park"
-              phone="555-555-5555"
-              address="25 Second Street, El Cajon, CA, 92020"
-              featuredFood="California Burrito"
-
+              menuURL={selectedShop[0].menuURL}
+              shopName={selectedShop[0].shopName}
+              description={selectedShop[0].description}
+              location={selectedShop[0].location}
+              phone={selectedShop[0].phone}
+              address={selectedShop[0].address}
+              rating={avg.toFixed(1)}
+              numOfRatings={selectedShop[0].rating.length}
+              featuredFood={selectedShop[0].featuredFood}
             />
           </div>
         </div>
-
       </div>
       <div className="container-fluid border border-dark m-2">
-        <h3>Reviews for "Sombreros Mexican Food"</h3>
-        <ReviewCard
-          reviewDate="May 21st, 2021"
-          reviewText="This place was soooooo good"
-        />
-        <ReviewCard
-          reviewDate="February 1st, 2021"
-          reviewText="This place was soooooo nasty"
-        />
+        <h3>Reviews for "{selectedShop[0].shopName}"</h3>
+        {selectedShop[0].reviews.map((review) => {
+          return (
+            <ReviewCard
+              // reviewDate={review.date}
+              reviewText={review}
+            />
+          )
+        })}
       </div>
+      <h3>Submit Your Review in the Box Below:</h3>
+      <form onSubmit={submitForm}>
+        <div classname="form-group">
+          {/* <label htmlfor="reviewBox">Review:</label> */}
+          <input
+            classname="form-control"
+            type="text"
+            id="newReview"
+            aria-describedby="submitReviewBox"
+            placeholder="Type your Review Here..." />
+        </div>
+        <button type="submit" classname="btn btn-primary" >Submit</button>
+      </form>
     </>
   )
 }

@@ -1,11 +1,8 @@
-import React from "react";
-// import style from "./style.css";
+// import React from "react";
 
 function SubmitFormLine() {
     return (
-       
-
-
+        console.log("hello")
     );
 }
 export default SubmitFormLine;
