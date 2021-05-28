@@ -34,6 +34,7 @@ const PORT = process.env.PORT || 3001;
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex: true,
       }
     );
 
