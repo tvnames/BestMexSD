@@ -4,7 +4,6 @@ import Nav from "./Nav";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
 import logo from "./bestmexlogo.png";
-
 function Navbar() {
   const auth = useAuth();
   const history = useHistory();
@@ -39,7 +38,6 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
-
         {/* hide actions if user is logged in */}
         {!auth.isLoggedIn() ? (
           <>
@@ -59,35 +57,33 @@ function Navbar() {
         ) : (
           <button className="nav-buttons" onClick={() => auth.logout()}>
             Logout
-          </button
+          </button>
         )}
       </div>
       {/* {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />} */}
+      {/* hide actions if user is logged in */}
+      <div>
+        {!auth.isLoggedIn() && (
+          <>
+            <button
+              className="nav-buttons"
+              onClick={() => history.push("/login")}
+            >
+              Login
+            </button>
+            <button
+              className="nav-buttons"
+              onClick={() => history.push("/signup")}
+            >
+              Signup
+            </button>
+          </>
+        )}
+      </div>
+      {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
     </nav>
-          {/* hide actions if user is logged in */}
-          {!auth.isLoggedIn() && (
-            <>
-              <button
-                className="nav-buttons"
-                onClick={() => history.push("/login")}
-              >
-                Login
-              </button>
-              <button
-                className="nav-buttons"
-                onClick={() => history.push("/signup")}
-              >
-                Signup
-              </button>
-            </>
-          )}
-        </div>
-        {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
-      </nav>
-   
   );
 }
-
 // Renders navigation controls intended for authenticated users
 function UserNavs({ auth }) {
   return (
@@ -97,7 +93,6 @@ function UserNavs({ auth }) {
     </ul>
   );
 }
-
 function GuestNavs() {
   return (
     <>
@@ -106,5 +101,4 @@ function GuestNavs() {
     </>
   );
 }
-
 export default Navbar;
