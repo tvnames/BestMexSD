@@ -1,21 +1,25 @@
 import React from "react";
-// import style from "./style.css";
+import "./style.css";
+import RatingContainer from "../StarRating.js/RatingContainer";
 
 function FeaturedCard({
   shopName,
+  menuURL,
+  rating,
+  numOfRatings,
   src,
   description,
   location,
   phone,
   address,
   featuredFood,
-  otherInfo,
 }) {
+
   return (
     <div className="card m-1">
-      {/* <img className="card-img-top" src={src} alt="Card image cap" style={{ width: '150px' }} /> */}
       <div className="card-body">
         <h5 className="card-title">{shopName}</h5>
+        {/* <img src={src} alt={src} /> */}
         <p className="card-text">
           <strong>Featured Food: </strong>
           {featuredFood}
@@ -26,7 +30,7 @@ function FeaturedCard({
           <strong>Location:</strong> {location}
         </li>
         <li className="list-group-item">
-          <strong>Adress: </strong>
+          <strong>Address: </strong>
           {address}
         </li>
         <li className="list-group-item">
@@ -35,15 +39,16 @@ function FeaturedCard({
         </li>
       </ul>
       <div className="card-body d-flex">
-        <a href="https://www.vallartaexpress.com/menu/" className="card-link">
-          Menu
+        <a href={menuURL} className="card-link" target="_blank" rel="noreferrer noopener">
+          View Their Menu
         </a>
-        <a href="https://www.vallartaexpress.com/" className="card-link">
-          View Website
-        </a>
-        <i className="ml-auto">"Rating"</i>
+        <i className="ml-auto"><strong>Average Rating:</strong> {rating} out of 5 stars! ({numOfRatings} Ratings)</i>
+      </div>
+      <div className="">
+        <RatingContainer />
       </div>
     </div>
+
   );
 }
 export default FeaturedCard;
