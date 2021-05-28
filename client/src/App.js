@@ -13,9 +13,6 @@ import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-
-
-
   return (
     <AuthProvider>
       <Router>
@@ -27,7 +24,7 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/shop/:id" >
+          <Route path="/shop/:id">
             <ShopPage />
           </Route>
           <Route path="/submitshop">
