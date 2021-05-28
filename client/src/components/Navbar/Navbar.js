@@ -60,27 +60,8 @@ function Navbar() {
           </button>
         )}
       </div>
-      {/* {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />} */}
-      {/* hide actions if user is logged in */}
-      <div>
-        {!auth.isLoggedIn() && (
-          <>
-            <button
-              className="nav-buttons"
-              onClick={() => history.push("/login")}
-            >
-              Login
-            </button>
-            <button
-              className="nav-buttons"
-              onClick={() => history.push("/signup")}
-            >
-              Signup
-            </button>
-          </>
-        )}
-      </div>
       {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
+      {/* hide actions if user is logged in */}
     </nav>
   );
 }
@@ -101,4 +82,6 @@ function GuestNavs() {
     </>
   );
 }
+
 export default Navbar;
+
