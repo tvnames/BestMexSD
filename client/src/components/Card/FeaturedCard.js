@@ -18,6 +18,7 @@ function FeaturedCard({
     <div className="card m-1">
       <div className="card-body">
         <h5 className="card-title">{shopName}</h5>
+        {/* <img src={src} alt={src} /> */}
         <p className="card-text">
           <strong>Featured Food: </strong>
           {featuredFood}
@@ -28,7 +29,7 @@ function FeaturedCard({
           <strong>Location:</strong> {location}
         </li>
         <li className="list-group-item">
-          <strong>Adress: </strong>
+          <strong>Address: </strong>
           {address}
         </li>
         <li className="list-group-item">

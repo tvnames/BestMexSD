@@ -39,12 +39,12 @@ function HomePage() {
       <main className="container-fluid">
         <h3>This week's Top Shop:</h3>
         <section className="row border border-dark m-3">
+          <Image src={VallartasPic} />
           <div className="col">
-            <Image src={VallartasPic} />
           </div>
           <div className="col border border-dark">
             <FeaturedCard
-
+              src={VallartasPic}
               shopName={restaurants[randomShop].shopName}
               description={restaurants[randomShop].description}
               rating={avg.toFixed(1)}
@@ -60,6 +60,8 @@ function HomePage() {
           <div className="row d-flex justify-content-around">
             {restaurants.map((restaurant) => (
               <ShopCard
+
+                id={restaurant.id}
                 src={restaurant.src}
                 shopName={restaurant.shopName}
                 location={restaurant.location}
@@ -70,8 +72,6 @@ function HomePage() {
         </section>
       </main>
     </div>
-
-
   );
 }
 
@@ -81,6 +81,7 @@ export default HomePage;
 const restaurants = [
   {
     "shopName": "Vallarta's Express",
+    "id": "1",
     "featuredFood": "Carne Asada Burrito",
     "src": VallartasPic,
     "rating": [5, 4, 5, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
@@ -94,6 +95,7 @@ const restaurants = [
   },
   {
     "shopName": "Sombreros",
+    "id": "2",
     "featuredFood": "Pollo Asado Quesadilla",
     "src": SombrerosPic,
     "rating": [5, 4, 5, 5, 4, 4, 4, 5, 5, 3, 5],
@@ -108,6 +110,7 @@ const restaurants = [
   {
     "shopName": "Hilberto's Mexican Food",
     "featuredFood": "Chimichangas",
+    "id": "3",
     "src": VallartasPic,
     "rating": [5, 4, 4, 4, 4, 5, 5, 3, 5],
     "description": "Mexican Food for Everybody",
@@ -121,6 +124,7 @@ const restaurants = [
   {
     "shopName": "JV's Mexican Food",
     "featuredFood": "Surf & Turf Burrito",
+    "id": "4",
     "description": "You WILL be Full",
     "rating": [5, 4, 5, 5, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
     "src": SombrerosPic,
@@ -134,6 +138,7 @@ const restaurants = [
   {
     "shopName": "Taco Bell",
     "featuredFood": "Crunch Wrap Supreme",
+    "id": "5",
     "description": "Late Nite Mexican Food",
     "rating": [5, 4, 5, 3, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5, 4, 4, 4, 4, 3, 2, 5, 5, 5],
     "src": VallartasPic,

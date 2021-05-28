@@ -1,4 +1,5 @@
-import React from "react";
+import { React } from "react";
+import { useParams } from "react-router-dom";
 import { useAuth } from "../../util/auth";
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
@@ -6,13 +7,12 @@ import ReviewCard from "../../components/Card/ReviewCard";
 import pic from "./300.png";
 
 
-
-
-// PrivatePage is an example include to demonstrate a route protected from
-// unauthenticated users. See the routing in App.js.
 function ShopPage() {
-  // const auth = useAuth();
-  // <h1>Hello, {auth.user.username}!</h1>;
+
+  const id = useParams().id;
+  console.log(id);
+
+
   return (
     <>
       <div className="container-fluid border border-dark m-2">
