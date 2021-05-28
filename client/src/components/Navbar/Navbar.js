@@ -4,7 +4,6 @@ import Nav from "./Nav";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
 import logo from "./bestmexlogo.png";
-
 function Navbar() {
   const auth = useAuth();
   const history = useHistory();
@@ -47,7 +46,6 @@ function Navbar() {
     </>
   );
 }
-
 // Renders navigation controls intended for authenticated users
 function UserNavs({ auth }) {
   const history = useHistory();
@@ -58,7 +56,6 @@ function UserNavs({ auth }) {
     </>
   );
 }
-
 function GuestNavs() {
   const history = useHistory();
   return (
@@ -82,3 +79,4 @@ function GuestNavs() {
 }
 
 export default Navbar;
+

@@ -1,25 +1,26 @@
 import react from "react";
+import logo from "./bestmexlogo.png";
 // import style from "./style.css";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-center text-white">
+    <footer className="foot-control text-center text-white">
       <div className="container p-4">
         <section className="mb-4">
-          <a
+          {/* <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
             <i className="fa fa-facebook-f" />
-          </a>
-          <a
+          </a> */}
+          {/* <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
             <i className="fa fa-twitter" />
-          </a>
+          </a> */}
           {/* <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
@@ -27,13 +28,13 @@ function Footer() {
           >
             <i className="fa fa-google" />
           </a> */}
-          <a
+          {/* <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
             <i className="fa fa-instagram" />
-          </a>
+          </a> */}
           {/* <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
@@ -78,10 +79,10 @@ function Footer() {
           </form>
         </section> */}
         <section className="mb-4">
-          <p>BestMexSD - San Diego's Number One Taco Review Site!</p>
+          <img src={logo} />
         </section>
-        <section className>
-          <div className="row">
+        {/* <section className> */}
+        {/* <div className="row">
             <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
               <h5 className="text-uppercase">Links</h5>
               <ul className="list-unstyled mb-0">
@@ -106,10 +107,10 @@ function Footer() {
                   </a>
                 </li>
               </ul>
-            </div>
-            <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-              <ul className="list-unstyled mb-0">
+            </div> */}
+        {/* <div className="col-lg-4 col-md-6 mb-4 mb-md-0"> */}
+        {/* <h5 className="text-uppercase">Links</h5> */}
+        {/* <ul className="list-unstyled mb-0">
                 <li>
                   <a href="#!" className="text-white">
                     Link 1
@@ -130,9 +131,9 @@ function Footer() {
                     Link 4
                   </a>
                 </li>
-              </ul>
-            </div>
-            {/* <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+              </ul> */}
+        {/* </div> */}
+        {/* <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 className="text-uppercase">Links</h5>
               <ul className="list-unstyled mb-0">
                 <li>
@@ -182,8 +183,8 @@ function Footer() {
                 </li>
               </ul>
             </div> */}
-          </div>
-        </section>
+        {/* </div> */}
+        {/* </section> */}
       </div>
 
       <div
