@@ -1,4 +1,5 @@
 import React from "react";
+import { postShopAPI } from "../../util/shopAPI";
 import { useAuth } from "../../util/auth";
 
 // PrivatePage is an example include to demonstrate a route protected from
@@ -6,10 +7,33 @@ import { useAuth } from "../../util/auth";
 function SubmitShopPage() {
   // const auth = useAuth();
   // return <h1>Hello, {auth.user.username}!</h1>;
+
+  // postShopAPI()
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    postShopAPI()
+    console.log("Click Handled!")
+
+
+
+    // if (!name) {
+    //   return alert("Must provide a restaurantname.");
+    // }
+    // if (!email) {
+    //   return alert("Must provide an email address.");
+    // }
+    // if (!password || password.length < 8) {
+    //   return alert("Invalid password. Must contain at least 8 characters.");
+    // }
+
+    // auth.signup({ email, username, password });
+  };
+
   return (
     <div className="container">
       <h2>Submit A Taco Shop to Our Site!</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <div className="form-group row">
             <label htmlFor="shopName" className="col-sm-2 col-form-label">

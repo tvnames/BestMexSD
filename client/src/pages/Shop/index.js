@@ -1,6 +1,8 @@
-import { React } from "react";
+// import { React } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Route, Redirect } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom";
+import { singleShopAPI } from "../../util/shopAPI";
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
@@ -13,6 +15,17 @@ function ShopPage() {
   const selectedShop = restaurants.filter(restaurant => restaurant.id === id);
   const avg = selectedShop[0].rating.reduce((a, b) => a + b) / selectedShop[0].rating.length;
 
+  const [singleShop, setSingleShop] = useState([]);
+
+  useEffect(() => {
+    singleShopAPI(id)
+      .then((res) => {
+        console.log(res)
+        setSingleShop(res)
+      })
+      .catch(console.error())
+  }, []);
+
   function addRating(newRating) {
     selectedShop[0].rating.push(newRating);
   }
@@ -21,6 +34,8 @@ function ShopPage() {
     window.alert("Need to get value of input field and submit to review for the selected shop");
     return <Redirect exact to="/" />
   }
+
+
 
   return (
     <>
