@@ -7,11 +7,6 @@ import VallartasPic from "../../images/VallartasExpress.png";
 import SombrerosPic from "../../images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
 import restaurants from "../../shopSeed.json"
-// import restaurants from "./shopSeed.json"
-
-
-
-
 
 function HomePage() {
   const history = useHistory();

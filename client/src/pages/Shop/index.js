@@ -1,24 +1,26 @@
 import { React } from "react";
 import { useParams } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom"
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/VallartasExpress.png";
 import restaurants from "../../shopSeed.json";
+import HomePage from "../HomePage";
 
 function ShopPage() {
-
   const id = useParams().id;
-  console.log(id);
-
   const selectedShop = restaurants.filter(restaurant => restaurant.id === id);
-  console.log(selectedShop[0]);
+  const avg = selectedShop[0].rating.reduce((a, b) => a + b) / selectedShop[0].rating.length;
 
   function addRating(newRating) {
     selectedShop[0].rating.push(newRating);
   }
 
-  const avg = selectedShop[0].rating.reduce((a, b) => a + b) / selectedShop[0].rating.length;
+  function submitForm() {
+    window.alert("Need to get value of input field and submit to review for the selected shop");
+    return <Redirect exact to="/" />
+  }
 
   return (
     <>
@@ -41,7 +43,6 @@ function ShopPage() {
             />
           </div>
         </div>
-
       </div>
       <div className="container-fluid border border-dark m-2">
         <h3>Reviews for "{selectedShop[0].shopName}"</h3>
@@ -54,6 +55,19 @@ function ShopPage() {
           )
         })}
       </div>
+      <h3>Submit Your Review in the Box Below:</h3>
+      <form onSubmit={submitForm}>
+        <div classname="form-group">
+          {/* <label htmlfor="reviewBox">Review:</label> */}
+          <input
+            classname="form-control"
+            type="text"
+            id="newReview"
+            aria-describedby="submitReviewBox"
+            placeholder="Type your Review Here..." />
+        </div>
+        <button type="submit" classname="btn btn-primary" >Submit</button>
+      </form>
     </>
   )
 }

@@ -1,7 +1,4 @@
 import React from "react";
-// import "./style.css";
-
-
 
 function StarIcon(props) {
     const { fill = 'none' } = props;

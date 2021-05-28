@@ -14,11 +14,9 @@ const RatingContainer = () => {
     const onSaveRating = (index) => {
         setRating(index);
         window.alert("You've Rated this Restaurant " + index + " out of 5 stars!");
-
-
     };
     return (
-        <div className="d-flex justify-content-end mr-3"><strong>How Many Stars Would You Rate this spot?</strong> ___  <span> </span>
+        <div className="d-flex justify-content-end mr-3"><strong>Been Here? Rate this Spot </strong> ---
             {[1, 2, 3, 4, 5].map((index) => {
                 return (
                     <RatingIcon

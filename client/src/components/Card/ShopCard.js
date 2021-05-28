@@ -2,13 +2,10 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import "./style.css";
 
-// import style from "./style.css";
-
 function ShopCard({ id, shopName, src, location, featuredFood }) {
     const history = useHistory();
     const redirect = () => {
         history.push(`/shop/${id}`)
-        // console.log(id);
     }
 
     return (
@@ -24,8 +21,6 @@ function ShopCard({ id, shopName, src, location, featuredFood }) {
                 <p className="card-text">Featured Food: {featuredFood}</p>
             </div>
         </div>
-
-
     );
 }
 export default ShopCard;
