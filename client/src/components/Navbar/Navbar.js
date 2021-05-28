@@ -41,25 +41,6 @@ function Navbar() {
             </li>
           </ul>
           {/* hide actions if user is logged in */}
-          {!auth.isLoggedIn() && (
-            <>
-
-              {/* <button
-                className="nav-buttons"
-                onClick={() => history.push("/login")}
-              >
-                Login
-              </button>
-
-
-              <button
-                className="nav-buttons"
-                onClick={() => history.push("/signup")}
-              >
-                Signup
-              </button> */}
-            </>
-          )}
         </div>
         {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
       </nav>
@@ -72,8 +53,8 @@ function UserNavs({ auth }) {
   const history = useHistory();
   return (
     <>
-      {/* <Nav to="/private">UserNavs</Nav> */}
-      <button onClick={() => auth.logout()}>Logout</button>
+      <button className="nav-buttons"
+        onClick={() => auth.logout()}>Logout</button>
     </>
   );
 }
@@ -87,7 +68,7 @@ function GuestNavs() {
         onClick={() => history.push("/login")}
       >
         Login
-              </button>
+      </button>
 
 
       <button

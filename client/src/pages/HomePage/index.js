@@ -7,11 +7,23 @@ import VallartasPic from "./images/VallartasExpress.png";
 import SombrerosPic from "./images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
 
+
+
+
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
-  console.log("!auth.isLoggedIn():", !auth.isLoggedIn());
-  console.log("auth.user", auth.user);
+  const randomShop = getRandom(5);
+
+  function getRandom(maximum) {
+    return Math.floor(Math.random() * maximum);
+  }
+
+
+  const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
+  console.log(randomShop);
+  console.log(avg.toFixed(1));
+
 
 
 
@@ -26,18 +38,18 @@ function HomePage() {
           </div>
           <div className="col border border-dark">
             <FeaturedCard
-              shopName={restaurants[0].shopName}
-              description={restaurants[0].description}
-              rating={restaurants[0].rating}
-              address={restaurants[0].address}
-              location={restaurants[0].location}
-              phone={restaurants[0].phone}
-              featuredFood={restaurants[0].featuredFood}
+
+              shopName={restaurants[randomShop].shopName}
+              description={restaurants[randomShop].description}
+              rating={avg.toFixed(1)}
+              address={restaurants[randomShop].address}
+              location={restaurants[randomShop].location}
+              phone={restaurants[randomShop].phone}
+              featuredFood={restaurants[randomShop].featuredFood}
             />
           </div>
         </section>
         <section className="container-fluid border border-dark m-2">
-          {/* Section to Map over However Many Shops: */}
           <div className="row d-flex justify-content-around">
             {restaurants.map((restaurant) => (
               <ShopCard
@@ -64,7 +76,7 @@ const restaurants = [
     "shopName": "Vallarta's Express",
     "featuredFood": "Carne Asada Burrito",
     "src": VallartasPic,
-    "rating": "10/10",
+    "rating": [5, 4, 5, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
     "description": "The Best Mexican Food In town",
     "location": "Pacific Beach",
     "phone": "555-555-5555",
@@ -77,7 +89,7 @@ const restaurants = [
     "shopName": "Sombreros",
     "featuredFood": "Pollo Asado Quesadilla",
     "src": SombrerosPic,
-    "rating": "8/10",
+    "rating": [5, 4, 5, 5, 4, 4, 4, 5, 5, 3, 5],
     "description": "Mexican Food",
     "location": "South Park",
     "phone": "555-555-5555",
@@ -90,7 +102,7 @@ const restaurants = [
     "shopName": "Hilberto's Mexican Food",
     "featuredFood": "Chimichangas",
     "src": VallartasPic,
-    "rating": "8/10",
+    "rating": [5, 4, 4, 4, 4, 5, 5, 3, 5],
     "description": "Mexican Food for Everybody",
     "location": "El Cajon",
     "phone": "555-555-5555",
@@ -103,7 +115,7 @@ const restaurants = [
     "shopName": "JV's Mexican Food",
     "featuredFood": "Surf & Turf Burrito",
     "description": "You WILL be Full",
-    "rating": "9/10",
+    "rating": [5, 4, 5, 5, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5],
     "src": SombrerosPic,
     "location": "Bay Park",
     "phone": "555-555-5555",
@@ -116,7 +128,7 @@ const restaurants = [
     "shopName": "Taco Bell",
     "featuredFood": "Crunch Wrap Supreme",
     "description": "Late Nite Mexican Food",
-    "rating": "7/10",
+    "rating": [5, 4, 5, 3, 4, 3, 1, 5, 5, 5, 4, 4, 4, 4, 5, 5, 3, 5, 4, 4, 4, 4, 3, 2, 5, 5, 5],
     "src": VallartasPic,
     "location": "Kearney Mesa",
     "phone": "555-555-5555",

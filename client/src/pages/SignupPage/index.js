@@ -69,7 +69,7 @@ function SignupPage() {
           onChange={(e) => setPassword(e.target.value.trim())}
         />
         <br />
-        <button type="submit" disabled={auth.pending}>
+        <button className="nav-buttons" type="submit" disabled={auth.pending}>
           {auth.pending ? "⌛" : "Submit"}
         </button>
       </form>
