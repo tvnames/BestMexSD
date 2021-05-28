@@ -35,7 +35,7 @@ function LoginPage() {
       <div className="row justify-content-center">
         <div className="col-sm-12 col-md-8 col-lg-6">
           <h1>Login Below for Access</h1>
-          <form id="login-form" onSubmit={handleSubmit}>
+          <form id="login-form" onSubmit={handleSubmit} autocomplete="off">
             <label htmlFor="email">Email:</label>
             <br />
             <input

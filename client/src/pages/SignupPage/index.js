@@ -40,7 +40,7 @@ function SignupPage() {
           {/* redirect to home page if user is logged in */}
           {auth.isLoggedIn() && <Redirect to="/" />}
           <h1>Sign Up</h1>
-          <form id="signup-form" onSubmit={handleSubmit}>
+          <form id="signup-form" onSubmit={handleSubmit} autocomplete="off">
             <label htmlFor="username">Username</label>
             <br />
             <input
@@ -49,6 +49,7 @@ function SignupPage() {
               readOnly={auth.pending}
               value={username}
               onChange={(e) => setUsername(e.target.value.trim())}
+              autocomplete="off"
             />
             <br />
             <label htmlFor="email">Email</label>
@@ -59,6 +60,7 @@ function SignupPage() {
               readOnly={auth.pending}
               value={email}
               onChange={(e) => setEmail(e.target.value.trim())}
+              autocomplete="off"
             />
             <br />
             <label htmlFor="password">Password</label>
@@ -69,6 +71,7 @@ function SignupPage() {
               readOnly={auth.pending}
               value={password}
               onChange={(e) => setPassword(e.target.value.trim())}
+              autocomplete="off"
             />
             <br />
             <button

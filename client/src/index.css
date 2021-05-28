@@ -28,7 +28,7 @@ nav {
   border: solid 1px #c3c3c3;
   height: 40px;
   font-size: 20px;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 #password {
@@ -37,7 +37,7 @@ nav {
   border: solid 1px #c3c3c3;
   height: 40px;
   font-size: 20px;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 #login-page h1 {
@@ -52,6 +52,16 @@ nav {
 #login-form label {
   margin: 1px;
   font-weight: bold;
+}
+
+#login-form input:focus {
+  outline: none;
+}
+
+#login-form input:focus-visible {
+  background-color: rgba(4, 253, 108, 0.3);
+  transition: ease-in-out 150ms;
+  /* outline: 3px solid #34ff85; */
 }
 
 #signup-page h1 {
@@ -73,8 +83,9 @@ nav {
 }
 
 #signup-form input:focus-visible {
-  /* background-color: red; */
-  outline: 3px solid #34ff85;
+  background-color: rgba(4, 253, 108, 0.3);
+  transition: ease-in-out 150ms;
+  /* outline: 3px solid #34ff85; */
 }
 
 .login-button {
@@ -123,7 +134,7 @@ nav {
 }
 
 .nav-buttons:hover {
-  background-color: #00b147;
+  background-color: #00ef60;
   transition: ease-in-out 300ms;
 }
 
