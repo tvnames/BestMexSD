@@ -24,7 +24,7 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/shop">
+          <Route path="/shop/:id">
             <ShopPage />
           </Route>
           <Route path="/submitshop">
