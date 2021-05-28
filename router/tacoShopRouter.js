@@ -5,6 +5,7 @@ const Post = require("../models");
 
 // create route to return all tacoshops
 tacoShopRouter.get("/", async (req, res) => {
+    console.log("Get All Shops Request Received on Back-End")
     try {
         const postData = await Post.findAll(req.params.id, {
             include: [{ model: TacoShop, attributes: ["name"] }, { model: TacoShop }],

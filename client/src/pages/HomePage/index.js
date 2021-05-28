@@ -1,28 +1,49 @@
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/auth";
+import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "../../images/VallartasExpress.png";
-import SombrerosPic from "../../images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
 import restaurants from "../../shopSeed.json"
 
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
+  const randomShop = getRandom(5);
+
+  const [restaurantArray, setRestaurantArray] = useState([]);
+
+
+
+  useEffect(() => {
+    shopAPI()
+      .then((res) => {
+        console.log(res)
+        setRestaurantArray(res)
+      })
+      .catch(console.error())
+  }, []);
+
 
   function addRating(newRating) {
     restaurants[randomShop].rating.push(newRating);
   }
-
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
-  const randomShop = getRandom(5);
-  const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
 
   const currentShop = restaurants[randomShop];
+  const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
+
+  function addRating(newRating) {
+    restaurants[randomShop].rating.push(newRating);
+  }
+  function getRandom(maximum) {
+    return Math.floor(Math.random() * maximum);
+  }
 
 
 
