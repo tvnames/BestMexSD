@@ -14,19 +14,29 @@ function HomePage() {
   const auth = useAuth();
   const randomShop = getRandom(5);
 
-  const [restaurantArray, setRestaurantArray] = useState([]);
+  const [restaurantArray, setRestaurantArray] = useState(restaurants);
 
 
 
   useEffect(() => {
     shopAPI()
       .then((res) => {
-        console.log(res)
         setRestaurantArray(res)
       })
       .catch(console.error())
   }, []);
 
+  console.log(restaurantArray)
+
+  function addRating(newRating) {
+    restaurantArray[randomShop].rating.push(newRating);
+  }
+  function getRandom(maximum) {
+    return Math.floor(Math.random() * maximum);
+  }
+
+  const currentShop = restaurantArray[randomShop];
+  const avg = restaurantArray[randomShop].rating.reduce((a, b) => a + b) / restaurantArray[randomShop].rating.length;
 
   function addRating(newRating) {
     restaurants[randomShop].rating.push(newRating);
@@ -34,20 +44,6 @@ function HomePage() {
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
-
-  const currentShop = restaurants[randomShop];
-  const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
-
-  function addRating(newRating) {
-    restaurants[randomShop].rating.push(newRating);
-  }
-  function getRandom(maximum) {
-    return Math.floor(Math.random() * maximum);
-  }
-
-
-
-
 
   return (
     <div className="container-fluid">
@@ -75,7 +71,7 @@ function HomePage() {
         </section>
         <section className="container-fluid border border-dark m-2">
           <div className="row d-flex justify-content-around">
-            {restaurants.map((restaurant) => (
+            {restaurantArray.map((restaurant) => (
               <ShopCard
                 id={restaurant.id}
                 src={VallartasPic}

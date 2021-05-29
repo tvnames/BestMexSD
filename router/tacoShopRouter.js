@@ -6,7 +6,15 @@ const Post = require("../models");
 // create route to return all tacoshops
 tacoShopRouter.get("/", async (req, res) => {
     console.log("Get All Shops Request Received on Back-End")
-    console.log(res.json())
+    try {
+        const tacoShopData = await TacoShop.find({
+        })
+        res.json(tacoShopData)
+
+    } catch (error) {
+        console.error(error);
+        res.sendStatus(400);
+    }
 });
 
 tacoShopRouter.get("/:id", async (req, res) => {

@@ -6,16 +6,7 @@ import axios from "axios";
 export const shopAPI = async () => {
     console.log("Get All Shops Request Sent")
     const res = await axios.get("/api/tacoShops")
-
-    return res.data.items.map(({ volumeInfo }) => {
-        return {
-            title: volumeInfo.title,
-            authors: volumeInfo.authors,
-            description: volumeInfo.description,
-            image: volumeInfo.imageLinks?.thumbnail,
-            link: volumeInfo.infoLink
-        };
-    });
+    return res.data
 };
 
 export const singleShopAPI = async (shopID) => {
