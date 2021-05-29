@@ -5,19 +5,38 @@ const { isPhoneNum, isZip } = require("../util/validate");
 // modify username, email, and password validations. email as part of the login
 // credentials.
 const TacoShopSchema = new mongoose.Schema({
-  name: {
+  shopName: {
     type: String,
     required: true,
     unique: true,
     trim: true,
     minLength: 2,
   },
-  reviews: {
+  reviews: [{
+    type: String,
+    trim: true,
+  }],
+  menuURL: [{
+    type: String,
+    trim: true,
+  }],
+  rating: [{
+    type: Number,
+    trim: true,
+  }],
+  description: {
+    type: String,
+    trim: true,
+  },
+  menuURL: {
+    type: String,
+    trim: true,
+  },
+  featuredFood: {
     type: String,
     required: true,
     unique: true,
     trim: true,
-    minLength: 2,
   },
   address: {
     type: String,
@@ -37,8 +56,14 @@ const TacoShopSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
+  city: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   phone: {
-    type: Number,
+    type: String,
     required: true,
     trim: true,
     validate: {
