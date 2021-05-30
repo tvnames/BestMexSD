@@ -28,10 +28,6 @@ const TacoShopSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  menuURL: {
-    type: String,
-    trim: true,
-  },
   featuredFood: {
     type: String,
     required: true,

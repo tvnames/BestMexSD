@@ -19,11 +19,8 @@ tacoShopRouter.get("/", async (req, res) => {
 
 tacoShopRouter.get("/:id", async (req, res) => {
     console.log("Get Single Shop Request Received on Back-End")
-    // console.log(req.params)
     try {
         const shopData = await TacoShop.findById(req.params.id);
-        // const shop = shopData.get({ plain: true })
-        console.log(shopData)
         res.send(shopData)
     } catch (err) {
         res.status(500).json(err);

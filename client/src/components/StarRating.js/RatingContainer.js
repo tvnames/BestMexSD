@@ -2,6 +2,7 @@ import React from "react";
 import RatingIcon from "./RatingIcon";
 import "./style.css";
 
+
 const RatingContainer = () => {
     const [rating, setRating] = React.useState(0);
     const [hoverRating, setHoverRating] = React.useState(0);
@@ -14,6 +15,7 @@ const RatingContainer = () => {
     const onSaveRating = (index) => {
         setRating(index);
         window.alert("You've Rated this Restaurant " + index + " out of 5 stars!");
+
     };
     return (
         <div className="d-flex justify-content-end mr-3"><strong>Been Here? Rate this Spot: &nbsp; </strong>
@@ -31,5 +33,6 @@ const RatingContainer = () => {
         </div>
     );
 }
+
 
 export default RatingContainer;

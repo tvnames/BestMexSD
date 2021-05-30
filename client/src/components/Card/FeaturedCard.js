@@ -45,7 +45,9 @@ function FeaturedCard({
         <i className="ml-auto"><strong>Average Rating:</strong> {rating} out of 5 stars! ({numOfRatings} Ratings)</i>
       </div>
       <div className="">
-        <RatingContainer />
+        <RatingContainer
+          ratingArray={rating}
+        />
       </div>
     </div>
 

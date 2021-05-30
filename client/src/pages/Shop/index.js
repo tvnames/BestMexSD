@@ -36,12 +36,7 @@ function ShopPage() {
   }, [id]);
 
 
-  // useEffect(() => {
-  //   setRating(singleShop.rating)
-  // }, [singleShop.rating]);
-
-  // console.log(rating)
-
+  console.log(rating)
 
   function submitForm() {
     window.alert("Need to get value of input field and submit to review for the selected shop");
