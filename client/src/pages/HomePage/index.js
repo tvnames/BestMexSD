@@ -1,32 +1,44 @@
-import { useHistory } from "react-router-dom";
-import { useAuth } from "../../util/auth";
+import React, { useEffect, useState } from "react";
+// import { useHistory } from "react-router-dom";
+// import { useAuth } from "../../util/auth";
+import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "../../images/VallartasExpress.png";
-import SombrerosPic from "../../images/Sombreros.png";
 import Image from "../../components/ImageContainer/image";
 import restaurants from "../../shopSeed.json"
 
 function HomePage() {
-  const history = useHistory();
-  const auth = useAuth();
+  // const history = useHistory();
+  // const auth = useAuth();
+  const randomShop = getRandom(5);
 
-  function addRating(newRating) {
-    restaurants[randomShop].rating.push(newRating);
-  }
+  const [restaurantArray, setRestaurantArray] = useState(restaurants);
 
+
+
+  useEffect(() => {
+    shopAPI()
+      .then((res) => { setRestaurantArray(res) })
+      .then()
+      .catch(console.error())
+  }, []);
+
+
+  // function addRating(newRating) {
+  //   restaurants[randomShop].rating.push(newRating);
+  // }
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
-  const randomShop = getRandom(5);
-  const avg = restaurants[randomShop].rating.reduce((a, b) => a + b) / restaurants[randomShop].rating.length;
 
-  const currentShop = restaurants[randomShop];
+  const currentShop = restaurantArray[randomShop];
+  const avg = restaurantArray[randomShop].rating.reduce((a, b) => a + b) / restaurantArray[randomShop].rating.length;
 
-
-
-
+  // function addRating(newRating) {
+  //   restaurants[randomShop].rating.push(newRating);
+  // }
 
   return (
     <div className="container-fluid">
@@ -54,9 +66,9 @@ function HomePage() {
         </section>
         <section className="container-fluid border border-dark m-2">
           <div className="row d-flex justify-content-around">
-            {restaurants.map((restaurant) => (
-              <ShopCard
-                id={restaurant.id}
+            {restaurantArray.map((restaurant) => (
+              < ShopCard
+                id={restaurant._id}
                 src={VallartasPic}
                 shopName={restaurant.shopName}
                 location={restaurant.location}

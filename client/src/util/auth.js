@@ -12,9 +12,9 @@ const initialAuthState = {
 
 const AuthContext = createContext({
   ...initialAuthState,
-  login: async () => {},
-  logout: async () => {},
-  signup: async () => {},
+  login: async () => { },
+  logout: async () => { },
+  signup: async () => { },
   isLoggedIn: () => false,
 });
 
@@ -25,7 +25,7 @@ const LOGIN_ERROR = "LOGIN_ERROR";
 const LOGOUT = "LOGOUT";
 
 const authReducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case LOGIN_ERROR:
       return { ...state, pending: false, error: action.error };

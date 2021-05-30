@@ -1,11 +1,35 @@
 import React from "react";
-import { useAuth } from "../../util/auth";
+import { postShopAPI } from "../../util/shopAPI";
+// import { useAuth } from "../../util/auth";
 
 // PrivatePage is an example include to demonstrate a route protected from
 // unauthenticated users. See the routing in App.js.
 function SubmitShopPage() {
   // const auth = useAuth();
   // return <h1>Hello, {auth.user.username}!</h1>;
+
+  // postShopAPI()
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    postShopAPI()
+    console.log("Click Handled!")
+
+
+
+    // if (!name) {
+    //   return alert("Must provide a restaurantname.");
+    // }
+    // if (!email) {
+    //   return alert("Must provide an email address.");
+    // }
+    // if (!password || password.length < 8) {
+    //   return alert("Invalid password. Must contain at least 8 characters.");
+    // }
+
+    // auth.signup({ email, username, password });
+  };
+
   return (
     <div id="submitshop-page" className="container">
       <div className="row justify-content-center">

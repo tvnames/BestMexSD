@@ -1,26 +1,67 @@
-import { React } from "react";
+// import { React } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { Route, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
+import { singleShopAPI } from "../../util/shopAPI";
 import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/VallartasExpress.png";
-import restaurants from "../../shopSeed.json";
-import HomePage from "../HomePage";
+import singleSeed from "./singleSeed.json";
+// import HomePage from "../HomePage";
 
 function ShopPage() {
   const id = useParams().id;
-  const selectedShop = restaurants.filter(restaurant => restaurant.id === id);
-  const avg = selectedShop[0].rating.reduce((a, b) => a + b) / selectedShop[0].rating.length;
 
-  function addRating(newRating) {
-    selectedShop[0].rating.push(newRating);
-  }
+  const [singleShop, setSingleShop] = useState({});
+  const [address, setAddress] = useState("");
+  const [rating, setRating] = useState([]);
+  const [description, setDescription] = useState("");
+  const [menuURL, setMenuURL] = useState("");
+  const [shopName, setShopName] = useState("");
+  const [featuredFood, setfeaturedFood] = useState("");
+  const [location, setLocation] = useState("");
+  const [phone, setPhone] = useState();
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [reviews, setReviews] = useState(["Hello", "Hello"]);
+
+  useEffect(() => {
+    singleShopAPI(id)
+      .then(res => setSingleShop(res))
+      .then(setReviews(singleShop.reviews))
+      .then(setDescription(singleShop.description))
+      .then(setShopName(singleShop.shopName))
+      .catch(console.error())
+  }, [id]);
+
+
+  useEffect(() => {
+    setRating(singleShop.rating)
+  }, [singleShop.rating]);
+
+  console.log(rating)
+
 
   function submitForm() {
     window.alert("Need to get value of input field and submit to review for the selected shop");
     return <Redirect exact to="/" />
   }
+
+  function renderReviews(reviews) {
+    if (singleShop.reviews) {
+      return (
+        reviews.map(review => (
+          <ReviewCard
+            // reviewDate={review.date}
+            reviewText={review}
+          />
+        ))
+      )
+    }
+  }
+
 
   return (
     <>
@@ -31,29 +72,23 @@ function ShopPage() {
           </div>
           <div className="col">
             <FeaturedCard
-              menuURL={selectedShop[0].menuURL}
-              shopName={selectedShop[0].shopName}
-              description={selectedShop[0].description}
-              location={selectedShop[0].location}
-              phone={selectedShop[0].phone}
-              address={selectedShop[0].address}
-              rating={avg.toFixed(1)}
-              numOfRatings={selectedShop[0].rating.length}
-              featuredFood={selectedShop[0].featuredFood}
+
+              menuURL={singleShop.menuURL}
+              shopName={singleShop.shopName}
+              description={singleShop.description}
+              location={singleShop.location}
+              phone={singleShop.phone}
+              address={singleShop.address}
+              // rating={avg.toFixed(1)}
+              // numOfRatings={singleShop.rating.length}
+              featuredFood={singleShop.featuredFood}
             />
           </div>
         </div>
       </div>
       <div className="container-fluid border border-dark m-2">
-        <h3>Reviews for "{selectedShop[0].shopName}"</h3>
-        {selectedShop[0].reviews.map((review) => {
-          return (
-            <ReviewCard
-              // reviewDate={review.date}
-              reviewText={review}
-            />
-          )
-        })}
+        {renderReviews(reviews)}
+
       </div>
       <h3>Submit Your Review in the Box Below:</h3>
       <form onSubmit={submitForm}>
