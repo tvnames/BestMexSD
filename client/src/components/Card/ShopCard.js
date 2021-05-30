@@ -2,13 +2,12 @@ import React from "react";
 import { useHistory, Redirect } from 'react-router-dom';
 import "./style.css";
 
-function ShopCard({ id, shopName, src, location, featuredFood }) {
+function ShopCard({ restaurantArray, id, shopName, src, location, featuredFood }) {
     const history = useHistory();
 
-    const redirect = (event) => {
-        // id = event.target.id
+    const redirect = () => {
+
         history.push(`/shop/${id}`)
-        // < Redirect to = "/shop/{id}" >
     }
 
 

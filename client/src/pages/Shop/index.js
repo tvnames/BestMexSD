@@ -13,33 +13,55 @@ import singleSeed from "./singleSeed.json";
 function ShopPage() {
   const id = useParams().id;
 
-  const [singleShop, setSingleShop] = useState([]);
-
-
-
-
+  const [singleShop, setSingleShop] = useState({});
+  const [address, setAddress] = useState("");
+  const [rating, setRating] = useState([]);
+  const [description, setDescription] = useState("");
+  const [menuURL, setMenuURL] = useState("");
+  const [shopName, setShopName] = useState("");
+  const [featuredFood, setfeaturedFood] = useState("");
+  const [location, setLocation] = useState("");
+  const [phone, setPhone] = useState();
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [reviews, setReviews] = useState(["Hello", "Hello"]);
 
   useEffect(() => {
     singleShopAPI(id)
-      .then((res) => { setSingleShop(res) })
-      // .then(console.log(singleShop))
+      .then(res => setSingleShop(res))
+      .then(setReviews(singleShop.reviews))
+      .then(setDescription(singleShop.description))
+      .then(setShopName(singleShop.shopName))
       .catch(console.error())
-  }, []);
-
-  console.log(address)
-  console.log(shopName)
+  }, [id]);
 
 
-  // function addRating(newRating) {
-  //   singleShop[0].rating.push(newRating);
-  // }
+  useEffect(() => {
+    setRating(singleShop.rating)
+  }, [singleShop.rating]);
+
+  console.log(rating)
+
 
   function submitForm() {
     window.alert("Need to get value of input field and submit to review for the selected shop");
     return <Redirect exact to="/" />
   }
 
-  // console.log(singleShop)
+  function renderReviews(reviews) {
+    if (singleShop.reviews) {
+      return (
+        reviews.map(review => (
+          <ReviewCard
+            // reviewDate={review.date}
+            reviewText={review}
+          />
+        ))
+      )
+    }
+  }
+
 
   return (
     <>
@@ -51,29 +73,22 @@ function ShopPage() {
           <div className="col">
             <FeaturedCard
 
-              // menuURL={singleShop.menuURL}
-              // shopName={singleShop.shopName}
-              // description={singleShop.description}
-              // location={singleShop.location}
-              // phone={singleShop.phone}
+              menuURL={singleShop.menuURL}
+              shopName={singleShop.shopName}
+              description={singleShop.description}
+              location={singleShop.location}
+              phone={singleShop.phone}
               address={singleShop.address}
-            // rating={avg.toFixed(1)}
-            // numOfRatings={singleShop.rating.length}
-            // featuredFood={singleShop.featuredFood}
+              // rating={avg.toFixed(1)}
+              // numOfRatings={singleShop.rating.length}
+              featuredFood={singleShop.featuredFood}
             />
           </div>
         </div>
       </div>
       <div className="container-fluid border border-dark m-2">
-        {/* <h3>Reviews for "{singleShop.shopName}"</h3> */}
-        {/* {singleShop.reviews.map((review) => {
-          return (
-            <ReviewCard
-              // reviewDate={review.date}
-              reviewText={review}
-            />
-          )
-        })} */}
+        {renderReviews(reviews)}
+
       </div>
       <h3>Submit Your Review in the Box Below:</h3>
       <form onSubmit={submitForm}>
