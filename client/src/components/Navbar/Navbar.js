@@ -29,9 +29,9 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item nav-control">
-              <NavLink className="nav-link" to="/shop">
+              {/* <NavLink className="nav-link" to="/shop">
                 Find A Taco Shop
-              </NavLink>
+              </NavLink> */}
             </li>
             <li className="nav-item nav-control">
               <NavLink className="nav-link " to="/submitshop">
@@ -51,8 +51,9 @@ function UserNavs({ auth }) {
   const history = useHistory();
   return (
     <>
-      <button className="nav-buttons"
-        onClick={() => auth.logout()}>Logout</button>
+      <button className="nav-buttons" onClick={() => auth.logout()}>
+        Logout
+      </button>
     </>
   );
 }
@@ -60,23 +61,15 @@ function GuestNavs() {
   const history = useHistory();
   return (
     <>
-      <button
-        className="nav-buttons"
-        onClick={() => history.push("/login")}
-      >
+      <button className="nav-buttons" onClick={() => history.push("/login")}>
         Login
       </button>
 
-
-      <button
-        className="nav-buttons"
-        onClick={() => history.push("/signup")}
-      >
+      <button className="nav-buttons" onClick={() => history.push("/signup")}>
         Signup
-              </button>
+      </button>
     </>
   );
 }
 
 export default Navbar;
-
