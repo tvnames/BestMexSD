@@ -30,18 +30,17 @@ function ShopPage() {
   useEffect(() => {
     singleShopAPI(id)
       .then(res => setSingleShop(res))
-      .then(setReviews(singleShop.reviews))
-      .then(setDescription(singleShop.description))
-      .then(setShopName(singleShop.shopName))
+      .then(setRating(singleShop.rating))
+      .then()
       .catch(console.error())
   }, [id]);
 
 
-  useEffect(() => {
-    setRating(singleShop.rating)
-  }, [singleShop.rating]);
+  // useEffect(() => {
+  //   setRating(singleShop.rating)
+  // }, [singleShop.rating]);
 
-  console.log(rating)
+  // console.log(rating)
 
 
   function submitForm() {
@@ -49,10 +48,10 @@ function ShopPage() {
     return <Redirect exact to="/" />
   }
 
-  function renderReviews(reviews) {
+  function renderReviews() {
     if (singleShop.reviews) {
       return (
-        reviews.map(review => (
+        singleShop.reviews.map(review => (
           <ReviewCard
             // reviewDate={review.date}
             reviewText={review}
@@ -87,7 +86,7 @@ function ShopPage() {
         </div>
       </div>
       <div className="container-fluid border border-dark m-2">
-        {renderReviews(reviews)}
+        {renderReviews()}
 
       </div>
       <h3>Submit Your Review in the Box Below:</h3>
