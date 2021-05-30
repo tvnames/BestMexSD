@@ -27,37 +27,46 @@ function LoginPage() {
 
   const message = auth.pending
     ? "Processing request..."
-    : auth.error || "Please complete the form and click submit.";
+    : auth.error ||
+      "Please enter your Email address and Password and click submit.";
 
   return (
-    <div className="container-fluid">
-      <h1>Login Below for Access</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <br />
-        <input
-          id="email"
-          type="email"
-          readOnly={auth.pending}
-          value={email}
-          onChange={(e) => setEmail(e.target.value.trim())}
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          readOnly={auth.pending}
-          value={password}
-          onChange={(e) => setPassword(e.target.value.trim())}
-        />
-        <br />
-        <button className="nav-buttons" type="submit" disabled={auth.pending}>
-          {auth.pending ? "⌛" : "Submit"}
-        </button>
-      </form>
-      <p>{message}</p>
+    <div id="login-page" className="container">
+      <div className="row justify-content-center">
+        <div className="col-sm-12 col-md-8 col-lg-6">
+          <h1>Login Below for Access</h1>
+          <form id="login-form" onSubmit={handleSubmit} autocomplete="off">
+            <label htmlFor="email">Email:</label>
+            <br />
+            <input
+              id="email"
+              type="email"
+              readOnly={auth.pending}
+              value={email}
+              onChange={(e) => setEmail(e.target.value.trim())}
+            />
+            <br />
+            <label htmlFor="password">Password</label>
+            <br />
+            <input
+              id="password"
+              type="password"
+              readOnly={auth.pending}
+              value={password}
+              onChange={(e) => setPassword(e.target.value.trim())}
+            />
+            <br />
+            <button
+              className="nav-buttons login-button"
+              type="submit"
+              disabled={auth.pending}
+            >
+              {auth.pending ? "⌛" : "Submit"}
+            </button>
+          </form>
+          <p>{message}</p>
+        </div>
+      </div>
     </div>
   );
 }
