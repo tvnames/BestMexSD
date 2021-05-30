@@ -12,7 +12,9 @@ body {
 nav {
   background-color: #fce4b9;
 }
-
+#navbar-nav:last-child {
+  margin-bottom: 10px !important;
+}
 #username {
   width: 100%;
   border-radius: 33px;
@@ -39,7 +41,53 @@ nav {
   font-size: 20px;
   padding-left: 15px;
 }
+/* Submit Tacoshop Page Styles */
+#submitshop-page {
+}
 
+#submitshop-page h2 {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#submitshop-page p {
+  text-align: center;
+}
+
+#submitshop-form label {
+  margin: 1px;
+  font-weight: bold;
+}
+
+#submitshop-form input {
+  width: 100%;
+  border-radius: 33px;
+  border: solid 1px #c3c3c3;
+  height: 40px;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.submitshop-form-inner input {
+  outline: none;
+}
+
+.submitshop-form-inner input:focus-visible {
+  background-color: rgba(4, 253, 108, 0.3);
+  transition: ease-in-out 150ms;
+  /* outline: 3px solid #34ff85; */
+}
+
+#shopState {
+  background-color: #e1e1e1;
+  color: #00000061;
+}
+
+.shop-submit {
+  width: 100%;
+}
+
+/* Login Page Styles */
 #login-page h1 {
   text-align: center;
   margin-top: 5px;
@@ -64,6 +112,7 @@ nav {
   /* outline: 3px solid #34ff85; */
 }
 
+/* Sign Up Page Styles */
 #signup-page h1 {
   text-align: center;
   margin-top: 5px;
@@ -126,7 +175,6 @@ nav {
   border-radius: 58px;
   border: 0px;
   background-color: #4fff97;
-  /* color: white; */
   font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
@@ -146,10 +194,6 @@ nav {
 
 .logo-control {
   display: none;
-}
-
-#navbar-nav:last-child {
-  margin-bottom: 10px !important;
 }
 
 footer {
