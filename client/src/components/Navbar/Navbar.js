@@ -28,15 +28,18 @@ function Navbar() {
                 <img src={logo} />
               </NavLink>
             </li>
-            <li className="nav-item nav-control">
-              {/* <NavLink className="nav-link" to="/shop">
+            {/* <li className="nav-item nav-control">
+              <NavLink className="nav-link" to="/shop">
                 Find A Taco Shop
-              </NavLink> */}
-            </li>
+              </NavLink>
+            </li> */}
             <li className="nav-item nav-control">
               <NavLink className="nav-link " to="/submitshop">
                 Submit A Taco Shop
               </NavLink>
+            </li>
+            <li className="nav-item nav-control">
+              {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
             </li>
           </ul>
           {/* hide actions if user is logged in */}
