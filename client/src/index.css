@@ -12,7 +12,9 @@ body {
 nav {
   background-color: #fce4b9;
 }
-
+#navbar-nav:last-child {
+  margin-bottom: 10px !important;
+}
 #username {
   width: 100%;
   border-radius: 33px;
@@ -40,7 +42,7 @@ nav {
   padding-left: 15px;
 }
 /* Submit Tacoshop Page Styles */
-@submitshop-page {
+#submitshop-page {
 }
 
 #submitshop-page h2 {
@@ -74,6 +76,15 @@ nav {
   background-color: rgba(4, 253, 108, 0.3);
   transition: ease-in-out 150ms;
   /* outline: 3px solid #34ff85; */
+}
+
+#shopState {
+  background-color: #e1e1e1;
+  color: #00000061;
+}
+
+.shop-submit {
+  width: 100%;
 }
 
 /* Login Page Styles */
@@ -183,10 +194,6 @@ nav {
 
 .logo-control {
   display: none;
-}
-
-#navbar-nav:last-child {
-  margin-bottom: 10px !important;
 }
 
 footer {

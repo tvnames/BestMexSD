@@ -14,112 +14,126 @@ function SubmitShopPage() {
           <form id="submitshop-form">
             <div>
               <div className="form-group row">
-                <label htmlFor="shopName">Restaurant Name:</label>
+                {/* <label htmlFor="shopName">Restaurant Name:</label> */}
                 <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopName"
                     placeholder="Enter the Taco Shop name here"
+                    autocomplete="off"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label
+                {/* <label
                   htmlFor="shopLocation"
                   className="col-sm-2 col-form-label"
                 >
                   Location
-                </label>
-                <div className="col-sm-10">
+                </label> */}
+                <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopLocation"
-                    placeholder="What part of town is it in?"
+                    placeholder="What part of San Diego is the new taco shop in?"
+                    autocomplete="off"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label
+                {/* <label
                   htmlFor="shopAddress1"
                   className="col-sm-2 col-form-label"
                 >
                   Address Line 1
-                </label>
-                <div className="col-sm-10">
+                </label> */}
+                <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopAddress1"
                     placeholder="Address Line 1"
+                    autocomplete="off"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label
+                {/* <label
                   htmlFor="shopAddress2"
                   className="col-sm-2 col-form-label"
                 >
                   Address Line 2
-                </label>
-                <div className="col-sm-10 submitshop-form-inner">
+                </label> */}
+                <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopAddress2"
                     placeholder="Address Line 2"
+                    autocomplete="off"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label htmlFor="shopState" className="col-sm-2 col-form-label">
+                {/* <label htmlFor="shopState" className="col-sm-2 col-form-label">
                   State
-                </label>
-                <div className="col-sm-10 submitshop-form-inner">
+                </label> */}
+                <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopState"
                     placeholder="State"
+                    autocomplete="off"
+                    value="California"
+                    disabled="disabled"
                   />
+                  {/* <select id="zip" name="zip">
+                    <option value="California">California</option>
+                  </select> */}
                 </div>
               </div>
               <div className="form-group row">
-                <label
+                {/* <label
                   htmlFor="shopZipCode"
                   className="col-sm-2 col-form-label"
                 >
                   Zip Code
-                </label>
-                <div className="col-sm-10 submitshop-form-inner">
+                </label> */}
+                <div className="col-sm-3 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
                     id="shopZipCode"
                     placeholder="Zip Code"
+                    autocomplete="off"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label
+                {/* <label
                   htmlFor="shopPhoneNumber"
                   className="col-sm-2 col-form-label"
                 >
                   Phone #
-                </label>
-                <div className="col-sm-10 submitshop-form-inner">
+                </label> */}
+                <div className="col-sm-6 submitshop-form-inner">
                   <input
-                    type="text"
+                    type="tel"
                     className="form-control"
                     id="shopPhoneNumber"
                     placeholder="Phone #"
+                    autocomplete="off"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    max-maxLength="10"
                   />
                 </div>
               </div>
-              <div className="form-group row">
-                <div className="col-sm-10">
-                  <button type="submit" className="btn btn-primary">
+              <div className="form-group row justify-content-center">
+                <div className="col-sm-10 ">
+                  <button type="submit" className="btn btn-primary nav-buttons">
                     Submit Shop
                   </button>
                 </div>
