@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./util/auth";
-import { get as getUser } from "./util/userApi";
+// import { get as getUser } from "./util/userApi";
 import HomePage from "./pages/HomePage";
 import SubmitShopPage from "./pages/SubmitShop";
 import ShopPage from "./pages/Shop";

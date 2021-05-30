@@ -1,12 +1,12 @@
 import { useAuth } from "../../util/auth";
 import { useHistory } from "react-router-dom";
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { NavLink } from "react-router-dom";
-import styles from "./Nav.module.css";
+// import styles from "./Nav.module.css";
 import logo from "./bestmexlogo.png";
 function Navbar() {
   const auth = useAuth();
-  const history = useHistory();
+  // const history = useHistory();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -25,7 +25,7 @@ function Navbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <NavLink className="nav-link" to="/">
-                <img src={logo} />
+                <img src={logo} alt="logo" />
               </NavLink>
             </li>
             <li className="nav-item nav-control">
@@ -48,7 +48,7 @@ function Navbar() {
 }
 // Renders navigation controls intended for authenticated users
 function UserNavs({ auth }) {
-  const history = useHistory();
+  // const history = useHistory();
   return (
     <>
       <button className="nav-buttons"

@@ -12,16 +12,17 @@ export const shopAPI = async () => {
 export const singleShopAPI = async (shopID) => {
     console.log("Get Single Shop Request Sent")
     const res = await axios.get(`/api/tacoShops/${shopID}`)
+    return (res.data)
 
-    return res.data.items.map(({ volumeInfo }) => {
-        return {
-            title: volumeInfo.title,
-            authors: volumeInfo.authors,
-            description: volumeInfo.description,
-            image: volumeInfo.imageLinks?.thumbnail,
-            link: volumeInfo.infoLink
-        };
-    });
+    // return res.data.map(() => {
+    //     return {
+    //         shopName: res.data.shopName,
+    //         authors: volumeInfo.authors,
+    //         description: volumeInfo.description,
+    //         image: volumeInfo.imageLinks?.thumbnail,
+    //         link: volumeInfo.infoLink
+    //     };
+    // });
 };
 
 export const postShopAPI = async () => {
