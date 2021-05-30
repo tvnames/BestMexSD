@@ -12,18 +12,24 @@ const TacoShopSchema = new mongoose.Schema({
     trim: true,
     minLength: 2,
   },
-  reviews: [{
-    type: String,
-    trim: true,
-  }],
-  menuURL: [{
-    type: String,
-    trim: true,
-  }],
-  rating: [{
-    type: Number,
-    trim: true,
-  }],
+  reviews: [
+    {
+      type: String,
+      trim: true,
+    },
+  ],
+  menuURL: [
+    {
+      type: String,
+      trim: true,
+    },
+  ],
+  rating: [
+    {
+      type: Number,
+      trim: true,
+    },
+  ],
   description: {
     type: String,
     trim: true,

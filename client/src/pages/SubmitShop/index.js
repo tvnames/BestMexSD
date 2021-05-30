@@ -12,10 +12,8 @@ function SubmitShopPage() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    postShopAPI()
-    console.log("Click Handled!")
-
-
+    postShopAPI();
+    console.log("Click Handled!");
 
     // if (!name) {
     //   return alert("Must provide a restaurantname.");
@@ -78,18 +76,18 @@ function SubmitShopPage() {
                     type="text"
                     className="form-control"
                     id="shopAddress1"
-                    placeholder="Address Line 1"
+                    placeholder="Address"
                     autocomplete="off"
                   />
                 </div>
               </div>
-              <div className="form-group row">
-                {/* <label
+              {/* <div className="form-group row">
+                <label
                   htmlFor="shopAddress2"
                   className="col-sm-2 col-form-label"
                 >
                   Address Line 2
-                </label> */}
+                </label>
                 <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
@@ -99,7 +97,7 @@ function SubmitShopPage() {
                     autocomplete="off"
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="form-group row">
                 {/* <label htmlFor="shopState" className="col-sm-2 col-form-label">
                   State
@@ -148,7 +146,7 @@ function SubmitShopPage() {
                     type="tel"
                     className="form-control"
                     id="shopPhoneNumber"
-                    placeholder="Phone #"
+                    placeholder="Phone: (123) 456-7890"
                     autocomplete="off"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     max-maxLength="10"
