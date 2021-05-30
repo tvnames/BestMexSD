@@ -157,7 +157,10 @@ function SubmitShopPage() {
               </div>
               <div className="form-group row justify-content-center">
                 <div className="col-sm-10 ">
-                  <button type="submit" className="btn btn-primary nav-buttons">
+                  <button
+                    type="submit"
+                    className="btn btn-primary nav-buttons shop-submit"
+                  >
                     Submit Shop
                   </button>
                 </div>

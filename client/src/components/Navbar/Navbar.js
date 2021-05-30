@@ -28,15 +28,18 @@ function Navbar() {
                 <img src={logo} alt="logo" />
               </NavLink>
             </li>
-            <li className="nav-item nav-control">
+            {/* <li className="nav-item nav-control">
               <NavLink className="nav-link" to="/shop">
                 Find A Taco Shop
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item nav-control">
               <NavLink className="nav-link " to="/submitshop">
                 Submit A Taco Shop
               </NavLink>
+            </li>
+            <li className="nav-item nav-control">
+              {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
             </li>
           </ul>
           {/* hide actions if user is logged in */}
@@ -51,8 +54,9 @@ function UserNavs({ auth }) {
   // const history = useHistory();
   return (
     <>
-      <button className="nav-buttons"
-        onClick={() => auth.logout()}>Logout</button>
+      <button className="nav-buttons" onClick={() => auth.logout()}>
+        Logout
+      </button>
     </>
   );
 }
@@ -60,23 +64,15 @@ function GuestNavs() {
   const history = useHistory();
   return (
     <>
-      <button
-        className="nav-buttons"
-        onClick={() => history.push("/login")}
-      >
+      <button className="nav-buttons" onClick={() => history.push("/login")}>
         Login
       </button>
 
-
-      <button
-        className="nav-buttons"
-        onClick={() => history.push("/signup")}
-      >
+      <button className="nav-buttons" onClick={() => history.push("/signup")}>
         Signup
-              </button>
+      </button>
     </>
   );
 }
 
 export default Navbar;
-

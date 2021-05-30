@@ -16,7 +16,7 @@ const connectDb = require("../config/connectDb");
 const tacoshops = require("./tacoshops.json");
 
 connectDb()
-    .then(() => db.TacoShop.deleteMany({}))
-    .then(() => db.TacoShop.create(tacoshops))
-    .catch(console.error)
-    .finally(() => process.exit());
+  .then(() => db.TacoShop.deleteMany({}))
+  .then(() => db.TacoShop.create(tacoshops))
+  .catch(console.error)
+  .finally(() => process.exit());
