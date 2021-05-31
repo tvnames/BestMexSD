@@ -1,7 +1,13 @@
 const express = require("express");
 const tacoShopRouter = express.Router();
+const mongojs = require('mongojs')
 const { TacoShop } = require("../models");
 const Post = require("../models");
+
+const databaseUrl = 'bestmexsd';
+const collections = ['tacoshops'];
+
+const db = mongojs(databaseUrl, collections);
 
 // create route to return all tacoshops
 tacoShopRouter.get("/", async (req, res) => {
@@ -28,13 +34,6 @@ tacoShopRouter.get("/:id", async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
 tacoShopRouter.post("/", async (req, res) => {
     console.log("Post Shop Request Received on Back-End")
     console.log(req.body)
@@ -50,6 +49,26 @@ tacoShopRouter.post("/", async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+tacoShopRouter.put('/', (req, res) => {
+    db.tacoshops.update(
+        {
+            _id: mongojs.ObjectId(req.body.id),
+        },
+        {
+            $push: {
+                rating: req.body.rating,
+            },
+        },
+        (error, data) => {
+            if (error) {
+                res.send(error);
+            } else {
+                res.send(data);
+            }
+        }
+    );
 });
 
 module.exports = tacoShopRouter;

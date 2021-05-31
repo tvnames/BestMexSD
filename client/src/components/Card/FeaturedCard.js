@@ -3,6 +3,8 @@ import "./style.css";
 import RatingContainer from "../StarRating.js/RatingContainer";
 
 function FeaturedCard({
+  ratingArray,
+  id,
   shopName,
   menuURL,
   rating,
@@ -46,7 +48,8 @@ function FeaturedCard({
       </div>
       <div className="">
         <RatingContainer
-          ratingArray={rating}
+          id={id}
+          ratingArray={ratingArray}
         />
       </div>
     </div>

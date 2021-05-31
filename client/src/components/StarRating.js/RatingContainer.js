@@ -1,9 +1,12 @@
 import React from "react";
 import RatingIcon from "./RatingIcon";
 import "./style.css";
+import axios from "axios";
 
 
-const RatingContainer = () => {
+function RatingContainer({ ratingArray, id }) {
+
+
     const [rating, setRating] = React.useState(0);
     const [hoverRating, setHoverRating] = React.useState(0);
     const onMouseEnter = (index) => {
@@ -12,9 +15,13 @@ const RatingContainer = () => {
     const onMouseLeave = () => {
         setHoverRating(0);
     };
+
+
+
     const onSaveRating = (index) => {
         setRating(index);
         window.alert("You've Rated this Restaurant " + index + " out of 5 stars!");
+        axios.put("/api/tacoShops", { index, id })
 
     };
     return (

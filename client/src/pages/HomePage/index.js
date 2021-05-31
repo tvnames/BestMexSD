@@ -51,6 +51,8 @@ function HomePage() {
           </div>
           <div className="col border border-dark">
             <FeaturedCard
+              id={currentShop._id}
+              ratingArray={currentShop.rating}
               src={VallartasPic}
               shopName={currentShop.shopName}
               menuURL={currentShop.menuURL}
