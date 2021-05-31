@@ -36,7 +36,7 @@ function SignupPage() {
   return (
     <div id="signup-page" className="container">
       <div className="row justify-content-center">
-        <div className="col-sm-12 col-md-8 col-lg-6">
+        <div className="col-sm-12 col-md-8 col-lg-6 animate__animated animate__fadeIn">
           {/* redirect to home page if user is logged in */}
           {auth.isLoggedIn() && <Redirect to="/" />}
           <h1>Sign Up</h1>

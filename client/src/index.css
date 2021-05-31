@@ -78,6 +78,34 @@ nav {
   /* outline: 3px solid #34ff85; */
 }
 
+.rating-control {
+  margin-top: 10px;
+}
+.rating-control select {
+  margin-left: 8px;
+  width: 70px;
+}
+
+.shop-url-control input {
+  margin-top: 2px;
+}
+
+.featured-food-control {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.featured-food-inner input {
+  width: 15px !important;
+  height: 15px !important;
+  margin-left: 3px;
+  position: relative;
+  /* padding-top: 346px; */
+  top: 3px;
+}
+.featured-food-inner label:nth-child(n + 2) {
+  margin-left: 10px !important;
+}
 #shopState {
   background-color: #e1e1e1;
   color: #00000061;

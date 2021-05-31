@@ -30,8 +30,8 @@ function SubmitShopPage() {
 
   return (
     <div id="submitshop-page" className="container">
-      <div className="row justify-content-center">
-        <div className="col-sm-12 col-md-8 col-lg-8">
+      <div className="row justify-content-center ">
+        <div className="col-sm-12 col-md-8 col-lg-8 animate__animated animate__fadeIn">
           <h2>Submit A Taco Shop to Our Site!</h2>
           <form id="submitshop-form">
             <div>
@@ -153,6 +153,107 @@ function SubmitShopPage() {
                   />
                 </div>
               </div>
+              <hr />
+              <div className="form-group row">
+                {/* <label
+                  htmlFor="shopPhoneNumber"
+                  className="col-sm-2 col-form-label"
+                >
+                  Phone #
+                </label> */}
+                <div className="col-sm-12 submitshop-form-inner">
+                  <label for="rating">
+                    Please leave a short shop description:
+                  </label>
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    id="shopReview"
+                    placeholder="Give us some info on this Taco Shop! Location, pricing, parking, featured items, anything!"
+                    autocomplete="off"
+                  />
+                  <br />
+                  <label for="rating">Leave a review:</label>
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    id="shopReview"
+                    placeholder="Leave the first review!"
+                    autocomplete="off"
+                  />
+                  <div className="rating-control">
+                    <label for="rating">Give this shop a rating:</label>
+                    <select name="rating" id="rating">
+                      <option value="1 star">1 Star</option>
+                      <option value="2 star">2 Star</option>
+                      <option value="3 star">3 Star</option>
+                      <option value="4 star">4 Star</option>
+                      <option value="5 star">5 Star</option>
+                    </select>
+                  </div>
+                  <hr />
+                  <div className="shop-url-control">
+                    <label for="rating">Link to online menu:</label>
+                    <input
+                      type="url"
+                      name="url"
+                      id="url"
+                      placeholder="https://bestmexsd.com"
+                      pattern="https://.*"
+                      size="200"
+                    />
+                  </div>
+                  <div className="featured-food-control">
+                    <label for="rating">
+                      What types of Mexican foods does this shop specialize in?
+                    </label>
+                    <div className="featured-food-inner">
+                      {/* tacos */}
+                      <label htmlFor="Tacos">Tacos</label>
+                      <input
+                        type="radio"
+                        id="Tacos"
+                        name="gender"
+                        defaultValue="Tacos"
+                      />
+                      {/* burritos */}
+                      <label htmlFor="Burritos">Burritos</label>
+                      <input
+                        type="radio"
+                        id="Burritos"
+                        name="gender"
+                        defaultValue="Burritos"
+                      />
+                      {/* mariscos */}
+                      <label htmlFor="Mariscos Tacos">Mariscos Tacos</label>
+                      <input
+                        type="radio"
+                        id="Mariscos Tacos"
+                        name="gender"
+                        defaultValue="Mariscos Tacos"
+                      />
+                      {/* quesadillas */}
+                      <label htmlFor="Quesadillas">Quesadillas</label>
+                      <input
+                        type="radio"
+                        id="Quesadillas"
+                        name="gender"
+                        defaultValue="Quesadillas"
+                      />
+                      {/* birria tacos */}
+                      <label htmlFor="Birria Tacos">Birria Tacos</label>
+                      <input
+                        type="radio"
+                        id="Birria Tacos"
+                        name="gender"
+                        defaultValue="Birria Tacos"
+                      />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
               <div className="form-group row justify-content-center">
                 <div className="col-sm-10 ">
                   <button
