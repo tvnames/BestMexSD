@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { postShopAPI } from "../../util/shopAPI";
 // import { useAuth } from "../../util/auth";
 
@@ -8,12 +8,25 @@ function SubmitShopPage() {
   // const auth = useAuth();
   // return <h1>Hello, {auth.user.username}!</h1>;
 
-  // postShopAPI()
+  const [formState, setFormState] = useState({
+    shopName: "",
+    location: "",
+    address: "",
+    state: "CA",
+    zip: 92109,
+    phone: "",
+    description: "",
+    reviews: [],
+    rating: [],
+    menuURL: "https://bestmexsd.com",
+    featuredFood: ""
+  })
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    postShopAPI();
-    console.log("Click Handled!");
+    postShopAPI(formState);
+    console.log(formState);
 
     // if (!name) {
     //   return alert("Must provide a restaurantname.");
@@ -28,12 +41,24 @@ function SubmitShopPage() {
     // auth.signup({ email, username, password });
   };
 
+
+  const handleInputChange = (event) => {
+    let name = event.target.name
+    setFormState({
+      ...formState,
+      [name]: event.target.value
+    })
+  }
+
+  console.log(formState)
+
+
   return (
     <div id="submitshop-page" className="container">
       <div className="row justify-content-center ">
         <div className="col-sm-12 col-md-8 col-lg-8 animate__animated animate__fadeIn">
           <h2>Submit A Taco Shop to Our Site!</h2>
-          <form id="submitshop-form">
+          <form id="submitshop-form" onSubmit={handleSubmit}>
             <div>
               <div className="form-group row">
                 {/* <label htmlFor="shopName">Restaurant Name:</label> */}
@@ -41,6 +66,8 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="shopName"
                     id="shopName"
                     placeholder="Enter the Taco Shop name here"
                     autocomplete="off"
@@ -58,6 +85,8 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="location"
                     id="shopLocation"
                     placeholder="What part of San Diego is the new taco shop in?"
                     autocomplete="off"
@@ -75,6 +104,8 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="address"
                     id="shopAddress1"
                     placeholder="Address"
                     autocomplete="off"
@@ -109,7 +140,9 @@ function SubmitShopPage() {
                     id="shopState"
                     placeholder="State"
                     autocomplete="off"
-                    value="California"
+                    onChange={handleInputChange}
+                    name={formState.state}
+                    value="CA"
                     disabled="disabled"
                   />
                   {/* <select id="zip" name="zip">
@@ -128,6 +161,8 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="zip"
                     id="shopZipCode"
                     placeholder="Zip Code"
                     autocomplete="off"
@@ -146,6 +181,8 @@ function SubmitShopPage() {
                     type="tel"
                     className="form-control"
                     id="shopPhoneNumber"
+                    onChange={handleInputChange}
+                    name="phone"
                     placeholder="Phone: (123) 456-7890"
                     autocomplete="off"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -168,6 +205,8 @@ function SubmitShopPage() {
                   <textarea
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="description"
                     id="shopReview"
                     placeholder="Give us some info on this Taco Shop! Location, pricing, parking, featured items, anything!"
                     autocomplete="off"
@@ -177,18 +216,20 @@ function SubmitShopPage() {
                   <textarea
                     type="text"
                     className="form-control"
+                    onChange={handleInputChange}
+                    name="reviews"
                     id="shopReview"
                     placeholder="Leave the first review!"
                     autocomplete="off"
                   />
                   <div className="rating-control">
                     <label for="rating">Give this shop a rating:</label>
-                    <select name="rating" id="rating">
-                      <option value="1 star">1 Star</option>
-                      <option value="2 star">2 Star</option>
-                      <option value="3 star">3 Star</option>
-                      <option value="4 star">4 Star</option>
-                      <option value="5 star">5 Star</option>
+                    <select name="rating" onChange={handleInputChange} id="rating">
+                      <option value="1" >1 Star</option>
+                      <option value="2">2 Stars</option>
+                      <option value="3">3 Stars</option>
+                      <option value="4">4 Stars</option>
+                      <option value="5">5 Stars</option>
                     </select>
                   </div>
                   <hr />
@@ -198,12 +239,14 @@ function SubmitShopPage() {
                       type="url"
                       name="url"
                       id="url"
+                      onChange={handleInputChange}
+                      name="menuURL"
                       placeholder="https://bestmexsd.com"
                       pattern="https://.*"
                       size="200"
                     />
                   </div>
-                  <div className="featured-food-control">
+                  <div className="featured-food-control" onChange={handleInputChange} >
                     <label for="rating">
                       What types of Mexican foods does this shop specialize in?
                     </label>
@@ -213,39 +256,39 @@ function SubmitShopPage() {
                       <input
                         type="radio"
                         id="Tacos"
-                        name="gender"
+                        name="featuredFood"
                         defaultValue="Tacos"
                       />
                       {/* burritos */}
-                      <label htmlFor="Burritos">Burritos</label>
+                      <label htmlFor="Burritos">| Burritos</label>
                       <input
                         type="radio"
                         id="Burritos"
-                        name="gender"
+                        name="featuredFood"
                         defaultValue="Burritos"
                       />
                       {/* mariscos */}
-                      <label htmlFor="Mariscos Tacos">Mariscos Tacos</label>
+                      <label htmlFor="Mariscos Tacos">| Mariscos Tacos</label>
                       <input
                         type="radio"
                         id="Mariscos Tacos"
-                        name="gender"
+                        name="featuredFood"
                         defaultValue="Mariscos Tacos"
                       />
                       {/* quesadillas */}
-                      <label htmlFor="Quesadillas">Quesadillas</label>
+                      <label htmlFor="Quesadillas">| Quesadillas</label>
                       <input
                         type="radio"
                         id="Quesadillas"
-                        name="gender"
+                        name="featuredFood"
                         defaultValue="Quesadillas"
                       />
                       {/* birria tacos */}
-                      <label htmlFor="Birria Tacos">Birria Tacos</label>
+                      <label htmlFor="Birria Tacos">| Birria Tacos</label>
                       <input
                         type="radio"
                         id="Birria Tacos"
-                        name="gender"
+                        name="featuredFood"
                         defaultValue="Birria Tacos"
                       />
                       <br />

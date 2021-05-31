@@ -14,25 +14,6 @@ import axios from "axios";
 function ShopPage() {
   const id = useParams().id;
 
-
-
-  const [singleShop, setSingleShop] = useState({});
-
-  // const [avg, setAvg] = useState(4);
-  // const [numOfRatings, setNumRatings] = useState(10);
-  // const [address, setAddress] = useState("");
-  // const [rating, setRating] = useState();
-  // const [description, setDescription] = useState("");
-  // const [menuURL, setMenuURL] = useState("");
-  // const [shopName, setShopName] = useState("");
-  // const [featuredFood, setfeaturedFood] = useState("");
-  // const [location, setLocation] = useState("");
-  // const [phone, setPhone] = useState();
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
-  // const [zip, setZip] = useState("");
-  // const [reviews, setReviews] = useState(["Hello", "Hello"]);
-
   useEffect(() => {
     singleShopAPI(id)
       .then(res => setSingleShop(res))
@@ -40,6 +21,9 @@ function ShopPage() {
   }, [id]);
 
 
+  const [singleShop, setSingleShop] = useState({});
+
+  const { rating } = singleShop;
   const [reviewInput, setReviewInput] = useState("");
 
   function handleSubmit(event) {
@@ -69,12 +53,6 @@ function ShopPage() {
     }
   }
 
-  console.log(singleShop.rating)
-
-  // const avg = singleShop.rating.reduce((a, b) => a + b) / singleShop.rating.length;
-  // console.log(avg.toFixed(1));
-
-
   return (
     <>
       <div className="container-fluid border border-dark m-2">
@@ -91,8 +69,8 @@ function ShopPage() {
               location={singleShop.location}
               phone={singleShop.phone}
               address={singleShop.address}
-              // numOfRatings={ }
-              // rating={avg.toFixed(1)}
+              numOfRatings={27}
+              rating={4.2}
               featuredFood={singleShop.featuredFood}
             />
           </div>
@@ -105,7 +83,6 @@ function ShopPage() {
       <h3>Submit Your Review in the Box Below:</h3>
       <form onSubmit={handleSubmit}>
         <div classname="form-group">
-          {/* <label htmlfor="reviewBox">Review:</label> */}
           <input
             classname="form-control"
             type="text"
@@ -115,15 +92,16 @@ function ShopPage() {
             aria-describedby="submitReviewBox"
             placeholder="Type your Review Here..." />
         </div>
-        <button type="submit" value={reviewInput} id="reviewFormButton" classname="btn btn-primary" >Submit</button>
+        <button
+          type="submit"
+          value={reviewInput}
+          id="reviewFormButton"
+          classname="btn btn-primary nav-buttons shop-submit" >Submit</button>
       </form>
     </>
   )
 }
 
-async function handleSubmit(event) {
-  event.preventDefault();
-  console.log(event.target)
-}
+
 
 export default ShopPage;
