@@ -56,12 +56,10 @@ function ShopPage() {
   return (
     <>
       <div className="container-fluid border border-dark m-2">
-        <div className="row">
-          <div className="col">
-            <Image src={VallartasPic} />
-          </div>
-          <div className="col">
+        <div className="">
+          <div className="col d-flex justify-content-center">
             <FeaturedCard
+              src={VallartasPic}
               id={singleShop._id}
               menuURL={singleShop.menuURL}
               shopName={singleShop.shopName}

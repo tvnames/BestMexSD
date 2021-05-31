@@ -2,7 +2,6 @@ const express = require("express");
 const tacoShopRouter = express.Router();
 const mongojs = require('mongojs')
 const { TacoShop } = require("../models");
-const Post = require("../models");
 
 const databaseUrl = 'bestmexsd';
 const collections = ['tacoshops'];
