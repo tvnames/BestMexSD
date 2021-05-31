@@ -3,6 +3,8 @@ import "./style.css";
 import RatingContainer from "../StarRating.js/RatingContainer";
 
 function FeaturedCard({
+  ratingArray,
+  id,
   shopName,
   menuURL,
   rating,
@@ -16,14 +18,15 @@ function FeaturedCard({
 }) {
 
   return (
-    <div className="card m-1">
-      <div className="card-body">
+    <div className="card m-1 w-100">
+      <div className="card-body ">
+        <img src={src} alt={src} className="float-left m-5" />
         <h5 className="card-title">{shopName}</h5>
-        {/* <img src={src} alt={src} /> */}
         <p className="card-text">
           <strong>Featured Food: </strong>
           {featuredFood}
         </p>
+        <strong>About Sombreros: </strong>{description}
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
@@ -45,7 +48,10 @@ function FeaturedCard({
         <i className="ml-auto"><strong>Average Rating:</strong> {rating} out of 5 stars! ({numOfRatings} Ratings)</i>
       </div>
       <div className="">
-        <RatingContainer />
+        <RatingContainer
+          id={id}
+          ratingArray={ratingArray}
+        />
       </div>
     </div>
 

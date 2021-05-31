@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { useHistory } from "react-router-dom";
 // import { useAuth } from "../../util/auth";
+
 import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
@@ -13,10 +14,7 @@ function HomePage() {
   // const history = useHistory();
   // const auth = useAuth();
   const randomShop = getRandom(5);
-
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
-
-
 
   useEffect(() => {
     shopAPI()
@@ -25,10 +23,6 @@ function HomePage() {
       .catch(console.error())
   }, []);
 
-
-  // function addRating(newRating) {
-  //   restaurants[randomShop].rating.push(newRating);
-  // }
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
@@ -36,21 +30,20 @@ function HomePage() {
   const currentShop = restaurantArray[randomShop];
   const avg = restaurantArray[randomShop].rating.reduce((a, b) => a + b) / restaurantArray[randomShop].rating.length;
 
-  // function addRating(newRating) {
-  //   restaurants[randomShop].rating.push(newRating);
-  // }
-
   return (
     <div className="container-fluid">
       <Hero>Welcome to Best Mex SD!</Hero>
       <main className="container-fluid">
         <h3>This week's Top Shop:</h3>
         <section className="row border border-dark m-3">
-          <Image src={VallartasPic} />
-          <div className="col">
-          </div>
-          <div className="col border border-dark">
+          {/* <Image src={VallartasPic} className="float-left" /> */}
+          {/* <div className="col">
+          </div> */}
+          <div className="col border border-dark d-flex justify-content-center">
+            {/* <Image src={VallartasPic} className="float-left" /> */}
             <FeaturedCard
+              id={currentShop._id}
+              ratingArray={currentShop.rating}
               src={VallartasPic}
               shopName={currentShop.shopName}
               menuURL={currentShop.menuURL}

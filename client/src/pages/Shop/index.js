@@ -1,5 +1,5 @@
 // import { React } from "react";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
@@ -7,44 +7,37 @@ import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/VallartasExpress.png";
-import singleSeed from "./singleSeed.json";
+import axios from "axios";
+// import singleSeed from "./singleSeed.json";
 // import HomePage from "../HomePage";
 
 function ShopPage() {
   const id = useParams().id;
 
-  const [singleShop, setSingleShop] = useState({});
-  const [address, setAddress] = useState("");
-  const [rating, setRating] = useState([]);
-  const [description, setDescription] = useState("");
-  const [menuURL, setMenuURL] = useState("");
-  const [shopName, setShopName] = useState("");
-  const [featuredFood, setfeaturedFood] = useState("");
-  const [location, setLocation] = useState("");
-  const [phone, setPhone] = useState();
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [reviews, setReviews] = useState(["Hello", "Hello"]);
-
   useEffect(() => {
     singleShopAPI(id)
       .then(res => setSingleShop(res))
-      .then(setRating(singleShop.rating))
-      .then()
       .catch(console.error())
   }, [id]);
 
 
-  // useEffect(() => {
-  //   setRating(singleShop.rating)
-  // }, [singleShop.rating]);
+  const [singleShop, setSingleShop] = useState({});
 
-  // console.log(rating)
+  const { rating } = singleShop;
+  const [reviewInput, setReviewInput] = useState("");
 
+  function handleSubmit(event) {
+    let shopId = singleShop._id
+    event.preventDefault();
+    axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput })
+    window.location.reload()
+    return <Redirect exact to="/" />
+  }
 
-  function submitForm() {
-    window.alert("Need to get value of input field and submit to review for the selected shop");
+  function handleInputChange(event) {
+    console.log(event)
+    console.log(event.target.value)
+    setReviewInput(event.target.value)
     return <Redirect exact to="/" />
   }
 
@@ -53,7 +46,6 @@ function ShopPage() {
       return (
         singleShop.reviews.map(review => (
           <ReviewCard
-            // reviewDate={review.date}
             reviewText={review}
           />
         ))
@@ -61,25 +53,22 @@ function ShopPage() {
     }
   }
 
-
   return (
     <>
       <div className="container-fluid border border-dark m-2">
-        <div className="row">
-          <div className="col">
-            <Image src={VallartasPic} />
-          </div>
-          <div className="col">
+        <div className="">
+          <div className="col d-flex justify-content-center">
             <FeaturedCard
-
+              src={VallartasPic}
+              id={singleShop._id}
               menuURL={singleShop.menuURL}
               shopName={singleShop.shopName}
               description={singleShop.description}
               location={singleShop.location}
               phone={singleShop.phone}
               address={singleShop.address}
-              // rating={avg.toFixed(1)}
-              // numOfRatings={singleShop.rating.length}
+              numOfRatings={27}
+              rating={4.2}
               featuredFood={singleShop.featuredFood}
             />
           </div>
@@ -90,20 +79,27 @@ function ShopPage() {
 
       </div>
       <h3>Submit Your Review in the Box Below:</h3>
-      <form onSubmit={submitForm}>
+      <form onSubmit={handleSubmit}>
         <div classname="form-group">
-          {/* <label htmlfor="reviewBox">Review:</label> */}
           <input
             classname="form-control"
             type="text"
+            onChange={handleInputChange}
+            value={reviewInput}
             id="newReview"
             aria-describedby="submitReviewBox"
             placeholder="Type your Review Here..." />
         </div>
-        <button type="submit" classname="btn btn-primary" >Submit</button>
+        <button
+          type="submit"
+          value={reviewInput}
+          id="reviewFormButton"
+          classname="btn btn-primary nav-buttons shop-submit" >Submit</button>
       </form>
     </>
   )
 }
+
+
 
 export default ShopPage;
