@@ -64,11 +64,17 @@ function GuestNavs() {
   const history = useHistory();
   return (
     <>
-      <button className="nav-buttons" onClick={() => history.push("/login")}>
+      <button
+        className="nav-buttons animate__animated animate__fadeInDown"
+        onClick={() => history.push("/login")}
+      >
         Login
       </button>
 
-      <button className="nav-buttons" onClick={() => history.push("/signup")}>
+      <button
+        className="nav-buttons animate__animated animate__fadeInDown"
+        onClick={() => history.push("/signup")}
+      >
         Signup
       </button>
     </>
