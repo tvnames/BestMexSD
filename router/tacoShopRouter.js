@@ -51,24 +51,19 @@ tacoShopRouter.post("/", async (req, res) => {
     }
 });
 
-tacoShopRouter.put('/', (req, res) => {
-    db.tacoshops.update(
-        {
-            _id: mongojs.ObjectId(req.body.id),
-        },
+tacoShopRouter.post('/update', (req, res) => {
+    TacoShop.updateOne(
+        { _id: req.body.id },
         {
             $push: {
-                rating: req.body.rating,
-            },
-        },
-        (error, data) => {
-            if (error) {
-                res.send(error);
-            } else {
-                res.send(data);
+                "rating": req.body.rating
             }
+        },
+        (err, res) => {
         }
-    );
-});
+    )
+    console.log("Hello")
+}
+);
 
 module.exports = tacoShopRouter;

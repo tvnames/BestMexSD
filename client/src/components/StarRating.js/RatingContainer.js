@@ -21,7 +21,7 @@ function RatingContainer({ ratingArray, id }) {
     const onSaveRating = (index) => {
         setRating(index);
         window.alert("You've Rated this Restaurant " + index + " out of 5 stars!");
-        axios.put("/api/tacoShops", { index, id })
+        axios.post("/api/tacoShops/update", { index, id })
 
     };
     return (
