@@ -52,7 +52,6 @@ tacoShopRouter.post("/", async (req, res) => {
 });
 
 tacoShopRouter.post('/update', (req, res) => {
-    console.log(req.body.index)
     TacoShop.updateOne(
         { _id: req.body.id },
         {
@@ -60,10 +59,9 @@ tacoShopRouter.post('/update', (req, res) => {
                 rating: req.body.index
             }
         },
-        (err, res) => {
+        (_err) => {
         }
     )
-    console.log("Hello")
 }
 );
 
