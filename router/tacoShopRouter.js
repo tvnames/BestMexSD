@@ -51,6 +51,22 @@ tacoShopRouter.post("/", async (req, res) => {
     }
 });
 
+tacoShopRouter.post('/reviews/update', (req, res) => {
+    console.log("Update Reviews Route Hit")
+    console.log(req.body)
+    TacoShop.updateOne(
+        { _id: req.body.shopId },
+        {
+            $push: {
+                reviews: req.body.reviewInput
+            }
+        },
+        (_err) => {
+        }
+    )
+}
+);
+
 tacoShopRouter.post('/update', (req, res) => {
     TacoShop.updateOne(
         { _id: req.body.id },

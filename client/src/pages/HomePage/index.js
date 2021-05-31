@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { useHistory } from "react-router-dom";
 // import { useAuth } from "../../util/auth";
+
 import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
