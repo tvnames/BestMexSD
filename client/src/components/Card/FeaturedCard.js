@@ -19,7 +19,7 @@ function FeaturedCard({
   return (
     <div className="card m-1 w-100">
       <div className="card-body ">
-        <img src={src} alt={src} className="m-5" />
+        <img src={src} alt={src} className="featured-img-control" />
         <h5 className="card-title">{shopName}</h5>
         <p className="card-text">
           <strong>Featured Food: </strong>
