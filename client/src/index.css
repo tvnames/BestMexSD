@@ -284,10 +284,15 @@ footer {
   height: 50px;
   margin: 0 0 10px 0;
 }
-
+.splide {
+  display: none;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .logo-control {
+    display: none;
+  }
+  .splide {
     display: none;
   }
 }
@@ -296,6 +301,9 @@ footer {
 @media (min-width: 768px) {
   .logo-control {
     display: none;
+  }
+  .splide {
+    display: initial;
   }
 }
 
