@@ -7,8 +7,9 @@ import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "../../images/VallartasExpress.png";
-import Image from "../../components/ImageContainer/image";
-import restaurants from "../../shopSeed.json"
+// import Image from "../../components/ImageContainer/image";
+import restaurants from "../../shopSeed.json";
+import HomepageText from "../../components/HomepageText/HomepageText";
 
 function HomePage() {
   // const history = useHistory();
@@ -18,9 +19,11 @@ function HomePage() {
 
   useEffect(() => {
     shopAPI()
-      .then((res) => { setRestaurantArray(res) })
+      .then((res) => {
+        setRestaurantArray(res);
+      })
       .then()
-      .catch(console.error())
+      .catch(console.error());
   }, []);
 
   function getRandom(maximum) {
@@ -28,18 +31,23 @@ function HomePage() {
   }
 
   const currentShop = restaurantArray[randomShop];
-  const avg = restaurantArray[randomShop].rating.reduce((a, b) => a + b) / restaurantArray[randomShop].rating.length;
+  const avg =
+    restaurantArray[randomShop].rating.reduce((a, b) => a + b) /
+    restaurantArray[randomShop].rating.length;
 
   return (
     <div className="container-fluid">
       <Hero>Welcome to Best Mex SD!</Hero>
-      <main className="container-fluid">
+      <main className="col-12">
+        <section className="page-title-text m-3">
+          <HomepageText />
+        </section>
         <h3>This week's Top Shop:</h3>
-        <section className="row border border-dark m-3">
+        <section className="row m-3">
           {/* <Image src={VallartasPic} className="float-left" /> */}
           {/* <div className="col">
           </div> */}
-          <div className="col border border-dark d-flex justify-content-center">
+          <div className="col d-flex">
             {/* <Image src={VallartasPic} className="float-left" /> */}
             <FeaturedCard
               id={currentShop._id}
@@ -57,18 +65,16 @@ function HomePage() {
             />
           </div>
         </section>
-        <section className="container-fluid border border-dark m-2">
-          <div className="row d-flex justify-content-around">
-            {restaurantArray.map((restaurant) => (
-              < ShopCard
-                id={restaurant._id}
-                src={VallartasPic}
-                shopName={restaurant.shopName}
-                location={restaurant.location}
-                featuredFood={restaurant.featuredFood}
-              />
-            ))}
-          </div>
+        <section className="row m-3 shopcard-control">
+          {restaurantArray.map((restaurant) => (
+            <ShopCard
+              id={restaurant._id}
+              src={VallartasPic}
+              shopName={restaurant.shopName}
+              location={restaurant.location}
+              featuredFood={restaurant.featuredFood}
+            />
+          ))}
         </section>
       </main>
     </div>

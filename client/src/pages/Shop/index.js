@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
-import Image from "../../components/ImageContainer/image";
+// import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/VallartasExpress.png";
@@ -16,10 +16,9 @@ function ShopPage() {
 
   useEffect(() => {
     singleShopAPI(id)
-      .then(res => setSingleShop(res))
-      .catch(console.error())
+      .then((res) => setSingleShop(res))
+      .catch(console.error());
   }, [id]);
-
 
   const [singleShop, setSingleShop] = useState({});
 
@@ -27,29 +26,25 @@ function ShopPage() {
   const [reviewInput, setReviewInput] = useState("");
 
   function handleSubmit(event) {
-    let shopId = singleShop._id
+    let shopId = singleShop._id;
     event.preventDefault();
-    axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput })
-    window.location.reload()
-    return <Redirect exact to="/" />
+    axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput });
+    window.location.reload();
+    return <Redirect exact to="/" />;
   }
 
   function handleInputChange(event) {
-    console.log(event)
-    console.log(event.target.value)
-    setReviewInput(event.target.value)
-    return <Redirect exact to="/" />
+    console.log(event);
+    console.log(event.target.value);
+    setReviewInput(event.target.value);
+    return <Redirect exact to="/" />;
   }
 
   function renderReviews() {
     if (singleShop.reviews) {
-      return (
-        singleShop.reviews.map(review => (
-          <ReviewCard
-            reviewText={review}
-          />
-        ))
-      )
+      return singleShop.reviews.map((review) => (
+        <ReviewCard reviewText={review} />
+      ));
     }
   }
 
@@ -76,7 +71,6 @@ function ShopPage() {
       </div>
       <div className="container-fluid border border-dark m-2">
         {renderReviews()}
-
       </div>
       <h3>Submit Your Review in the Box Below:</h3>
       <form onSubmit={handleSubmit}>
@@ -88,18 +82,20 @@ function ShopPage() {
             value={reviewInput}
             id="newReview"
             aria-describedby="submitReviewBox"
-            placeholder="Type your Review Here..." />
+            placeholder="Type your Review Here..."
+          />
         </div>
         <button
           type="submit"
           value={reviewInput}
           id="reviewFormButton"
-          classname="btn btn-primary nav-buttons shop-submit" >Submit</button>
+          classname="btn btn-primary nav-buttons shop-submit"
+        >
+          Submit
+        </button>
       </form>
     </>
-  )
+  );
 }
-
-
 
 export default ShopPage;

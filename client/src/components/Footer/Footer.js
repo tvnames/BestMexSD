@@ -1,4 +1,4 @@
-import react from "react";
+// import react from "react";
 import logo from "./bestmexlogo.png";
 // import style from "./style.css";
 
@@ -79,7 +79,7 @@ function Footer() {
           </form>
         </section> */}
         <section className="mb-4">
-          <img src={logo} />
+          <img src={logo} alt={logo} />
         </section>
         {/* <section className> */}
         {/* <div className="row">
