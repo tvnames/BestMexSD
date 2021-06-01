@@ -6,7 +6,7 @@ import { singleShopAPI } from "../../util/shopAPI";
 // import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
-import VallartasPic from "../../images/VallartasExpress.png";
+import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
 // import singleSeed from "./singleSeed.json";
 // import HomePage from "../HomePage";
@@ -50,7 +50,7 @@ function ShopPage() {
 
   return (
     <>
-      <div className="container-fluid border border-dark m-2">
+      <div className="container-fluid m-2">
         <div className="">
           <div className="col d-flex justify-content-center">
             <FeaturedCard
@@ -69,31 +69,35 @@ function ShopPage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid border border-dark m-2">
-        {renderReviews()}
-      </div>
-      <h3>Submit Your Review in the Box Below:</h3>
-      <form onSubmit={handleSubmit}>
-        <div classname="form-group">
-          <input
-            classname="form-control"
-            type="text"
-            onChange={handleInputChange}
-            value={reviewInput}
-            id="newReview"
-            aria-describedby="submitReviewBox"
-            placeholder="Type your Review Here..."
-          />
+      <div className="container-fluid m-2">{renderReviews()}</div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12 submitreview-control">
+            <h3>Submit Your Review in the Box Below:</h3>
+            <form onSubmit={handleSubmit}>
+              <div classname="form-group">
+                <textarea
+                  classname="form-control"
+                  type="text"
+                  onChange={handleInputChange}
+                  value={reviewInput}
+                  id="newReview"
+                  aria-describedby="submitReviewBox"
+                  placeholder="Type your Review Here..."
+                />
+              </div>
+              <button
+                type="submit"
+                value={reviewInput}
+                id="reviewFormButton"
+                classname="btn btn-primary nav-buttons shop-submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-        <button
-          type="submit"
-          value={reviewInput}
-          id="reviewFormButton"
-          classname="btn btn-primary nav-buttons shop-submit"
-        >
-          Submit
-        </button>
-      </form>
+      </div>
     </>
   );
 }

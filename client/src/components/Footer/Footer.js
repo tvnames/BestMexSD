@@ -79,7 +79,9 @@ function Footer() {
           </form>
         </section> */}
         <section className="mb-4">
-          <img src={logo} alt={logo} />
+          <a className="text-white" href="/">
+            <img src={logo} alt={logo} />
+          </a>
         </section>
         {/* <section className> */}
         {/* <div className="row">
