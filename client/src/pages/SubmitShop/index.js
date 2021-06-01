@@ -19,9 +19,8 @@ function SubmitShopPage() {
     reviews: [],
     rating: [],
     menuURL: "https://bestmexsd.com",
-    featuredFood: ""
-  })
-
+    featuredFood: "",
+  });
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -41,17 +40,15 @@ function SubmitShopPage() {
     // auth.signup({ email, username, password });
   };
 
-
   const handleInputChange = (event) => {
-    let name = event.target.name
+    let name = event.target.name;
     setFormState({
       ...formState,
-      [name]: event.target.value
-    })
-  }
+      [name]: event.target.value,
+    });
+  };
 
-  console.log(formState)
-
+  console.log(formState);
 
   return (
     <div id="submitshop-page" className="container">
@@ -224,8 +221,12 @@ function SubmitShopPage() {
                   />
                   <div className="rating-control">
                     <label for="rating">Give this shop a rating:</label>
-                    <select name="rating" onChange={handleInputChange} id="rating">
-                      <option value="1" >1 Star</option>
+                    <select
+                      name="rating"
+                      onChange={handleInputChange}
+                      id="rating"
+                    >
+                      <option value="1">1 Star</option>
                       <option value="2">2 Stars</option>
                       <option value="3">3 Stars</option>
                       <option value="4">4 Stars</option>
@@ -237,7 +238,6 @@ function SubmitShopPage() {
                     <label for="rating">Link to online menu:</label>
                     <input
                       type="url"
-                      name="url"
                       id="url"
                       onChange={handleInputChange}
                       name="menuURL"
@@ -246,7 +246,10 @@ function SubmitShopPage() {
                       size="200"
                     />
                   </div>
-                  <div className="featured-food-control" onChange={handleInputChange} >
+                  <div
+                    className="featured-food-control"
+                    onChange={handleInputChange}
+                  >
                     <label for="rating">
                       What types of Mexican foods does this shop specialize in?
                     </label>

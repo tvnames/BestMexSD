@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
 // import PrivatePage from "./pages/PrivatePage";
 import SignupPage from "./pages/SignupPage";
-import PrivateRoute from "./components/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (

@@ -15,6 +15,31 @@ nav {
 #navbar-nav:last-child {
   margin-bottom: 10px !important;
 }
+main {
+  font-family: "Signika Negative", sans-serif;
+}
+.page-title-text {
+  text-align: center;
+}
+
+.page-title-text p {
+  font-size: 20px;
+}
+
+.shopcard-control {
+}
+
+.shopCard {
+  cursor: pointer;
+  background-color: wheat;
+  box-shadow: 5px 3px 11px 0px rgb(216 216 216);
+  transition: ease-in-out 175ms;
+}
+
+.card-image-control {
+  max-width: 300px;
+}
+
 #username {
   width: 100%;
   border-radius: 33px;
@@ -48,6 +73,7 @@ nav {
 #submitshop-page h2 {
   text-align: center;
   margin-top: 5px;
+  color: #747474;
 }
 
 #submitshop-page p {
@@ -119,6 +145,7 @@ nav {
 #login-page h1 {
   text-align: center;
   margin-top: 5px;
+  color: #747474;
 }
 
 #login-page p {
@@ -144,6 +171,7 @@ nav {
 #signup-page h1 {
   text-align: center;
   margin-top: 5px;
+  color: #747474;
 }
 
 #signup-page p {

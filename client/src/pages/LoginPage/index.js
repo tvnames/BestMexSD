@@ -34,7 +34,7 @@ function LoginPage() {
     <div id="login-page" className="container">
       <div className="row justify-content-center">
         <div className="col-sm-12 col-md-8 col-lg-6 animate__animated animate__fadeIn">
-          <h1>Login Below for Access</h1>
+          <h1>Login</h1>
           <form id="login-form" onSubmit={handleSubmit} autocomplete="off">
             <label htmlFor="email">Email:</label>
             <br />
