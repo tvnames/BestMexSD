@@ -9,14 +9,51 @@ body {
   background-color: #ffd40014;
 }
 
+/* Navbar Styles */
+.navbar-nav {
+  font-size: 22px;
+}
+
+.nav-buttons {
+  margin-right: 5px;
+  border-radius: 58px;
+  border: 0px;
+  background-color: #4fff97;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: solid 1px #ffb2b2;
+}
+
+.nav-buttons:hover {
+  background-color: #00ef60;
+  transition: ease-in-out 300ms;
+}
+
+.nav-control {
+  line-height: 12px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.logo-control {
+  display: none;
+}
+
 nav {
   background-color: #fce4b9;
 }
 #navbar-nav:last-child {
   margin-bottom: 10px !important;
 }
+
+/* Homepage Styles */
 main {
   font-family: "Signika Negative", sans-serif;
+}
+
+main h3 {
+  margin-left: 40px;
 }
 .page-title-text {
   text-align: center;
@@ -142,6 +179,9 @@ main {
 }
 
 /* Login Page Styles */
+#login-page {
+  height: 395px;
+}
 #login-page h1 {
   text-align: center;
   margin-top: 5px;
@@ -168,6 +208,9 @@ main {
 }
 
 /* Sign Up Page Styles */
+#signup-page {
+  height: 395px;
+}
 #signup-page h1 {
   text-align: center;
   margin-top: 5px;
@@ -190,7 +233,6 @@ main {
 #signup-form input:focus-visible {
   background-color: rgba(4, 253, 108, 0.3);
   transition: ease-in-out 150ms;
-  /* outline: 3px solid #34ff85; */
 }
 
 .login-button {
@@ -222,12 +264,22 @@ main {
   padding-left: 0;
 }
 
-.navbar-nav {
-  font-size: 22px;
+/* Single Shop Styles */
+.submitreview-control {
+  text-align: center;
 }
 
-.nav-buttons {
-  margin-right: 5px;
+.submitreview-control textarea {
+  width: 70%;
+  border-radius: 4px;
+  height: 150px;
+}
+.submitreview-control button {
+  margin-bottom: 20px;
+  margin-top: 6px;
+  width: 70%;
+  height: 38px;
+  transition: ease-in-out 300ms;
   border-radius: 58px;
   border: 0px;
   background-color: #4fff97;
@@ -237,21 +289,12 @@ main {
   border: solid 1px #ffb2b2;
 }
 
-.nav-buttons:hover {
-  background-color: #00ef60;
+.submitreview-control button:hover {
+  background-color: #00b147;
   transition: ease-in-out 300ms;
 }
 
-.nav-control {
-  line-height: 12px;
-  text-align: center;
-  padding: 10px 0;
-}
-
-.logo-control {
-  display: none;
-}
-
+/* Footer Styles */
 footer {
   background: rgb(251, 212, 143);
   background: linear-gradient(

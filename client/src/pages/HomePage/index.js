@@ -6,7 +6,7 @@ import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
-import VallartasPic from "../../images/VallartasExpress.png";
+import VallartasPic from "../../images/ts1.jpg";
 // import Image from "../../components/ImageContainer/image";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
