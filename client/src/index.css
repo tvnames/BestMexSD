@@ -305,6 +305,12 @@ footer {
   .splide {
     display: initial;
   }
+  .splide__pagination {
+    display: none;
+  }
+  .splide__arrows {
+    display: none;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
