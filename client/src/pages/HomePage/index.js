@@ -47,7 +47,7 @@ function HomePage() {
           {/* <Image src={VallartasPic} className="float-left" /> */}
           {/* <div className="col">
           </div> */}
-          <div className="col d-flex">
+          <div className="col-lg-12">
             {/* <Image src={VallartasPic} className="float-left" /> */}
             <FeaturedCard
               id={currentShop._id}
