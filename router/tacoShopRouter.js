@@ -60,7 +60,7 @@ tacoShopRouter.post("/reviews/update", (req, res) => {
         reviews: req.body.reviewInput,
       },
     },
-    (_err) => {}
+    (_err) => { }
   );
 });
 
@@ -72,7 +72,7 @@ tacoShopRouter.post("/update", (req, res) => {
         rating: req.body.index,
       },
     },
-    (_err) => {}
+    (_err) => { }
   );
 });
 
