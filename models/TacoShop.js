@@ -8,7 +8,6 @@ const TacoShopSchema = new mongoose.Schema({
   shopName: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minLength: 2,
   },
@@ -18,12 +17,11 @@ const TacoShopSchema = new mongoose.Schema({
       trim: true,
     },
   ],
-  menuURL: [
-    {
-      type: String,
-      trim: true,
-    },
-  ],
+  menuURL:
+  {
+    type: String,
+    trim: true,
+  },
   rating: [
     {
       type: Number,
@@ -37,30 +35,25 @@ const TacoShopSchema = new mongoose.Schema({
   featuredFood: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   address: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   location: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   state: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   city: {
     type: String,
-    unique: true,
     trim: true,
   },
   phone: {

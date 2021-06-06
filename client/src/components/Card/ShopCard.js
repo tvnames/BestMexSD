@@ -24,7 +24,7 @@ function ShopCard({
     >
       <img className="card-img-top card-image-control" src={src} alt={src} />
       <div className="card-body">
-        <h5 className="card-title" name={shopName}>
+        <h4 className="card-title" name={shopName}>
           {shopName}
         </h5>
         <p className="card-text textBox">{location}</p>

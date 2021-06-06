@@ -17,15 +17,16 @@ function FeaturedCard({
   featuredFood,
 }) {
   return (
-    <div className="card m-1 w-100">
+    <div className="card m-1">
       <div className="card-body ">
         <img src={src} alt={src} className="featured-img-control" />
-        <h5 className="card-title">{shopName}</h5>
+        <h2 className="card-title">{shopName}</h2>
         <p className="card-text">
           <strong>Featured Food: </strong>
           {featuredFood}
+          <br />
+          <strong>About {shopName}: </strong>
         </p>
-        <strong>About Sombreros: </strong>
         {description}
       </div>
       <ul className="list-group list-group-flush">
