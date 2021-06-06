@@ -65,11 +65,12 @@ function HomePage() {
             />
           </div>
         </section>
-        <section className="row m-3 shopcard-control">
+        <section className="row m-3 shopcard-control d-flex justify-content-around">
           {restaurantArray.map((restaurant) => (
             <ShopCard
               id={restaurant._id}
               src={VallartasPic}
+              description={restaurant.description}
               shopName={restaurant.shopName}
               location={restaurant.location}
               featuredFood={restaurant.featuredFood}
