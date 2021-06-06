@@ -27,7 +27,7 @@ function ShopCard({
         <h5 className="card-title" name={shopName}>
           {shopName}
         </h5>
-        <p className="card-text">{location}</p>
+        <p className="card-text textBox">{location}</p>
         <p className="card-text">Featured Food: {featuredFood}</p>
       </div>
     </div>
