@@ -4,6 +4,7 @@ import "./style.css";
 
 function ShopCard({
   restaurantArray,
+  description,
   id,
   shopName,
   src,
@@ -27,7 +28,8 @@ function ShopCard({
         <h4 className="card-title" name={shopName}>
           {shopName}
         </h4>
-        <p className="card-text">{location}</p>
+        <p className="card-text textBox">{location}</p>
+        <p className="card-text textBox">{description}</p>
         <p className="card-text">Featured Food: {featuredFood}</p>
       </div>
     </div>

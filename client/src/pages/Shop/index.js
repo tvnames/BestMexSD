@@ -1,18 +1,19 @@
-// import { React } from "react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
-// import Image from "../../components/ImageContainer/image";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
-// import singleSeed from "./singleSeed.json";
-// import HomePage from "../HomePage";
 
 function ShopPage() {
   const id = useParams().id;
+  const [singleShop, setSingleShop] = useState({
+    rating: []
+  });
+  const [reviewInput, setReviewInput] = useState("");
+  const ratingArray = singleShop.rating
 
   useEffect(() => {
     singleShopAPI(id)
@@ -20,10 +21,10 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
-  const [singleShop, setSingleShop] = useState({});
-
-  const { rating } = singleShop;
-  const [reviewInput, setReviewInput] = useState("");
+  function getAvg(ratingArray) {
+    const total = ratingArray.reduce((acc, c) => acc + c, 0);
+    return total / ratingArray.length;
+  }
 
   function handleSubmit(event) {
     let shopId = singleShop._id;
@@ -44,7 +45,7 @@ function ShopPage() {
     if (singleShop.reviews) {
       return singleShop.reviews.map((review) => (
         <ReviewCard reviewText={review} />
-      ));
+      )).reverse();
     }
   }
 
@@ -62,8 +63,8 @@ function ShopPage() {
               location={singleShop.location}
               phone={singleShop.phone}
               address={singleShop.address}
-              numOfRatings={27}
-              rating={4.2}
+              numOfRatings={ratingArray.length}
+              rating={getAvg(ratingArray).toFixed(1)}
               featuredFood={singleShop.featuredFood}
             />
           </div>
