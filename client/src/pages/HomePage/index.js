@@ -7,7 +7,6 @@ import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "../../images/ts1.jpg";
-// import Image from "../../components/ImageContainer/image";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 
@@ -16,6 +15,7 @@ function HomePage() {
   // const auth = useAuth();
   const randomShop = getRandom(5);
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
+
 
   useEffect(() => {
     shopAPI()
@@ -44,11 +44,7 @@ function HomePage() {
         </section>
         <h3>This week's Top Shop:</h3>
         <section className="row m-3">
-          {/* <Image src={VallartasPic} className="float-left" /> */}
-          {/* <div className="col">
-          </div> */}
           <div className="col-lg-12">
-            {/* <Image src={VallartasPic} className="float-left" /> */}
             <FeaturedCard
               id={currentShop._id}
               ratingArray={currentShop.rating}

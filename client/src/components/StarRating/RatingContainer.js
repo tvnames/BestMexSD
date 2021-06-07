@@ -2,12 +2,10 @@ import React from "react";
 import RatingIcon from "./RatingIcon";
 import "./style.css";
 import axios from "axios";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+
 
 function RatingContainer({ ratingArray, id }) {
-  // const notify = () => toast("Wow so easy!");
-  // const [updatedArray, setUpdatedArray] = React.useState(ratingArray);
+
   const [rating, setRating] = React.useState(0);
   const [hoverRating, setHoverRating] = React.useState(0);
   const onMouseEnter = (index) => {
@@ -20,14 +18,11 @@ function RatingContainer({ ratingArray, id }) {
   const onSaveRating = (index) => {
     setRating(index);
     axios.post("/api/tacoShops/update", { index, id });
-    // toast.success(`Rating Saved!`, { autoClose: 2000 });
     window.location.reload();
   };
   return (
     <>
-      {/* <div>
-                <ToastContainer />
-            </div> */}
+
       <div className="d-flex justify-content-end mr-3">
         <strong>Been Here? Rate this Spot: &nbsp; </strong>
 
