@@ -20,7 +20,6 @@ function FeaturedCard({
 
   function getRating(averageRating) {
     let ratingNumber = parseInt(averageRating)
-    // let ratingNumber = 0
     switch (true) {
       case (ratingNumber >= 4 && ratingNumber < 5):
         return (
