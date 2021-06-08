@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SearchForm from '../../components/SearchForm/SearchForm'
 // import { useHistory } from "react-router-dom";
 // import { useAuth } from "../../util/auth";
 
@@ -13,10 +14,17 @@ import HomepageText from "../../components/HomepageText/HomepageText";
 function HomePage() {
   // const history = useHistory();
   // const auth = useAuth();
+  // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const randomShop = getRandom(5);
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
+  const [search, setSearch] = useState("");
 
 
+  // const currentShop = restaurantArray[randomShop];
+  const currentShop = restaurantArray[1];
+  const avg = restaurantArray[1].rating.reduce((a, b) => a + b) / restaurantArray[1].rating.length;
+
+  // Call Back-End to populate restaurant array
   useEffect(() => {
     shopAPI()
       .then((res) => {
@@ -26,14 +34,53 @@ function HomePage() {
       .catch(console.error());
   }, []);
 
+  // Generate random integer to plug into index to get random shop for featured card
   function getRandom(maximum) {
     return Math.floor(Math.random() * maximum);
   }
 
-  const currentShop = restaurantArray[randomShop];
-  const avg =
-    restaurantArray[randomShop].rating.reduce((a, b) => a + b) /
-    restaurantArray[randomShop].rating.length;
+  // Handle search bar entry
+  function handleSearchChange(event) {
+    const value = event.target.value;
+    setSearch(value)
+  };
+
+
+  // Filtered Array from search bar input
+  const filteredArray = restaurantArray.filter((restaurant) => {
+    const shopSearch = search.toLocaleLowerCase()
+    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase()
+    const location = restaurant.location.toLocaleLowerCase();
+    const featuredFood = restaurant.featuredFood.toLocaleLowerCase()
+
+
+    if (lowercaseShopName.includes(shopSearch) || location.includes(shopSearch) || featuredFood.includes(shopSearch)) {
+      return true
+    } else if (!lowercaseShopName.includes(shopSearch) || !location.includes(shopSearch) || !featuredFood.includes(shopSearch)) {
+      return false
+    }
+  })
+
+  function renderShops(filteredArray) {
+    if (filteredArray.length > 0) {
+      return (filteredArray.map((restaurant) => (
+        <ShopCard
+          key={restaurant._id}
+          id={restaurant._id}
+          src={VallartasPic}
+          description={restaurant.description}
+          shopName={restaurant.shopName}
+          location={restaurant.location}
+          featuredFood={restaurant.featuredFood}
+        />
+      )))
+    } else {
+      return (
+        <div className="container-fluid">
+          <h4>No matching search results...</h4>
+        </div>)
+    }
+  }
 
   return (
     <div className="container-fluid">
@@ -61,17 +108,13 @@ function HomePage() {
             />
           </div>
         </section>
+        <div>
+          <h4>Searching for something specific? Enter your search below!</h4>
+          <SearchForm search={search} handleSearchChange={handleSearchChange} />
+        </div>
+
         <section className="row m-3 shopcard-control d-flex justify-content-around">
-          {restaurantArray.map((restaurant) => (
-            <ShopCard
-              id={restaurant._id}
-              src={VallartasPic}
-              description={restaurant.description}
-              shopName={restaurant.shopName}
-              location={restaurant.location}
-              featuredFood={restaurant.featuredFood}
-            />
-          ))}
+          {renderShops(filteredArray)}
         </section>
       </main>
     </div>

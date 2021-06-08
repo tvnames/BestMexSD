@@ -19,6 +19,7 @@ function ShopCard({
 
   return (
     <div
+      key={id}
       className="card p-0 m-2 shopCard col-12 col-sm-12 col-md-4 col-lg-2"
       style={{ width: "15rem" }}
       onClick={redirect}
@@ -28,6 +29,7 @@ function ShopCard({
         <h4 className="card-title" name={shopName}>
           {shopName}
         </h4>
+
         <p className="card-text textBox">{location}</p>
         <p className="card-text textBox">{description}</p>
         <p className="card-text">Featured Food: {featuredFood}</p>

@@ -67,8 +67,9 @@ function FeaturedCard({
     }
   }
 
-
-
+  // ######################### Return Statement ############################
+  // ######################### Return Statement ############################
+  // ######################### Return Statement ############################
 
   return (
     <div className="card m-1">
@@ -84,31 +85,13 @@ function FeaturedCard({
         {description}
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">
-          <strong>Location:</strong> {location}
-        </li>
-        <li className="list-group-item">
-          <strong>Address: </strong>
-          {address}
-        </li>
-        <li className="list-group-item">
-          <strong>Phone: </strong>
-          {phone}
-        </li>
+        <li className="list-group-item"><strong>Location: </strong>{location}</li>
+        <li className="list-group-item"><strong>Address: </strong>{address}</li>
+        <li className="list-group-item"><strong>Phone: </strong>{phone}</li>
       </ul>
       <div className="card-body d-flex">
-        <a
-          href={menuURL}
-          className="card-link"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          View Their Menu
-        </a>
-        <i className="ml-auto">
-          <strong>Average Rating:</strong>{getRating(rating)} {rating} out of 5 stars! (
-          {numOfRatings} Ratings)
-        </i>
+        <a href={menuURL} className="card-link" target="_blank" rel="noreferrer noopener">View Their Menu</a>
+        <i className="ml-auto"><strong>Average Rating:</strong>{getRating(rating)} {rating} out of 5 stars! ({numOfRatings} Ratings)</i>
       </div>
       <div className="">
         <RatingContainer id={id} ratingArray={ratingArray} />

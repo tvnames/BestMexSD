@@ -1,5 +1,4 @@
 import React from "react";
-// import style from "./style.css";
 
 function ReviewCard({ shopName, reviewDate, reviewText, }) {
     return (
