@@ -20,6 +20,7 @@ function RatingIcon(props) {
     }, [rating, hoverRating, index]);
     return (
         <div
+            key={index}
             className="cursor-pointer"
             onMouseEnter={() => onMouseEnter(index)}
             onMouseLeave={() => onMouseLeave()}

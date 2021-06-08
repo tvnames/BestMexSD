@@ -32,7 +32,6 @@ tacoShopRouter.get("/:id", async (req, res) => {
 
 tacoShopRouter.post("/", async (req, res) => {
   console.log("Post Shop Request Received on Back-End");
-  // console.log(req.body.formState)
   TacoShop.create({
     shopName: req.body.formState.shopName,
     reviews: req.body.formState.reviews,
@@ -52,7 +51,6 @@ tacoShopRouter.post("/", async (req, res) => {
 
 tacoShopRouter.post("/reviews/update", (req, res) => {
   console.log("Update Reviews Route Hit");
-  console.log(req.body);
   TacoShop.updateOne(
     { _id: req.body.shopId },
     {

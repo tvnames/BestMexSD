@@ -31,7 +31,7 @@ function ShopPage() {
     event.preventDefault();
     axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput });
     window.location.reload();
-    return <Redirect exact to="/" />;
+    return <Redirect exact to="#navbarNav" />;
   }
 
   function handleInputChange(event) {
@@ -51,9 +51,9 @@ function ShopPage() {
 
   return (
     <>
-      <div className="container-fluid m-2">
+      <div className="container-fluid m-2" id="pageTop">
         <div className="">
-          <div className="col d-flex justify-content-center">
+          <div className="col d-flex justify-content-center" id="pageTop">
             <FeaturedCard
               src={VallartasPic}
               id={singleShop._id}

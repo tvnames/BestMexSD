@@ -8,6 +8,7 @@ function RatingContainer({ ratingArray, id }) {
 
   const [rating, setRating] = React.useState(0);
   const [hoverRating, setHoverRating] = React.useState(0);
+
   const onMouseEnter = (index) => {
     setHoverRating(index);
   };
@@ -16,8 +17,8 @@ function RatingContainer({ ratingArray, id }) {
   };
 
   const onSaveRating = (index) => {
-    setRating(index);
     axios.post("/api/tacoShops/update", { index, id });
+    setRating(index);
     window.location.reload();
   };
   return (
@@ -29,6 +30,7 @@ function RatingContainer({ ratingArray, id }) {
         {[1, 2, 3, 4, 5].map((index) => {
           return (
             <RatingIcon
+              key={id}
               index={index}
               rating={rating}
               hoverRating={hoverRating}
