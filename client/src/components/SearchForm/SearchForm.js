@@ -12,7 +12,7 @@ function SearchForm({ handleSearchChange, search }) {
                     name="search"
                     type="text"
                     className="form-control searchBox"
-                    placeholder="Search Restaurants here..."
+                    placeholder="Type in a restaurant name, location, featured food..."
                     id="search"
                 />
             </div>
