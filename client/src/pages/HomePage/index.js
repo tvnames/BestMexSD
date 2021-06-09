@@ -116,6 +116,7 @@ function HomePage() {
             />
           </div>
         </section>
+        <hr />
         <section className="taco-filter-search">
           <h4>Searching for something specific? Enter your search below!</h4>
           <SearchForm search={search} handleSearchChange={handleSearchChange} />
