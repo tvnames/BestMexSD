@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
 // import { useHistory } from "react-router-dom";
 // import { useAuth } from "../../util/auth";
-
 import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
@@ -10,14 +9,19 @@ import ShopCard from "../../components/Card/ShopCard";
 import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
+import useDebounce from "../../util/useDebounce";
 
 function HomePage() {
   // const history = useHistory();
   // const auth = useAuth();
+
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const randomShop = getRandom(5);
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
   const [search, setSearch] = useState("");
+
+  const debouncedSearchTerm = useDebounce(search, 400);
+
 
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
@@ -48,8 +52,9 @@ function HomePage() {
 
   // Filtered Array from search bar input
   const filteredArray = restaurantArray.filter((restaurant) => {
-    const shopSearch = search.toLocaleLowerCase();
-    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase();
+    // const shopSearch = search.toLocaleLowerCase()
+    const shopSearch = debouncedSearchTerm.toLocaleLowerCase()
+    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase()
     const location = restaurant.location.toLocaleLowerCase();
     const featuredFood = restaurant.featuredFood.toLocaleLowerCase();
 
