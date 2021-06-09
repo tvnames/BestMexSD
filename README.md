@@ -1,7 +1,5 @@
 # BESTMEXSD - ![](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## SCREENSHOT OF APP
-
 ![App Screenshot](AppScreenShot.png "Description")
 
 <p align="center">This deployed app can be viewed <a href="https://bestmexsd-appage.herokuapp.com/" target="_blank">Here</a></p>
