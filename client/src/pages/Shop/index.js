@@ -1,4 +1,3 @@
-// import { React } from "react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -7,18 +6,14 @@ import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
-// import singleSeed from "./singleSeed.json";
-// import HomePage from "../HomePage";
 
 function ShopPage() {
   const id = useParams().id;
   const [singleShop, setSingleShop] = useState({
     rating: []
   });
-
   const [reviewInput, setReviewInput] = useState("");
-
-
+  const ratingArray = singleShop.rating
 
   useEffect(() => {
     singleShopAPI(id)
@@ -26,17 +21,10 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
-
-  const ratingArray = singleShop.rating
-
   function getAvg(ratingArray) {
     const total = ratingArray.reduce((acc, c) => acc + c, 0);
     return total / ratingArray.length;
   }
-
-  console.log(getAvg(ratingArray))
-
-
 
   function handleSubmit(event) {
     let shopId = singleShop._id;
