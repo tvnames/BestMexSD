@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchForm from '../../components/SearchForm/SearchForm'
+import SearchForm from "../../components/SearchForm/SearchForm";
 // import { useHistory } from "react-router-dom";
 // import { useAuth } from "../../util/auth";
 
@@ -19,10 +19,11 @@ function HomePage() {
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
   const [search, setSearch] = useState("");
 
-
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
-  const avg = restaurantArray[1].rating.reduce((a, b) => a + b) / restaurantArray[1].rating.length;
+  const avg =
+    restaurantArray[1].rating.reduce((a, b) => a + b) /
+    restaurantArray[1].rating.length;
 
   // Call Back-End to populate restaurant array
   useEffect(() => {
@@ -42,28 +43,34 @@ function HomePage() {
   // Handle search bar entry
   function handleSearchChange(event) {
     const value = event.target.value;
-    setSearch(value)
-  };
-
+    setSearch(value);
+  }
 
   // Filtered Array from search bar input
   const filteredArray = restaurantArray.filter((restaurant) => {
-    const shopSearch = search.toLocaleLowerCase()
-    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase()
+    const shopSearch = search.toLocaleLowerCase();
+    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase();
     const location = restaurant.location.toLocaleLowerCase();
-    const featuredFood = restaurant.featuredFood.toLocaleLowerCase()
+    const featuredFood = restaurant.featuredFood.toLocaleLowerCase();
 
-
-    if (lowercaseShopName.includes(shopSearch) || location.includes(shopSearch) || featuredFood.includes(shopSearch)) {
-      return true
-    } else if (!lowercaseShopName.includes(shopSearch) || !location.includes(shopSearch) || !featuredFood.includes(shopSearch)) {
-      return false
+    if (
+      lowercaseShopName.includes(shopSearch) ||
+      location.includes(shopSearch) ||
+      featuredFood.includes(shopSearch)
+    ) {
+      return true;
+    } else if (
+      !lowercaseShopName.includes(shopSearch) ||
+      !location.includes(shopSearch) ||
+      !featuredFood.includes(shopSearch)
+    ) {
+      return false;
     }
-  })
+  });
 
   function renderShops(filteredArray) {
     if (filteredArray.length > 0) {
-      return (filteredArray.map((restaurant) => (
+      return filteredArray.map((restaurant) => (
         <ShopCard
           key={restaurant._id}
           id={restaurant._id}
@@ -73,12 +80,13 @@ function HomePage() {
           location={restaurant.location}
           featuredFood={restaurant.featuredFood}
         />
-      )))
+      ));
     } else {
       return (
         <div className="container-fluid">
           <h4>No matching search results...</h4>
-        </div>)
+        </div>
+      );
     }
   }
 
@@ -108,10 +116,10 @@ function HomePage() {
             />
           </div>
         </section>
-        <div>
+        <section className="taco-filter-search">
           <h4>Searching for something specific? Enter your search below!</h4>
           <SearchForm search={search} handleSearchChange={handleSearchChange} />
-        </div>
+        </section>
 
         <section className="row m-3 shopcard-control d-flex justify-content-around">
           {renderShops(filteredArray)}
