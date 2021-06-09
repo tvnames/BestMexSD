@@ -4,7 +4,7 @@
 
 ![App Screenshot](AppScreenShot.png "Description")
 
-<p>This deployed app can be viewed at: https://bestmexsd-appage.herokuapp.com/   </p>
+<p align="center">This deployed app can be viewed <a href="https://bestmexsd-appage.herokuapp.com/" target="_blank">Here</a></p>
 
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/tvnames/BestMexSD" />
