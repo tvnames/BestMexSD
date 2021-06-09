@@ -33,7 +33,7 @@ function Navbar() {
                 Find A Taco Shop
               </NavLink>
             </li> */}
-            <li className="nav-item nav-control">
+            <li className="nav-item nav-control animate__animated animate__fadeInDown">
               <NavLink className="nav-link " to="/submitshop">
                 Submit A Taco Shop
               </NavLink>
