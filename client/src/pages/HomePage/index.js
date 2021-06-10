@@ -10,6 +10,7 @@ import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 import useDebounce from "../../util/useDebounce";
+import './style.css';
 
 function HomePage() {
   // const history = useHistory();
@@ -126,7 +127,7 @@ function HomePage() {
           <SearchForm search={search} handleSearchChange={handleSearchChange} />
         </section>
 
-        <section className="row m-3 shopcard-control d-flex justify-content-around">
+        <section className="row m-3 shopcard-control shopBox d-flex justify-content-around">
           {renderShops(filteredArray)}
         </section>
       </main>
