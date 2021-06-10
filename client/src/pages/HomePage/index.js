@@ -23,7 +23,6 @@ function HomePage() {
 
   const debouncedSearchTerm = useDebounce(search, 400);
 
-
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
   const avg =
@@ -54,8 +53,8 @@ function HomePage() {
   // Filtered Array from search bar input
   const filteredArray = restaurantArray.filter((restaurant) => {
     // const shopSearch = search.toLocaleLowerCase()
-    const shopSearch = debouncedSearchTerm.toLocaleLowerCase()
-    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase()
+    const shopSearch = debouncedSearchTerm.toLocaleLowerCase();
+    const lowercaseShopName = restaurant.shopName.toLocaleLowerCase();
     const location = restaurant.location.toLocaleLowerCase();
     const featuredFood = restaurant.featuredFood.toLocaleLowerCase();
 
@@ -124,7 +123,7 @@ function HomePage() {
         </section>
         <hr />
         <section className="taco-filter-search">
-          <h4>Searching for something specific? Enter your search below!</h4>
+          <h2>Searching for a specific Taco Shop?</h2>
           <SearchForm search={search} handleSearchChange={handleSearchChange} />
         </section>
 
