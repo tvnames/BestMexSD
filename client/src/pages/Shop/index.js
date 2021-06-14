@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
+import { shopReviewAPI } from "../../util/shopAPI";
 import { useAuth } from "../../util/auth";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
@@ -12,14 +13,14 @@ function ShopPage() {
 
   const auth = useAuth();
   const [userName, setUserName] = useState("");
-
+  const [reviewsArray, setReviewsArray] = useState([]);
   const id = useParams().id;
-  const [singleShop, setSingleShop] = useState({
-    rating: []
-  });
+  const [singleShop, setSingleShop] = useState({ rating: [] });
   const [reviewInput, setReviewInput] = useState("");
-  const ratingArray = singleShop.rating
 
+
+
+  const ratingArray = singleShop.rating
 
   useEffect(() => {
     singleShopAPI(id)
@@ -27,37 +28,17 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
+  useEffect(() => {
+    shopReviewAPI(id)
+      .then((res) => setReviewsArray(res))
+      .catch(console.error());
+  }, [id]);
 
-  // Display Review Input Box only if user is logged in
-  function UserNavs() {
-    return (
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <textarea
-            className="form-control"
-            type="text"
-            onChange={handleInputChange}
-            value={reviewInput}
-            id="newReview"
-            aria-describedby="submitReviewBox"
-            placeholder="Type your Review Here..."
-          />
-        </div>
-        <button
-          type="submit"
-          value={reviewInput}
-          id="reviewFormButton"
-          className="btn btn-primary nav-buttons shop-submit"
-        >
-          Submit
-        </button>
-      </form>
-    );
-  }
+  console.log(reviewsArray)
 
-
-
-
+  useEffect(() => {
+    { auth.isLoggedIn() ? setUserName(auth.user.username) : console.log("") }
+  }, [auth]);
 
   function getAvg(ratingArray) {
     const total = ratingArray.reduce((acc, c) => acc + c, 0);
@@ -68,45 +49,41 @@ function ShopPage() {
     let shopId = singleShop._id;
     event.preventDefault();
     axios.post("/api/reviews", { userName, shopId, reviewInput });
-    // window.location.reload();
+    window.location.reload();
     // return <Redirect exact to="#navbarNav" />;
   }
 
   function handleInputChange(event) {
     event.preventDefault();
-    // console.log(event);
-    console.log(event.target.value);
     setReviewInput(event.target.value);
     // return <Redirect exact to="/" />;
   }
 
-
+  // function renderReviews() {
+  //   if (singleShop.reviews) {
+  //     return singleShop.reviews.map((review) => (
+  //       <ReviewCard reviewText={review} />
+  //     )).reverse();
+  //   }
+  // }
   function renderReviews() {
-    if (singleShop.reviews) {
-      return singleShop.reviews.map((review) => (
-        <ReviewCard reviewText={review} />
-      )).reverse();
-    }
-  }
+    if (reviewsArray.length < 1) {
+      return (
+        <>
+          <hr />
+          <h5>No Reviews Found! Be the first to review this restaurant by typing your review in below!</h5>
+          <hr />
+        </>
+      )
+    } else
+      return reviewsArray.map((review) => (
+        <ReviewCard
+          reviewDate={review.createdAt}
+          reviewText={review.text}
+          userName={review.userName}
+        />
+      ));
 
-  const reviewForm = ({ handleSubmit, handleInputChange }) => {
-    <>
-      <h3>Submit Your Review in the Box Below:</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <textarea
-            className="form-control"
-            type="text"
-            onChange={handleInputChange}
-            value={reviewInput}
-            id="newReview"
-            aria-describedby="submitReviewBox"
-            placeholder="Type your Review Here..."
-          />
-        </div>
-        <button type="submit" value={reviewInput} id="reviewFormButton" className="btn btn-primary nav-buttons shop-submit">Submit</button>
-      </form>
-    </>
   }
 
   return (

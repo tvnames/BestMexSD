@@ -6,32 +6,26 @@ const { Review } = require("../models");
 
 
 
-reviewRouter.get("/:id", (req, res) => {
-    console.log("Get Single Shop's Reviews Request Received on Back-End");
-    // try {
-    //     const shopData = await TacoShop.findById(req.params.id);
-    //     res.send(shopData);
-    // } catch (err) {
-    //     res.status(500).json(err);
-    // }
+reviewRouter.get("/:id", async (req, res) => {
+    console.log("****Get Single Shop's Reviews Request Received on Back-End");
+    try {
+        const reviewData = await Review.find({
+            shopId: req.params.id
+        });
+        console.log(reviewData);
+        res.send(reviewData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 reviewRouter.post("/", (req, res) => {
     console.log(req.body);
-    // Review.create({
-    //     shopName: req.body.formState.shopName,
-    //     reviews: req.body.formState.reviews,
-    //     menuURL: req.body.formState.url,
-    //     rating: req.body.formState.rating,
-    //     description: req.body.formState.description,
-    //     featuredFood: req.body.formState.featuredFood,
-    //     address: req.body.formState.address,
-    //     location: req.body.formState.location,
-    //     state: req.body.formState.state,
-    //     city: req.body.formState.city,
-    //     phone: req.body.formState.phone,
-    //     zip: req.body.formState.zip,
-    // });
+    Review.create({
+        shopId: req.body.shopId,
+        userName: req.body.userName,
+        text: req.body.reviewInput,
+    });
     console.log("New Review Posted!");
 });
 
