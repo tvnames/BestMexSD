@@ -8,6 +8,10 @@ const ReviewSchema = new mongoose.Schema({
     trim: true,
     minLength: 2,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
   rating: {
     type: String,
     required: true,
