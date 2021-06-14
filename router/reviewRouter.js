@@ -3,16 +3,12 @@ const reviewRouter = express.Router();
 const { Review } = require("../models");
 
 
-
-
-
 reviewRouter.get("/:id", async (req, res) => {
     console.log("****Get Single Shop's Reviews Request Received on Back-End");
     try {
         const reviewData = await Review.find({
             shopId: req.params.id
         });
-        console.log(reviewData);
         res.send(reviewData);
     } catch (err) {
         res.status(500).json(err);
@@ -20,7 +16,6 @@ reviewRouter.get("/:id", async (req, res) => {
 });
 
 reviewRouter.post("/", (req, res) => {
-    console.log(req.body);
     Review.create({
         shopId: req.body.shopId,
         userName: req.body.userName,
