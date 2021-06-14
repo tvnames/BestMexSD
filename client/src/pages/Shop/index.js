@@ -2,18 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
+import { useAuth } from "../../util/auth";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
 
 function ShopPage() {
+  const auth = useAuth();
+  // const reviewerName = auth.user.username;
   const id = useParams().id;
   const [singleShop, setSingleShop] = useState({
     rating: []
   });
   const [reviewInput, setReviewInput] = useState("");
   const ratingArray = singleShop.rating
+
+
+  // console.log(reviewerName)
+
 
   useEffect(() => {
     singleShopAPI(id)
@@ -40,6 +47,7 @@ function ShopPage() {
     setReviewInput(event.target.value);
     return <Redirect exact to="/" />;
   }
+
 
   function renderReviews() {
     if (singleShop.reviews) {
@@ -76,9 +84,9 @@ function ShopPage() {
           <div className="col-lg-12 submitreview-control">
             <h3>Submit Your Review in the Box Below:</h3>
             <form onSubmit={handleSubmit}>
-              <div classname="form-group">
+              <div className="form-group">
                 <textarea
-                  classname="form-control"
+                  className="form-control"
                   type="text"
                   onChange={handleInputChange}
                   value={reviewInput}
@@ -91,7 +99,7 @@ function ShopPage() {
                 type="submit"
                 value={reviewInput}
                 id="reviewFormButton"
-                classname="btn btn-primary nav-buttons shop-submit"
+                className="btn btn-primary nav-buttons shop-submit"
               >
                 Submit
               </button>

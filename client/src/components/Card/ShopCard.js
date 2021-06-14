@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 
 function ShopCard({
-  restaurantArray,
+  // restaurantArray,
   description,
   id,
   shopName,
@@ -19,7 +19,6 @@ function ShopCard({
 
   return (
     <div
-      key={id}
       className="card p-3 m-2 shopCard col-12 col-sm-12 col-md-4 col-lg-2"
       style={{ width: "15rem" }}
       onClick={redirect}

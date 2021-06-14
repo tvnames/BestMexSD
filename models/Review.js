@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    minLength: 2,
-  },
+  // id: {
+  //   type: String,
+  //   required: true,
+  //   unique: true,
+  //   trim: true,
+  //   minLength: 2,
+  // },
   createdAt: {
     type: Date,
     default: Date.now,
