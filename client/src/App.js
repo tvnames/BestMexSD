@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
 // import PrivatePage from "./pages/PrivatePage";
 import SignupPage from "./pages/SignupPage";
-// import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -27,9 +27,9 @@ function App() {
           <Route path="/shop/:id">
             <ShopPage />
           </Route>
-          <Route path="/submitshop">
+          <PrivateRoute path="/submitshop">
             <SubmitShopPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/signup">
             <SignupPage />
           </Route>

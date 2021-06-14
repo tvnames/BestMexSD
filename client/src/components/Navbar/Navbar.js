@@ -7,6 +7,13 @@ import logo from "./bestmexlogo.png";
 function Navbar() {
   const auth = useAuth();
   // const history = useHistory();
+
+  function submitshopClick() {
+    if (!auth.isLoggedIn) {
+      window.alert("You must be logged in to submit a shop!")
+    }
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -39,7 +46,7 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item nav-control">
-              {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
+              {/* {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />} */}
             </li>
           </ul>
           {/* hide actions if user is logged in */}
