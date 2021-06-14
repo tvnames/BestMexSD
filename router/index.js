@@ -1,12 +1,10 @@
 const router = require("express").Router();
 const clientRouter = require("./clientRouter");
 const userRouter = require("./userRouter");
-const tacoShops = require("./tacoShopRouter");
-const reviewRouter = require("./reviewRouter");
+const tacoShops = require("./tacoShopRouter")
 
 router.use("/api/users", userRouter);
 router.use("/api/tacoShops", tacoShops);
-router.use("/api/reviews", reviewRouter);
 
 
 // server react client and static assets (usually on heroku)

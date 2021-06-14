@@ -40,7 +40,6 @@ function SubmitShopPage() {
     // auth.signup({ email, username, password });
   };
 
-
   const handleInputChange = (event) => {
     let name = event.target.name;
     setFormState({
@@ -49,16 +48,7 @@ function SubmitShopPage() {
     });
   };
 
-
-  function entrySuccess() {
-    const { shopName, location } = formState
-    if (shopName && location.length > 1) {
-      window.alert(location)
-    } else {
-      window.alert("Need More Info")
-    }
-  }
-
+  console.log(formState);
 
   return (
     <div id="submitshop-page" className="container">
@@ -314,7 +304,6 @@ function SubmitShopPage() {
                 <div className="col-sm-10 ">
                   <button
                     type="submit"
-                    onClick={entrySuccess}
                     className="btn btn-primary nav-buttons shop-submit"
                   >
                     Submit Shop

@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { isPhoneNum, isZip } = require("../util/validate");
 
-const { Schema } = mongoose;
-
 // Add additional fields to the user schema as needed for your app. Feel free to
 // modify username, email, and password validations. email as part of the login
 // credentials.
@@ -19,12 +17,6 @@ const TacoShopSchema = new mongoose.Schema({
       trim: true,
     },
   ],
-  // reviews: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Review',
-  //   },
-  // ],
   menuURL:
   {
     type: String,

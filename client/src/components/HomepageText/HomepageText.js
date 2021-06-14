@@ -5,7 +5,7 @@ function HomepageText({ src }) {
   return (
     <>
       <h2>
-        Welcome to <img src={logo} alt="logo" />
+        Welcome to <img src={logo} />
       </h2>
       <p>
         Your number one place to find and review San Diego's best taco shops.

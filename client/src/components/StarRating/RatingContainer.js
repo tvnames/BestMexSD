@@ -30,6 +30,7 @@ function RatingContainer({ ratingArray, id }) {
         {[1, 2, 3, 4, 5].map((index) => {
           return (
             <RatingIcon
+              key={id}
               index={index}
               rating={rating}
               hoverRating={hoverRating}
