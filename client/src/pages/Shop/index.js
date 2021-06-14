@@ -8,11 +8,10 @@ import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ShopPage() {
-
   const auth = useAuth();
   const [userName, setUserName] = useState("");
   const [reviewsArray, setReviewsArray] = useState([]);
@@ -20,9 +19,7 @@ function ShopPage() {
   const [singleShop, setSingleShop] = useState({ rating: [] });
   const [reviewInput, setReviewInput] = useState("");
 
-
-
-  const ratingArray = singleShop.rating
+  const ratingArray = singleShop.rating;
 
   useEffect(() => {
     singleShopAPI(id)
@@ -36,10 +33,12 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
-  console.log(reviewsArray)
+  console.log(reviewsArray);
 
   useEffect(() => {
-    { auth.isLoggedIn() ? setUserName(auth.user.username) : console.log("") }
+    {
+      auth.isLoggedIn() ? setUserName(auth.user.username) : console.log("");
+    }
   }, [auth]);
 
   function getAvg(ratingArray) {
@@ -48,7 +47,7 @@ function ShopPage() {
   }
 
   function handleSubmit(event) {
-    const reload = () => (window.location.reload())
+    const reload = () => window.location.reload();
     let shopId = singleShop._id;
     event.preventDefault();
     axios.post("/api/reviews", { userName, shopId, reviewInput });
@@ -73,19 +72,23 @@ function ShopPage() {
       return (
         <>
           <hr />
-          <h5>No Reviews Found! Be the first to review this restaurant by typing your review in below!</h5>
+          <h5>
+            No Reviews Found! Be the first to review this restaurant by typing
+            your review in below!
+          </h5>
           <hr />
         </>
-      )
+      );
     } else
-      return reviewsArray.map((review) => (
-        <ReviewCard
-          reviewDate={review.createdAt}
-          reviewText={review.text}
-          userName={review.userName}
-        />
-      )).reverse();
-
+      return reviewsArray
+        .map((review) => (
+          <ReviewCard
+            reviewDate={review.createdAt}
+            reviewText={review.text}
+            userName={review.userName}
+          />
+        ))
+        .reverse();
   }
 
   return (
@@ -114,10 +117,17 @@ function ShopPage() {
         <div className="row">
           <div className="col-lg-12 submitreview-control">
             <ToastContainer
-              position="top-right"
-              autoClose={1500}
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
             />
-            {auth.isLoggedIn() ?
+            {auth.isLoggedIn() ? (
               <>
                 <h3>Submit Your Review in the Box Below:</h3>
 
@@ -133,17 +143,27 @@ function ShopPage() {
                       placeholder="Type your Review Here..."
                     />
                   </div>
-                  <button type="submit" value={reviewInput} id="reviewFormButton" className="btn btn-primary nav-buttons shop-submit">Submit</button>
+                  <button
+                    type="submit"
+                    value={reviewInput}
+                    id="reviewFormButton"
+                    className="btn btn-primary nav-buttons shop-submit"
+                  >
+                    Submit
+                  </button>
                 </form>
               </>
-              : <><hr /><h4>Want to submit a review? Log In or Sign Up!</h4></>}
+            ) : (
+              <>
+                <hr />
+                <h4>Want to submit a review? Log In or Sign Up!</h4>
+              </>
+            )}
           </div>
         </div>
       </div>
     </>
   );
 }
-
-
 
 export default ShopPage;
