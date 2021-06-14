@@ -8,6 +8,8 @@ import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ShopPage() {
 
@@ -46,26 +48,26 @@ function ShopPage() {
   }
 
   function handleSubmit(event) {
+    const reload = () => (window.location.reload())
     let shopId = singleShop._id;
     event.preventDefault();
     axios.post("/api/reviews", { userName, shopId, reviewInput });
-    window.location.reload();
-    // return <Redirect exact to="#navbarNav" />;
+    toast.success(`Review Submitted!`, {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(window.location.reload.bind(window.location), 1500);
   }
 
   function handleInputChange(event) {
     event.preventDefault();
     setReviewInput(event.target.value);
-    // return <Redirect exact to="/" />;
   }
 
-  // function renderReviews() {
-  //   if (singleShop.reviews) {
-  //     return singleShop.reviews.map((review) => (
-  //       <ReviewCard reviewText={review} />
-  //     )).reverse();
-  //   }
-  // }
   function renderReviews() {
     if (reviewsArray.length < 1) {
       return (
@@ -82,7 +84,7 @@ function ShopPage() {
           reviewText={review.text}
           userName={review.userName}
         />
-      ));
+      )).reverse();
 
   }
 
@@ -111,9 +113,14 @@ function ShopPage() {
       <div className="container">
         <div className="row">
           <div className="col-lg-12 submitreview-control">
+            <ToastContainer
+              position="top-right"
+              autoClose={1500}
+            />
             {auth.isLoggedIn() ?
               <>
                 <h3>Submit Your Review in the Box Below:</h3>
+
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <textarea
