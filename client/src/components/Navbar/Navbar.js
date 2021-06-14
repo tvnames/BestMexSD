@@ -8,11 +8,11 @@ function Navbar() {
   const auth = useAuth();
   // const history = useHistory();
 
-  function submitshopClick() {
-    if (!auth.isLoggedIn) {
-      window.alert("You must be logged in to submit a shop!")
-    }
-  }
+  // function submitshopClick() {
+  //   if (!auth.isLoggedIn) {
+  //     window.alert("You must be logged in to submit a shop!")
+  //   }
+  // }
 
   return (
     <>

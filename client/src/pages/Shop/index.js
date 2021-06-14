@@ -9,8 +9,10 @@ import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
 
 function ShopPage() {
+
   const auth = useAuth();
-  // const reviewerName = auth.user.username;
+  const [userName, setUserName] = useState("");
+
   const id = useParams().id;
   const [singleShop, setSingleShop] = useState({
     rating: []
@@ -19,14 +21,43 @@ function ShopPage() {
   const ratingArray = singleShop.rating
 
 
-  // console.log(reviewerName)
-
-
   useEffect(() => {
     singleShopAPI(id)
       .then((res) => setSingleShop(res))
       .catch(console.error());
   }, [id]);
+
+
+  // Display Review Input Box only if user is logged in
+  function UserNavs() {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <textarea
+            className="form-control"
+            type="text"
+            onChange={handleInputChange}
+            value={reviewInput}
+            id="newReview"
+            aria-describedby="submitReviewBox"
+            placeholder="Type your Review Here..."
+          />
+        </div>
+        <button
+          type="submit"
+          value={reviewInput}
+          id="reviewFormButton"
+          className="btn btn-primary nav-buttons shop-submit"
+        >
+          Submit
+        </button>
+      </form>
+    );
+  }
+
+
+
+
 
   function getAvg(ratingArray) {
     const total = ratingArray.reduce((acc, c) => acc + c, 0);
@@ -36,16 +67,17 @@ function ShopPage() {
   function handleSubmit(event) {
     let shopId = singleShop._id;
     event.preventDefault();
-    axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput });
-    window.location.reload();
-    return <Redirect exact to="#navbarNav" />;
+    axios.post("/api/reviews", { userName, shopId, reviewInput });
+    // window.location.reload();
+    // return <Redirect exact to="#navbarNav" />;
   }
 
   function handleInputChange(event) {
-    console.log(event);
+    event.preventDefault();
+    // console.log(event);
     console.log(event.target.value);
     setReviewInput(event.target.value);
-    return <Redirect exact to="/" />;
+    // return <Redirect exact to="/" />;
   }
 
 
@@ -55,6 +87,26 @@ function ShopPage() {
         <ReviewCard reviewText={review} />
       )).reverse();
     }
+  }
+
+  const reviewForm = ({ handleSubmit, handleInputChange }) => {
+    <>
+      <h3>Submit Your Review in the Box Below:</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <textarea
+            className="form-control"
+            type="text"
+            onChange={handleInputChange}
+            value={reviewInput}
+            id="newReview"
+            aria-describedby="submitReviewBox"
+            placeholder="Type your Review Here..."
+          />
+        </div>
+        <button type="submit" value={reviewInput} id="reviewFormButton" className="btn btn-primary nav-buttons shop-submit">Submit</button>
+      </form>
+    </>
   }
 
   return (
@@ -82,33 +134,32 @@ function ShopPage() {
       <div className="container">
         <div className="row">
           <div className="col-lg-12 submitreview-control">
-            <h3>Submit Your Review in the Box Below:</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <textarea
-                  className="form-control"
-                  type="text"
-                  onChange={handleInputChange}
-                  value={reviewInput}
-                  id="newReview"
-                  aria-describedby="submitReviewBox"
-                  placeholder="Type your Review Here..."
-                />
-              </div>
-              <button
-                type="submit"
-                value={reviewInput}
-                id="reviewFormButton"
-                className="btn btn-primary nav-buttons shop-submit"
-              >
-                Submit
-              </button>
-            </form>
+            {auth.isLoggedIn() ?
+              <>
+                <h3>Submit Your Review in the Box Below:</h3>
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <textarea
+                      className="form-control"
+                      type="text"
+                      onChange={handleInputChange}
+                      value={reviewInput}
+                      id="newReview"
+                      aria-describedby="submitReviewBox"
+                      placeholder="Type your Review Here..."
+                    />
+                  </div>
+                  <button type="submit" value={reviewInput} id="reviewFormButton" className="btn btn-primary nav-buttons shop-submit">Submit</button>
+                </form>
+              </>
+              : <><hr /><h4>Want to submit a review? Log In or Sign Up!</h4></>}
           </div>
         </div>
       </div>
     </>
   );
 }
+
+
 
 export default ShopPage;
