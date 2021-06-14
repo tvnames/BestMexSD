@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
+import { shopReviewAPI } from "../../util/shopAPI";
+import { useAuth } from "../../util/auth";
 import FeaturedCard from "../../components/Card/FeaturedCard";
 import ReviewCard from "../../components/Card/ReviewCard";
 import VallartasPic from "../../images/ts9.jpg";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ShopPage() {
+
+  const auth = useAuth();
+  const [userName, setUserName] = useState("");
+  const [reviewsArray, setReviewsArray] = useState([]);
   const id = useParams().id;
-  const [singleShop, setSingleShop] = useState({
-    rating: []
-  });
+  const [singleShop, setSingleShop] = useState({ rating: [] });
   const [reviewInput, setReviewInput] = useState("");
+
+
+
   const ratingArray = singleShop.rating
 
   useEffect(() => {
@@ -21,32 +30,62 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
+  useEffect(() => {
+    shopReviewAPI(id)
+      .then((res) => setReviewsArray(res))
+      .catch(console.error());
+  }, [id]);
+
+  console.log(reviewsArray)
+
+  useEffect(() => {
+    { auth.isLoggedIn() ? setUserName(auth.user.username) : console.log("") }
+  }, [auth]);
+
   function getAvg(ratingArray) {
     const total = ratingArray.reduce((acc, c) => acc + c, 0);
     return total / ratingArray.length;
   }
 
   function handleSubmit(event) {
+    const reload = () => (window.location.reload())
     let shopId = singleShop._id;
     event.preventDefault();
-    axios.post("/api/tacoShops/reviews/update", { shopId, reviewInput });
-    window.location.reload();
-    return <Redirect exact to="#navbarNav" />;
+    axios.post("/api/reviews", { userName, shopId, reviewInput });
+    toast.success(`Review Submitted!`, {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(window.location.reload.bind(window.location), 1500);
   }
 
   function handleInputChange(event) {
-    console.log(event);
-    console.log(event.target.value);
+    event.preventDefault();
     setReviewInput(event.target.value);
-    return <Redirect exact to="/" />;
   }
 
   function renderReviews() {
-    if (singleShop.reviews) {
-      return singleShop.reviews.map((review) => (
-        <ReviewCard reviewText={review} />
+    if (reviewsArray.length < 1) {
+      return (
+        <>
+          <hr />
+          <h5>No Reviews Found! Be the first to review this restaurant by typing your review in below!</h5>
+          <hr />
+        </>
+      )
+    } else
+      return reviewsArray.map((review) => (
+        <ReviewCard
+          reviewDate={review.createdAt}
+          reviewText={review.text}
+          userName={review.userName}
+        />
       )).reverse();
-    }
+
   }
 
   return (
@@ -74,33 +113,37 @@ function ShopPage() {
       <div className="container">
         <div className="row">
           <div className="col-lg-12 submitreview-control">
-            <h3>Submit Your Review in the Box Below:</h3>
-            <form onSubmit={handleSubmit}>
-              <div classname="form-group">
-                <textarea
-                  classname="form-control"
-                  type="text"
-                  onChange={handleInputChange}
-                  value={reviewInput}
-                  id="newReview"
-                  aria-describedby="submitReviewBox"
-                  placeholder="Type your Review Here..."
-                />
-              </div>
-              <button
-                type="submit"
-                value={reviewInput}
-                id="reviewFormButton"
-                classname="btn btn-primary nav-buttons shop-submit"
-              >
-                Submit
-              </button>
-            </form>
+            <ToastContainer
+              position="top-right"
+              autoClose={1500}
+            />
+            {auth.isLoggedIn() ?
+              <>
+                <h3>Submit Your Review in the Box Below:</h3>
+
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <textarea
+                      className="form-control"
+                      type="text"
+                      onChange={handleInputChange}
+                      value={reviewInput}
+                      id="newReview"
+                      aria-describedby="submitReviewBox"
+                      placeholder="Type your Review Here..."
+                    />
+                  </div>
+                  <button type="submit" value={reviewInput} id="reviewFormButton" className="btn btn-primary nav-buttons shop-submit">Submit</button>
+                </form>
+              </>
+              : <><hr /><h4>Want to submit a review? Log In or Sign Up!</h4></>}
           </div>
         </div>
       </div>
     </>
   );
 }
+
+
 
 export default ShopPage;

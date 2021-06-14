@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
-// import { useHistory } from "react-router-dom";
-// import { useAuth } from "../../util/auth";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../util/auth";
 import { shopAPI } from "../../util/shopAPI";
 import Hero from "../../components/Hero/Hero";
 import FeaturedCard from "../../components/Card/FeaturedCard";
@@ -13,11 +13,11 @@ import useDebounce from "../../util/useDebounce";
 import './style.css';
 
 function HomePage() {
-  // const history = useHistory();
-  // const auth = useAuth();
+  const history = useHistory();
+  const auth = useAuth();
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
-  const randomShop = getRandom(5);
+  // const randomShop = getRandom(5);
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
   const [search, setSearch] = useState("");
 
@@ -77,7 +77,6 @@ function HomePage() {
     if (filteredArray.length > 0) {
       return filteredArray.map((restaurant) => (
         <ShopCard
-          key={restaurant._id}
           id={restaurant._id}
           src={VallartasPic}
           description={restaurant.description}

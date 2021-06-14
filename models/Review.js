@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema({
-  id: {
+  shopId: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minLength: 2,
   },
@@ -12,25 +11,16 @@ const ReviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  rating: {
+  userName: {
     type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    minLength: 2,
-  },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
-    unique: true,
     trim: true,
     minLength: 2,
   },
   text: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minLength: 2,
   },

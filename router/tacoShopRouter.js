@@ -12,7 +12,7 @@ const db = mongojs(databaseUrl, collections);
 tacoShopRouter.get("/", async (req, res) => {
   console.log("Get All Shops Request Received on Back-End");
   try {
-    const tacoShopData = await TacoShop.find({});
+    const tacoShopData = await TacoShop.find({})
     res.json(tacoShopData);
   } catch (error) {
     console.error(error);
@@ -23,7 +23,7 @@ tacoShopRouter.get("/", async (req, res) => {
 tacoShopRouter.get("/:id", async (req, res) => {
   console.log("Get Single Shop Request Received on Back-End");
   try {
-    const shopData = await TacoShop.findById(req.params.id);
+    const shopData = await TacoShop.findById(req.params.id)
     res.send(shopData);
   } catch (err) {
     res.status(500).json(err);
