@@ -158,7 +158,7 @@ function ShopPage() {
               <>
                 <hr />
                 <h4>
-                  Want to submit a review? <Link to="/login">Log In </Link>or{" "}
+                  Want to submit a review? <Link to="/login">Login </Link>or{" "}
                   <Link to="/signup"> Sign Up &nbsp;</Link>!
                 </h4>
               </>

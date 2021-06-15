@@ -328,6 +328,17 @@ main h3 {
   transition: ease-in-out 300ms;
 }
 
+.submitreview-control a {
+  color: #e86e6e;
+  transition: 1s all ease-in-out;
+  text-decoration: none;
+}
+
+.submitreview-control a:hover {
+  color: #ff0000;
+  transition: 350ms all ease-in-out;
+}
+
 /* Footer Styles */
 footer {
   background: rgb(251, 212, 143);
