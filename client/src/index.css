@@ -205,6 +205,10 @@ main h3 {
 .shop-submit {
   width: 100%;
 }
+/* Single Tacoshop Styles */
+.reviews-title {
+  text-align: center;
+}
 
 /* Login Page Styles */
 #login-page {

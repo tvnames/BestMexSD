@@ -46,7 +46,7 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item nav-control">
-              {/* {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />} */}
+              {auth.isLoggedIn() ? <UserNavs auth={auth} /> : <GuestNavs />}
             </li>
           </ul>
           {/* hide actions if user is logged in */}
