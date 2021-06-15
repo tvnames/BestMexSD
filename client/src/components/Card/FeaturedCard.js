@@ -2,6 +2,10 @@ import React from "react";
 import "./style.css";
 import RatingContainer from "../StarRating/RatingContainer";
 import StarIcon from "../StarRating/StarIcon";
+import { useAuth } from "../../util/auth";
+
+
+
 
 function FeaturedCard({
   ratingArray,
@@ -65,6 +69,8 @@ function FeaturedCard({
     }
   }
 
+  const auth = useAuth();
+
   return (
     <div className="card m-1 featureCard">
       <div className="card-body ">
@@ -106,9 +112,15 @@ function FeaturedCard({
           {getRating(rating)} {rating} out of 5 stars! ({numOfRatings} Ratings)
         </i>
       </div>
-      <div className="">
-        <RatingContainer id={id} ratingArray={ratingArray} />
-      </div>
+      {auth.isLoggedIn() ?
+        <div className="">
+          <RatingContainer id={id} ratingArray={ratingArray} />
+        </div>
+        :
+        <div className="d-flex justify-content-end m-2">
+          <>Log In or Sign Up to Submit your rating</>
+        </div>
+      }
     </div>
   );
 }
