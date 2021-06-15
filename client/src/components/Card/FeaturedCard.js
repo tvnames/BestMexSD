@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import RatingContainer from "../StarRating/RatingContainer";
 import StarIcon from "../StarRating/StarIcon";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../util/auth";
 
 
@@ -118,7 +119,7 @@ function FeaturedCard({
         </div>
         :
         <div className="d-flex justify-content-end m-2">
-          <>Log In or Sign Up to Submit your rating</>
+          <><Link to="/login">Log In &nbsp;</Link>or <Link to="/signup">&nbsp; Sign Up &nbsp;</Link> to Submit your rating</>
         </div>
       }
     </div>
