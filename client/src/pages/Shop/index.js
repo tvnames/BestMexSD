@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { singleShopAPI } from "../../util/shopAPI";
 import { shopReviewAPI } from "../../util/shopAPI";
 import { useAuth } from "../../util/auth";
@@ -156,7 +157,7 @@ function ShopPage() {
             ) : (
               <>
                 <hr />
-                <h4>Want to submit a review? Log In or Sign Up!</h4>
+                <h4>Want to submit a review? <Link to="/login">Log In </Link>or <Link to="/signup"> Sign Up &nbsp;</Link>!</h4>
               </>
             )}
           </div>
