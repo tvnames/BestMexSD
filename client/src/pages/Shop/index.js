@@ -53,14 +53,14 @@ function ShopPage() {
     event.preventDefault();
     axios.post("/api/reviews", { userName, shopId, reviewInput });
     toast.success(`Review Submitted!`, {
-      position: "top-right",
-      autoClose: 1000,
+      position: "bottom-right",
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
       progress: undefined,
     });
-    setTimeout(window.location.reload.bind(window.location), 1500);
+    setTimeout(window.location.reload.bind(window.location), 5000);
   }
 
   function handleInputChange(event) {
@@ -73,7 +73,7 @@ function ShopPage() {
       return (
         <>
           <hr />
-          <h5>
+          <h5 className="reviews-title">
             No Reviews Found! Be the first to review this restaurant by typing
             your review in below!
           </h5>
@@ -157,7 +157,10 @@ function ShopPage() {
             ) : (
               <>
                 <hr />
-                <h4>Want to submit a review? <Link to="/login">Log In </Link>or <Link to="/signup"> Sign Up &nbsp;</Link>!</h4>
+                <h4>
+                  Want to submit a review? <Link to="/login">Login </Link>or{" "}
+                  <Link to="/signup"> Sign Up &nbsp;</Link>!
+                </h4>
               </>
             )}
           </div>

@@ -205,6 +205,10 @@ main h3 {
 .shop-submit {
   width: 100%;
 }
+/* Single Tacoshop Styles */
+.reviews-title {
+  text-align: center;
+}
 
 /* Login Page Styles */
 #login-page {
@@ -322,6 +326,17 @@ main h3 {
 .submitreview-control button:hover {
   background-color: #00b147;
   transition: ease-in-out 300ms;
+}
+
+.submitreview-control a {
+  color: #e86e6e;
+  transition: 1s all ease-in-out;
+  text-decoration: none;
+}
+
+.submitreview-control a:hover {
+  color: #ff0000;
+  transition: 350ms all ease-in-out;
 }
 
 /* Footer Styles */
