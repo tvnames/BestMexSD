@@ -24,7 +24,7 @@ function RatingContainer({ ratingArray, id }) {
   return (
     <>
 
-      <div className="d-flex justify-content-end mr-3">
+      <div className="d-flex justify-content-end mr-3 mb-2">
         <strong>Been Here? Rate this Spot: &nbsp; </strong>
 
         {[1, 2, 3, 4, 5].map((index) => {

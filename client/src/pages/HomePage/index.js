@@ -17,17 +17,15 @@ function HomePage() {
   const auth = useAuth();
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
-  // const randomShop = getRandom(5);
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
   const [search, setSearch] = useState("");
+
 
   const debouncedSearchTerm = useDebounce(search, 400);
 
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
-  const avg =
-    restaurantArray[1].rating.reduce((a, b) => a + b) /
-    restaurantArray[1].rating.length;
+  const avg = restaurantArray[1].rating.reduce((a, b) => a + b) / restaurantArray[1].rating.length;
 
   // Call Back-End to populate restaurant array
   useEffect(() => {

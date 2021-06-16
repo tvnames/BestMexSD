@@ -34,8 +34,6 @@ function ShopPage() {
       .catch(console.error());
   }, [id]);
 
-  console.log(reviewsArray);
-
   useEffect(() => {
     {
       auth.isLoggedIn() ? setUserName(auth.user.username) : console.log("");
@@ -60,7 +58,7 @@ function ShopPage() {
       draggable: true,
       progress: undefined,
     });
-    setTimeout(window.location.reload.bind(window.location), 5000);
+    setTimeout(window.location.reload.bind(window.location), 1500);
   }
 
   function handleInputChange(event) {
@@ -117,7 +115,7 @@ function ShopPage() {
       <div className="container">
         <div className="row">
           <div className="col-lg-12 submitreview-control">
-            <ToastContainer
+            {/* <ToastContainer
               position="bottom-right"
               autoClose={5000}
               hideProgressBar={false}
@@ -127,7 +125,7 @@ function ShopPage() {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
             {auth.isLoggedIn() ? (
               <>
                 <h3>Submit Your Review in the Box Below:</h3>
