@@ -70,7 +70,7 @@ function FeaturedCard({
   const auth = useAuth();
 
   return (
-    <div className="card m-1 featureCard" >
+    <div className="col-lg-12 m-1 featureCard" >
       <div className="card-body" id="boxText">
         <img src={src} alt={src} className="featured-img-control float-left mr-3" />
         <h2 className="card-title" id="boxText">{shopName}</h2>
@@ -95,16 +95,27 @@ function FeaturedCard({
           <strong>Phone: </strong>
           {phone}
         </li>
+        <li className="list-group-item" id="locationBox">
+          <a
+            href={menuURL}
+            className="card-link"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            View Their Menu
+          </a>
+
+        </li>
       </ul>
       <div className="card-body d-flex">
-        <a
+        {/* <a
           href={menuURL}
           className="card-link"
           target="_blank"
           rel="noreferrer noopener"
         >
           View Their Menu
-        </a>
+        </a> */}
         <i className="ml-auto">
           <div class="d-flex justify-content-end" >
             <strong>Average Rating:</strong>
