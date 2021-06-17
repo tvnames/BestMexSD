@@ -4,18 +4,18 @@
 
 .featureCard {
   border-radius: 10px;
-  background: linear-gradient(rgb(255 0 0 / 20%), rgb(230 255 170 / 45%)),
-    url("../../images/oldTown.jpg");
+  /* background: linear-gradient(rgb(255 0 0 / 20%), rgb(230 255 170 / 45%)),
+    url("../../images/oldTown.jpg"); */
 }
 
 #locationBox {
-  background-color: transparent;
-  color: whitesmoke;
+  /* background-color: transparent; */
+  /* color: whitesmoke; */
   opacity: 0.9;
 }
 
 #boxText {
-  color: whitesmoke;
+  /* color: whitesmoke; */
   opacity: 0.9;
 }
 
