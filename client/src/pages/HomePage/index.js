@@ -15,10 +15,13 @@ import useGeoLocation from '../../util/useGeolocation';
 import './style.css';
 import axios from "axios";
 
+
+
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
   const location = useGeoLocation();
+  const API_key = process.env.REACT_APP_google_API_key;
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
@@ -29,6 +32,7 @@ function HomePage() {
 
   const debouncedSearchTerm = useDebounce(search, 400);
   const AnyReactComponent = ({ text }) => <div>{text}</div>;
+  const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=${API_key}`
 
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
@@ -99,8 +103,7 @@ function HomePage() {
   }
 
   const searchByArea = async () => {
-    const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY`)
-    // const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=33.0414,-116.8793&key=AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY`)
+    const res = await axios.get(URL)
     const areaName = res.data.results[0].address_components[2].short_name
     setSearch(areaName);
   }
@@ -113,7 +116,7 @@ function HomePage() {
       {/* ################# GeoCoding Test Area */}
       {/* <div className="container border" style={{ height: '400px', width: '400px' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY" }}
+          bootstrapURLKeys={{ key: process.env.googleAPIkey }}
           defaultCenter={{ lat: 32.7283164, lng: -117.12889910000001 }}
           defaultZoom={11}
         >
@@ -153,7 +156,6 @@ function HomePage() {
           <h2>Searching for a specific Taco Shop?</h2>
           <div className="row">
             <div className="col-lg-4 border border-dark d-flex justify-content-end p-2 pr-5">
-              {/* <button className="" >Click to see Shop's in your Area</button> */}
               <button type="button" class="btn btn-secondary btn-lg" onClick={searchByArea}>Click to see Shop's in your Area</button>
             </div>
             <div className="col-lg-8 border border-dark">
