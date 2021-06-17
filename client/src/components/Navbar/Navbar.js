@@ -1,7 +1,7 @@
 import { useAuth } from "../../util/auth";
 import { useHistory } from "react-router-dom";
 // import Nav from "./Nav";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 // import styles from "./Nav.module.css";
 import logo from "./bestmexlogo.png";
 function Navbar() {

@@ -4,14 +4,19 @@
 
 .featureCard {
   border-radius: 10px;
+  background: linear-gradient(rgb(255 0 0 / 20%), rgb(230 255 170 / 45%)),
+    url("../../images/oldTown.jpg");
+}
 
-  /* background: linear-gradient(
-    90deg,
-    rgba(58, 180, 127, 1) 0%,
-    rgba(255, 255, 255, 1) 33%,
-    rgba(254, 255, 255, 1) 67%,
-    rgba(252, 90, 69, 1) 100%
-  ); */
+#locationBox {
+  background-color: transparent;
+  color: whitesmoke;
+  opacity: 0.9;
+}
+
+#boxText {
+  color: whitesmoke;
+  opacity: 0.9;
 }
 
 .shopCard:hover {

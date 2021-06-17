@@ -70,46 +70,63 @@ function FeaturedCard({
   const auth = useAuth();
 
   return (
-    <div className="card m-1 featureCard">
-      <div className="card-body ">
-        <img src={src} alt={src} className="featured-img-control" />
-        <h2 className="card-title">{shopName}</h2>
-        <p className="card-text">
+    <div className="col-lg-12 m-1 featureCard" >
+      <div className="card-body" id="boxText">
+        <img src={src} alt={src} className="featured-img-control float-left mr-3" />
+        <h2 className="card-title" id="boxText">{shopName}</h2>
+        <h5 className="card-text" id="boxText">
           <strong>Featured Food: </strong>
           {featuredFood}
           <br />
           <strong>About {shopName}: </strong>
-        </p>
+        </h5>
         {description}
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item featureCard">
+        <li className="list-group-item" id="locationBox">
           <strong>Location: </strong>
           {location}
         </li>
-        <li className="list-group-item featureCard">
+        <li className="list-group-item" id="locationBox">
           <strong>Address: </strong>
           {address}
         </li>
-        <li className="list-group-item featureCard">
+        <li className="list-group-item" id="locationBox">
           <strong>Phone: </strong>
           {phone}
         </li>
+        <li className="list-group-item" id="locationBox">
+          <a
+            href={menuURL}
+            className="card-link"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            View Their Menu
+          </a>
+
+        </li>
       </ul>
       <div className="card-body d-flex">
-        <a
+        {/* <a
           href={menuURL}
           className="card-link"
           target="_blank"
           rel="noreferrer noopener"
         >
           View Their Menu
-        </a>
+        </a> */}
         <i className="ml-auto">
-          <strong>Average Rating:</strong>
-          {getRating(rating)} {rating} out of 5 stars! ({numOfRatings} Ratings)
+          <div class="d-flex justify-content-end" >
+            <strong>Average Rating:</strong>
+          </div>
+          <div class="d-flex justify-content-end mr-2">
+            {getRating(rating)}
+          </div>
+          {rating} out of 5 stars! ({numOfRatings} Ratings)
         </i>
       </div>
+
       {auth.isLoggedIn() ? (
         <div className="">
           <RatingContainer id={id} ratingArray={ratingArray} />

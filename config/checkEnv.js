@@ -1,7 +1,7 @@
 // validate required env variables are set. Throw helpful errors regarding missing/invalid env vars.
 
 function checkEnv() {
-  const { SESSION_SECRET, MONGODB_URI } = process.env;
+  const { SESSION_SECRET, MONGODB_URI, google_API_key } = process.env;
   if (!SESSION_SECRET) {
     throw new Error("SESSION_SECRET environment variable not set.");
   }

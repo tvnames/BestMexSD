@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../util/auth";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import useLoginRedirect from "../../util/useLoginRedirect";
 
 function SignupPage() {
@@ -83,6 +84,7 @@ function SignupPage() {
             </button>
           </form>
           <p>{message}</p>
+          <h6>Already have an account?<Link to="/login">&nbsp; Login Here</Link></h6>
         </div>
       </div>
     </div>

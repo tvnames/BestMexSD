@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory, useLocation, Redirect } from "react-router";
 import { useAuth } from "../../util/auth";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const auth = useAuth();
@@ -28,7 +29,7 @@ function LoginPage() {
   const message = auth.pending
     ? "Processing request..."
     : auth.error ||
-      "Please enter your Email address and Password and click submit.";
+    "Please enter your Email address and Password and click submit.";
 
   return (
     <div id="login-page" className="container">
@@ -65,6 +66,7 @@ function LoginPage() {
             </button>
           </form>
           <p>{message}</p>
+          <h6>Don't Have an Account?<Link to="/signup">&nbsp; Sign Up Here</Link></h6>
         </div>
       </div>
     </div>
