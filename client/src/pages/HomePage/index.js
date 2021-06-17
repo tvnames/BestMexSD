@@ -131,7 +131,7 @@ function HomePage() {
           <HomepageText />
         </section>
         <h3>This week's Top Shop:</h3>
-        <section className="row m-3">
+        <section className="row m-3 featured-control">
           <div className="col-lg-12">
             <FeaturedCard
               id={currentShop._id}

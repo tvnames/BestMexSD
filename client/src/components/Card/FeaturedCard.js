@@ -75,7 +75,7 @@ function FeaturedCard({
         <img
           src={src}
           alt={src}
-          className="featured-img-control float-right mr-3"
+          className="featured-img-control float-left mr-3"
         />
         <h2 className="card-title" id="boxText">
           {shopName}
@@ -112,12 +112,12 @@ function FeaturedCard({
           </a>
           <i className="ml-auto">
             <div class="d-flex justify-content-end">
-              <strong>Average Rating:</strong>
+              <strong>Average Rating: </strong>
+              &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
             </div>
             <div class="d-flex justify-content-end mr-2">
               {getRating(rating)}
             </div>
-            {rating} out of 5 stars! ({numOfRatings} Ratings)
           </i>
         </li>
       </ul>
