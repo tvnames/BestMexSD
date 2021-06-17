@@ -131,7 +131,7 @@ function HomePage() {
           <HomepageText />
         </section>
         <h3>This week's Top Shop:</h3>
-        <section className="row m-3">
+        <section className="row m-3 featured-control">
           <div className="col-lg-12">
             <FeaturedCard
               id={currentShop._id}
@@ -153,20 +153,22 @@ function HomePage() {
         <section className="taco-filter-search">
           <h2>Searching for a specific Taco Shop?</h2>
           <div className="row">
-            <div className="col-lg-4 border border-dark d-flex justify-content-end p-2 pr-5">
-              <button
-                type="button"
-                class="btn btn-secondary btn-lg"
-                onClick={searchByArea}
-              >
-                Click to see Shop's in your Area
-              </button>
-            </div>
-            <div className="col-lg-8 border border-dark">
+            <div className="col-lg-12">
               <SearchForm
                 search={search}
                 handleSearchChange={handleSearchChange}
               />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg shop-filter-button"
+                onClick={searchByArea}
+              >
+                Click to see Taco Shops in your Area
+              </button>
             </div>
           </div>
         </section>

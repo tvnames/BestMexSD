@@ -70,10 +70,16 @@ function FeaturedCard({
   const auth = useAuth();
 
   return (
-    <div className="col-lg-12 m-1 featureCard" >
+    <div className="col-lg-12 m-1 featureCard">
       <div className="card-body" id="boxText">
-        <img src={src} alt={src} className="featured-img-control float-left mr-3" />
-        <h2 className="card-title" id="boxText">{shopName}</h2>
+        <img
+          src={src}
+          alt={src}
+          className="featured-img-control float-left mr-3"
+        />
+        <h2 className="card-title" id="boxText">
+          {shopName}
+        </h2>
         <h5 className="card-text" id="boxText">
           <strong>Featured Food: </strong>
           {featuredFood}
@@ -104,7 +110,15 @@ function FeaturedCard({
           >
             View Their Menu
           </a>
-
+          <i className="ml-auto">
+            <div class="d-flex justify-content-end">
+              <strong>Average Rating: </strong>
+              &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
+            </div>
+            <div class="d-flex justify-content-end mr-2">
+              {getRating(rating)}
+            </div>
+          </i>
         </li>
       </ul>
       <div className="card-body d-flex">
@@ -116,15 +130,6 @@ function FeaturedCard({
         >
           View Their Menu
         </a> */}
-        <i className="ml-auto">
-          <div class="d-flex justify-content-end" >
-            <strong>Average Rating:</strong>
-          </div>
-          <div class="d-flex justify-content-end mr-2">
-            {getRating(rating)}
-          </div>
-          {rating} out of 5 stars! ({numOfRatings} Ratings)
-        </i>
       </div>
 
       {auth.isLoggedIn() ? (
