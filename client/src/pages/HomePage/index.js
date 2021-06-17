@@ -111,19 +111,6 @@ function HomePage() {
   return (
     <div className="container-fluid">
       {/* ################# GeoCoding Test Area */}
-      <div className="row d-flex justify-content-center mt-3 mb-5 pb-5">
-        <div className="col-6">
-          <div class="card">
-            <div class="card-header text-left font-weight-bold d-flex">
-              <div className="inline-block mr-auto pt-1">
-                {location.loaded
-                  ? JSON.stringify(location)
-                  : "Location data not available yet."}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* <div className="container border" style={{ height: '400px', width: '400px' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY" }}
@@ -165,10 +152,11 @@ function HomePage() {
         <section className="taco-filter-search">
           <h2>Searching for a specific Taco Shop?</h2>
           <div className="row">
-            <div className="col-lg-2">
-              <button onClick={searchByArea}>Click to see Shop's in your Area</button>
+            <div className="col-lg-4 border border-dark d-flex justify-content-end p-2 pr-5">
+              {/* <button className="" >Click to see Shop's in your Area</button> */}
+              <button type="button" class="btn btn-secondary btn-lg" onClick={searchByArea}>Click to see Shop's in your Area</button>
             </div>
-            <div className="col-lg-10">
+            <div className="col-lg-8 border border-dark">
               <SearchForm search={search} handleSearchChange={handleSearchChange} />
             </div>
           </div>
