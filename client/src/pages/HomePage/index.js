@@ -10,18 +10,25 @@ import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 import useDebounce from "../../util/useDebounce";
+import GoogleMapReact from 'google-map-react';
+import useGeoLocation from '../../util/useGeolocation';
 import './style.css';
+import axios from "axios";
 
 function HomePage() {
   const history = useHistory();
   const auth = useAuth();
+  const location = useGeoLocation();
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
   const [search, setSearch] = useState("");
 
+  // console.log(location.coordinates.lat)
+
 
   const debouncedSearchTerm = useDebounce(search, 400);
+  const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
@@ -50,7 +57,6 @@ function HomePage() {
 
   // Filtered Array from search bar input
   const filteredArray = restaurantArray.filter((restaurant) => {
-    // const shopSearch = search.toLocaleLowerCase()
     const shopSearch = debouncedSearchTerm.toLocaleLowerCase();
     const lowercaseShopName = restaurant.shopName.toLocaleLowerCase();
     const location = restaurant.location.toLocaleLowerCase();
@@ -86,14 +92,51 @@ function HomePage() {
     } else {
       return (
         <div className="container-fluid">
-          <h4>No matching search results...</h4>
+          <h4>Oops! We couldn't find any results for {search}...</h4>
         </div>
       );
     }
   }
 
+  const searchByArea = async () => {
+    const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY`)
+    // const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=33.0414,-116.8793&key=AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY`)
+    const areaName = res.data.results[0].address_components[2].short_name
+    setSearch(areaName);
+  }
+
+
+
+
   return (
     <div className="container-fluid">
+      {/* ################# GeoCoding Test Area */}
+      <div className="row d-flex justify-content-center mt-3 mb-5 pb-5">
+        <div className="col-6">
+          <div class="card">
+            <div class="card-header text-left font-weight-bold d-flex">
+              <div className="inline-block mr-auto pt-1">
+                {location.loaded
+                  ? JSON.stringify(location)
+                  : "Location data not available yet."}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="container border" style={{ height: '400px', width: '400px' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY" }}
+          defaultCenter={{ lat: 32.7283164, lng: -117.12889910000001 }}
+          defaultZoom={11}
+        >
+          <AnyReactComponent
+            lat={32.7283164}
+            lng={-117.12889910000001}
+            text="My Marker"
+          />
+        </GoogleMapReact>
+      </div> */}
       <Hero>Welcome to Best Mex SD!</Hero>
       <main className="col-12">
         <section className="page-title-text m-3">
@@ -121,7 +164,14 @@ function HomePage() {
         <hr />
         <section className="taco-filter-search">
           <h2>Searching for a specific Taco Shop?</h2>
-          <SearchForm search={search} handleSearchChange={handleSearchChange} />
+          <div className="row">
+            <div className="col-lg-2">
+              <button onClick={searchByArea}>Click to see Shop's in your Area</button>
+            </div>
+            <div className="col-lg-10">
+              <SearchForm search={search} handleSearchChange={handleSearchChange} />
+            </div>
+          </div>
         </section>
 
         <section className="row m-3 shopcard-control shopBox d-flex justify-content-around">
