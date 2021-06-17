@@ -10,12 +10,10 @@ import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 import useDebounce from "../../util/useDebounce";
-import GoogleMapReact from 'google-map-react';
-import useGeoLocation from '../../util/useGeolocation';
-import './style.css';
+import GoogleMapReact from "google-map-react";
+import useGeoLocation from "../../util/useGeolocation";
+import "./style.css";
 import axios from "axios";
-
-
 
 function HomePage() {
   const history = useHistory();
@@ -29,14 +27,15 @@ function HomePage() {
 
   // console.log(location.coordinates.lat)
 
-
   const debouncedSearchTerm = useDebounce(search, 400);
   const AnyReactComponent = ({ text }) => <div>{text}</div>;
-  const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=${API_key}`
+  // const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=${API_key}`
 
   // const currentShop = restaurantArray[randomShop];
   const currentShop = restaurantArray[1];
-  const avg = restaurantArray[1].rating.reduce((a, b) => a + b) / restaurantArray[1].rating.length;
+  const avg =
+    restaurantArray[1].rating.reduce((a, b) => a + b) /
+    restaurantArray[1].rating.length;
 
   // Call Back-End to populate restaurant array
   useEffect(() => {
@@ -103,13 +102,12 @@ function HomePage() {
   }
 
   const searchByArea = async () => {
-    const res = await axios.get(URL)
-    const areaName = res.data.results[0].address_components[2].short_name
+    const res = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat},${location.coordinates.lng}&key=AIzaSyB4q2B5RB2qh88hU6wjtD09ze7NRt3xIaY`
+    );
+    const areaName = res.data.results[0].address_components[2].short_name;
     setSearch(areaName);
-  }
-
-
-
+  };
 
   return (
     <div className="container-fluid">
@@ -156,10 +154,19 @@ function HomePage() {
           <h2>Searching for a specific Taco Shop?</h2>
           <div className="row">
             <div className="col-lg-4 border border-dark d-flex justify-content-end p-2 pr-5">
-              <button type="button" class="btn btn-secondary btn-lg" onClick={searchByArea}>Click to see Shop's in your Area</button>
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg"
+                onClick={searchByArea}
+              >
+                Click to see Shop's in your Area
+              </button>
             </div>
             <div className="col-lg-8 border border-dark">
-              <SearchForm search={search} handleSearchChange={handleSearchChange} />
+              <SearchForm
+                search={search}
+                handleSearchChange={handleSearchChange}
+              />
             </div>
           </div>
         </section>
