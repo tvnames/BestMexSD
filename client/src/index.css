@@ -27,7 +27,11 @@ body {
   height: 46px;
   color: black;
 }
-
+/* nav logo */
+#navbarNav > ul > li.nav-item.active > a > img {
+  margin: 0 auto;
+  display: inherit;
+}
 .shop-filter-button {
   margin-right: 5px;
   border-radius: 58px;
@@ -123,7 +127,17 @@ main h3 {
   font-size: 20px;
   /* text-align: center; */
   border-radius: 40px;
-  text-indent: 10px;
+  /* text-indent: 10px; */
+  text-align: center;
+}
+
+#root
+  > div
+  > main
+  > section.row.m-3.shopcard-control.shopBox.d-flex.justify-content-around
+  > div
+  > h4 {
+  text-align: center;
 }
 
 #username {
