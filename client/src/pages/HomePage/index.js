@@ -14,6 +14,7 @@ import GoogleMapReact from "google-map-react";
 import useGeoLocation from "../../util/useGeolocation";
 import "./style.css";
 import axios from "axios";
+import { filter } from "lodash";
 
 function HomePage() {
   const history = useHistory();
@@ -80,12 +81,16 @@ function HomePage() {
     }
   });
 
+  console.log(filteredArray);
+
   function renderShops(filteredArray) {
     if (filteredArray.length > 0) {
       return filteredArray.map((restaurant) => (
         <ShopCard
           id={restaurant._id}
           src={VallartasPic}
+          address={restaurant.address}
+          avgRating={restaurant.rating.reduce((a, b) => a + b) / restaurant.rating.length}
           description={restaurant.description}
           shopName={restaurant.shopName}
           location={restaurant.location}
@@ -107,7 +112,14 @@ function HomePage() {
     );
     const areaName = res.data.results[0].address_components[2].short_name;
     setSearch(areaName);
+    // if (
+    //   areaName === "Santee" ||
+    //   areaName === "El Cajon") { setSearch("Downtown") }
+    // else if (
+    //   areaName === "La Jolla" ||
+    //   areaName === "South Park") { setSearch("Mexico") }
   };
+
 
   return (
     <div className="container-fluid">
@@ -164,7 +176,7 @@ function HomePage() {
             <div className="col-lg-12">
               <button
                 type="button"
-                class="btn btn-secondary btn-lg shop-filter-button"
+                className="btn btn-secondary btn-lg shop-filter-button"
                 onClick={searchByArea}
               >
                 Click to see Taco Shops in your Area

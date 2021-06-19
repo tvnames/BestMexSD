@@ -111,11 +111,11 @@ function FeaturedCard({
             View Their Menu
           </a>
           <i className="ml-auto">
-            <div class="d-flex justify-content-end">
+            <div className="d-flex justify-content-end">
               <strong>Average Rating: </strong>
               &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
             </div>
-            <div class="d-flex justify-content-end mr-2">
+            <div className="d-flex justify-content-end mr-2">
               {getRating(rating)}
             </div>
           </i>

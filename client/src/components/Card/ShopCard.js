@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 
 function ShopCard({
-  // restaurantArray,
-  description,
+  address,
+  featuredFood,
+  avgRating,
   id,
   shopName,
   src,
   location,
-  featuredFood,
 }) {
   const history = useHistory();
 
@@ -28,10 +28,10 @@ function ShopCard({
         <h4 className="card-title" name={shopName}>
           {shopName}
         </h4>
-
         <p className="card-text textBox">{location}</p>
-        {/* <p className="card-text textBox">{description}</p> */}
-        <p className="card-text"><strong>Featured Food:</strong> {featuredFood}</p>
+        <p className="card-text textBox">{address}</p>
+        <p className="card-text"><strong>Featured Food: </strong> {featuredFood}</p>
+        <p className="card-text"><strong>Rating:</strong> {avgRating.toFixed(1)} / 5</p>
       </div>
     </div>
   );

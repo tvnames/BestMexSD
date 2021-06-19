@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 3001;
 
     // trust proxy required for using secure cookies on Heroku
     app.set("trust proxy", 1);
+    // app.use('/uploads', express.static('uploads'));
 
     app.use(
       express.urlencoded({ extended: true }),

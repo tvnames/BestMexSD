@@ -1,5 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { postShopAPI } from "../../util/shopAPI";
+
+
+
 // import { useAuth } from "../../util/auth";
 
 // PrivatePage is an example include to demonstrate a route protected from
@@ -10,6 +14,7 @@ function SubmitShopPage() {
 
   const [formState, setFormState] = useState({
     shopName: "",
+    imagePath: "",
     location: "",
     address: "",
     state: "CA",
@@ -22,24 +27,30 @@ function SubmitShopPage() {
     featuredFood: "",
   });
 
+  const [name, setName] = useState("Steve's Test Shop");
+  const [imagePath, setImagePath] = useState("");
+  const [shopLocation, setshopLocation] = useState("El Cajon");
+  const [shopAddress, setshopAddress] = useState("555 Test St.");
+  const [shopState, setshopState] = useState("CA");
+  const [shopZip, setshopZip] = useState(92020);
+  const [shopPhone, setshopPhone] = useState(555 - 555 - 5555);
+  const [shopDescription, setshopDescription] = useState("This is a Test Description");
+  const [shopReviews, setshopReviews] = useState(["This is a Test Review"]);
+  const [shopRating, setshopRating] = useState([5]);
+  const [shopmenuURL, setshopmenuURL] = useState("https://bestmexsd.com");
+  const [shopfeaturedFood, setshopfeaturedFood] = useState("Burritos");
+  const [file, setFile] = useState();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    postShopAPI(formState);
-    console.log(formState);
-
-    // if (!name) {
-    //   return alert("Must provide a restaurantname.");
-    // }
-    // if (!email) {
-    //   return alert("Must provide an email address.");
-    // }
-    // if (!password || password.length < 8) {
-    //   return alert("Invalid password. Must contain at least 8 characters.");
-    // }
-
-    // auth.signup({ email, username, password });
+    const data = new FormData()
+    data.append("name", name);
+    data.append("file", file);
+    data.append("description", shopDescription);
+    axios.post('https://httpbin.org/anything', data)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
-
 
   const handleInputChange = (event) => {
     let name = event.target.name;
@@ -47,17 +58,23 @@ function SubmitShopPage() {
       ...formState,
       [name]: event.target.value,
     });
+    console.log(event.target.value)
   };
+
+
+
+
 
 
   function entrySuccess() {
     const { shopName, location } = formState
     if (shopName && location.length > 1) {
-      window.alert(location)
+      // window.alert(location)
     } else {
       window.alert("Need More Info")
     }
   }
+
 
 
   return (
@@ -65,7 +82,7 @@ function SubmitShopPage() {
       <div className="row justify-content-center ">
         <div className="col-sm-12 col-md-8 col-lg-8 animate__animated animate__fadeIn">
           <h2>Submit A Taco Shop to Our Site!</h2>
-          <form id="submitshop-form" onSubmit={handleSubmit}>
+          <form id="submitshop-form" onSubmit={handleSubmit} enctype="multipart/form-data">
             <div>
               <div className="form-group row">
                 {/* <label htmlFor="shopName">Restaurant Name:</label> */}
@@ -81,13 +98,23 @@ function SubmitShopPage() {
                   />
                 </div>
               </div>
+              <div className="form-group row" enctype="multipart/form-data">
+                {/* <label htmlFor="shopName">Restaurant Name:</label> */}
+                <label className="col-sm-12 submitshop-form-inner" htmlFor="file">Have a Pic from this shop? Upload it here</label>
+                <input
+                  type="file"
+                  accept=".jpg"
+                  name="file"
+                  className="form-control-file"
+                  onChange={event => {
+                    const file = event.target.files[0];
+                    setFile(file);
+                  }}
+                  id="file"
+                  placeholder="Upload a photo" />
+              </div>
+
               <div className="form-group row">
-                {/* <label
-                  htmlFor="shopLocation"
-                  className="col-sm-2 col-form-label"
-                >
-                  Location
-                </label> */}
                 <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
@@ -100,6 +127,35 @@ function SubmitShopPage() {
                   />
                 </div>
               </div>
+
+
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+
+              {/* <div>
+                <select className="form-control">
+                  <optgroup label="">
+                    <option>Downtown</option>
+                    <option>Carmel Valley</option>
+                    <option>City Heights</option>
+                    <option>Clairemont</option>
+                    <option>College Area</option>
+                  </optgroup>
+                  <optgroup label="">
+                    <option>Downtown</option>
+                    <option>Flashlight</option>
+                    <option>Toilet Paper</option>
+                  </optgroup>
+                </select>
+              </div> */}
+
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+
+
+
               <div className="form-group row">
                 {/* <label
                   htmlFor="shopAddress1"
@@ -206,7 +262,7 @@ function SubmitShopPage() {
                   Phone #
                 </label> */}
                 <div className="col-sm-12 submitshop-form-inner">
-                  <label for="rating">
+                  <label htmlFor="rating">
                     Please leave a short shop description:
                   </label>
                   <textarea
@@ -219,7 +275,7 @@ function SubmitShopPage() {
                     autocomplete="off"
                   />
                   <br />
-                  <label for="rating">Leave a review:</label>
+                  <label htmlFor="rating">Leave a review:</label>
                   <textarea
                     type="text"
                     className="form-control"
@@ -230,7 +286,7 @@ function SubmitShopPage() {
                     autocomplete="off"
                   />
                   <div className="rating-control">
-                    <label for="rating">Give this shop a rating:</label>
+                    <label htmlFor="rating">Give this shop a rating:</label>
                     <select
                       name="rating"
                       onChange={handleInputChange}
@@ -245,7 +301,7 @@ function SubmitShopPage() {
                   </div>
                   <hr />
                   <div className="shop-url-control">
-                    <label for="rating">Link to online menu:</label>
+                    <label htmlFor="rating">Link to online menu:</label>
                     <input
                       type="url"
                       id="url"
@@ -260,7 +316,7 @@ function SubmitShopPage() {
                     className="featured-food-control"
                     onChange={handleInputChange}
                   >
-                    <label for="rating">
+                    <label htmlFor="rating">
                       What types of Mexican foods does this shop specialize in?
                     </label>
                     <div className="featured-food-inner">

@@ -15,9 +15,11 @@ export const singleShopAPI = async (shopID) => {
     return (res.data)
 };
 
-export const postShopAPI = async (formState) => {
+export const postShopAPI = async (data) => {
     console.log("Post Single Shop Request Sent")
-    await axios.post("/api/tacoShops", { formState })
+    await axios.post("/api/tacoShops", data)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 };
 
 export const shopReviewAPI = async (shopID) => {
