@@ -7,6 +7,6 @@
     rgba(254, 215, 210, 1) 67%,
     rgba(252, 90, 69, 1) 100%
   ); */
-  height: 75vh;
+  /* height: 75vh; */
   overflow-y: scroll;
 }
