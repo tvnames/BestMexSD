@@ -1,5 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { postShopAPI } from "../../util/shopAPI";
+
+
+
 // import { useAuth } from "../../util/auth";
 
 // PrivatePage is an example include to demonstrate a route protected from
@@ -8,56 +12,61 @@ function SubmitShopPage() {
   // const auth = useAuth();
   // return <h1>Hello, {auth.user.username}!</h1>;
 
-  const [formState, setFormState] = useState({
-    shopName: "",
-    location: "",
-    address: "",
-    state: "CA",
-    zip: 92109,
-    phone: "",
-    description: "",
-    reviews: [],
-    rating: [],
-    menuURL: "https://bestmexsd.com",
-    featuredFood: "",
-  });
+
+
+  const [name, setName] = useState("Steve's Test Shop");
+  const [imagePath, setImagePath] = useState("");
+  const [shopLocation, setshopLocation] = useState("El Cajon");
+  const [shopAddress, setshopAddress] = useState("555 Test St.");
+  const [shopState, setshopState] = useState("CA");
+  const [shopZip, setshopZip] = useState(92020);
+  const [shopPhone, setshopPhone] = useState(555 - 555 - 5555);
+  const [shopDescription, setshopDescription] = useState("This is a Test Description");
+  const [shopReviews, setshopReviews] = useState(["This is a Test Review"]);
+  const [shopRating, setshopRating] = useState([5]);
+  const [shopmenuURL, setshopmenuURL] = useState("https://bestmexsd.com");
+  const [shopfeaturedFood, setshopfeaturedFood] = useState("Burritos");
+  const [file, setFile] = useState();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    postShopAPI(formState);
-    console.log(formState);
-
-    // if (!name) {
-    //   return alert("Must provide a restaurantname.");
-    // }
-    // if (!email) {
-    //   return alert("Must provide an email address.");
-    // }
-    // if (!password || password.length < 8) {
-    //   return alert("Invalid password. Must contain at least 8 characters.");
-    // }
-
-    // auth.signup({ email, username, password });
+    const data = new FormData()
+    data.append("name", name);
+    data.append("file", file);
+    data.append("location", shopLocation);
+    data.append("address", shopAddress);
+    data.append("state", shopState);
+    data.append("zip", shopZip);
+    data.append("city", "San Diego");
+    data.append("phone", shopPhone);
+    data.append("description", shopDescription);
+    data.append("reviews", shopReviews);
+    data.append("rating", shopRating);
+    data.append("menuURL", shopmenuURL);
+    data.append("featuredFood", shopfeaturedFood);
+    axios.post('/api/tacoShops', data)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
-
-  const handleInputChange = (event) => {
-    let name = event.target.name;
-    setFormState({
-      ...formState,
-      [name]: event.target.value,
-    });
-  };
+  // const handleInputChange = (event) => {
+  //   let name = event.target.name;
+  //   setFormState({
+  //     ...formState,
+  //     [name]: event.target.value,
+  //   });
+  //   console.log(event.target.value)
+  // };
 
 
   function entrySuccess() {
-    const { shopName, location } = formState
-    if (shopName && location.length > 1) {
-      window.alert(location)
+    if (name && shopLocation.length > 1) {
+      // window.alert(location)
     } else {
       window.alert("Need More Info")
     }
   }
+
 
 
   return (
@@ -65,7 +74,7 @@ function SubmitShopPage() {
       <div className="row justify-content-center ">
         <div className="col-sm-12 col-md-8 col-lg-8 animate__animated animate__fadeIn">
           <h2>Submit A Taco Shop to Our Site!</h2>
-          <form id="submitshop-form" onSubmit={handleSubmit}>
+          <form id="submitshop-form" onSubmit={handleSubmit} encType="multipart/form-data">
             <div>
               <div className="form-group row">
                 {/* <label htmlFor="shopName">Restaurant Name:</label> */}
@@ -73,33 +82,72 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setName(event.target.value)}
                     name="shopName"
                     id="shopName"
                     placeholder="Enter the Taco Shop name here"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
+              <div className="form-group row" encType="multipart/form-data">
+                {/* <label htmlFor="shopName">Restaurant Name:</label> */}
+                <label className="col-sm-12 submitshop-form-inner" htmlFor="file">Have a Pic from this shop? Upload it here</label>
+                <input
+                  type="file"
+                  accept=".jpg"
+                  name="file"
+                  className="form-control-file"
+                  onChange={event => {
+                    const file = event.target.files[0];
+                    setFile(file);
+                  }}
+                  id="file"
+                  placeholder="Upload a photo" />
+              </div>
+
               <div className="form-group row">
-                {/* <label
-                  htmlFor="shopLocation"
-                  className="col-sm-2 col-form-label"
-                >
-                  Location
-                </label> */}
                 <div className="col-sm-12 submitshop-form-inner">
                   <input
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopLocation(event.target.value)}
                     name="location"
                     id="shopLocation"
                     placeholder="What part of San Diego is the new taco shop in?"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
+
+
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+
+              {/* <div>
+                <select className="form-control">
+                  <optgroup label="">
+                    <option>Downtown</option>
+                    <option>Carmel Valley</option>
+                    <option>City Heights</option>
+                    <option>Clairemont</option>
+                    <option>College Area</option>
+                  </optgroup>
+                  <optgroup label="">
+                    <option>Downtown</option>
+                    <option>Flashlight</option>
+                    <option>Toilet Paper</option>
+                  </optgroup>
+                </select>
+              </div> */}
+
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+              {/* ####### Dropdown Test Area ########## */}
+
+
+
               <div className="form-group row">
                 {/* <label
                   htmlFor="shopAddress1"
@@ -111,11 +159,11 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopAddress(event.target.value)}
                     name="address"
                     id="shopAddress1"
                     placeholder="Address"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -132,7 +180,7 @@ function SubmitShopPage() {
                     className="form-control"
                     id="shopAddress2"
                     placeholder="Address Line 2"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div> */}
@@ -146,9 +194,9 @@ function SubmitShopPage() {
                     className="form-control"
                     id="shopState"
                     placeholder="State"
-                    autocomplete="off"
-                    onChange={handleInputChange}
-                    name={formState.state}
+                    autoComplete="off"
+                    onChange={event => setshopState(event.target.value)}
+                    name="State"
                     value="CA"
                     disabled="disabled"
                   />
@@ -168,11 +216,11 @@ function SubmitShopPage() {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopZip(event.target.value)}
                     name="zip"
                     id="shopZipCode"
                     placeholder="Zip Code"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -188,12 +236,12 @@ function SubmitShopPage() {
                     type="tel"
                     className="form-control"
                     id="shopPhoneNumber"
-                    onChange={handleInputChange}
+                    onChange={event => setshopPhone(event.target.value)}
                     name="phone"
                     placeholder="Phone: (123) 456-7890"
-                    autocomplete="off"
+                    autoComplete="off"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                    max-maxLength="10"
+                    maxLength="12"
                   />
                 </div>
               </div>
@@ -206,34 +254,34 @@ function SubmitShopPage() {
                   Phone #
                 </label> */}
                 <div className="col-sm-12 submitshop-form-inner">
-                  <label for="rating">
+                  <label htmlFor="rating">
                     Please leave a short shop description:
                   </label>
                   <textarea
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopDescription(event.target.value)}
                     name="description"
                     id="shopReview"
                     placeholder="Give us some info on this Taco Shop! Location, pricing, parking, featured items, anything!"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                   <br />
-                  <label for="rating">Leave a review:</label>
+                  <label htmlFor="rating">Leave a review:</label>
                   <textarea
                     type="text"
                     className="form-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopReviews(event.target.value)}
                     name="reviews"
                     id="shopReview"
                     placeholder="Leave the first review!"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                   <div className="rating-control">
-                    <label for="rating">Give this shop a rating:</label>
+                    <label htmlFor="rating">Give this shop a rating:</label>
                     <select
                       name="rating"
-                      onChange={handleInputChange}
+                      onChange={event => setshopRating(event.target.value)}
                       id="rating"
                     >
                       <option value="1">1 Star</option>
@@ -245,11 +293,11 @@ function SubmitShopPage() {
                   </div>
                   <hr />
                   <div className="shop-url-control">
-                    <label for="rating">Link to online menu:</label>
+                    <label htmlFor="rating">Link to online menu:</label>
                     <input
                       type="url"
                       id="url"
-                      onChange={handleInputChange}
+                      onChange={event => setshopmenuURL(event.target.value)}
                       name="menuURL"
                       placeholder="https://bestmexsd.com"
                       pattern="https://.*"
@@ -258,9 +306,9 @@ function SubmitShopPage() {
                   </div>
                   <div
                     className="featured-food-control"
-                    onChange={handleInputChange}
+                    onChange={event => setshopfeaturedFood(event.target.value)}
                   >
-                    <label for="rating">
+                    <label htmlFor="rating">
                       What types of Mexican foods does this shop specialize in?
                     </label>
                     <div className="featured-food-inner">

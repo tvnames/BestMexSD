@@ -1,12 +1,7 @@
 const express = require("express");
 const tacoShopRouter = express.Router();
-const mongojs = require("mongojs");
 const { TacoShop } = require("../models");
-
-const databaseUrl = "bestmexsd";
-const collections = ["tacoshops"];
-
-const db = mongojs(databaseUrl, collections);
+const multer = require('multer');
 
 // create route to return all tacoshops
 tacoShopRouter.get("/", async (req, res) => {
@@ -30,24 +25,7 @@ tacoShopRouter.get("/:id", async (req, res) => {
   }
 });
 
-tacoShopRouter.post("/", async (req, res) => {
-  console.log("Post Shop Request Received on Back-End");
-  TacoShop.create({
-    shopName: req.body.formState.shopName,
-    reviews: req.body.formState.reviews,
-    menuURL: req.body.formState.url,
-    rating: req.body.formState.rating,
-    description: req.body.formState.description,
-    featuredFood: req.body.formState.featuredFood,
-    address: req.body.formState.address,
-    location: req.body.formState.location,
-    state: req.body.formState.state,
-    city: req.body.formState.city,
-    phone: req.body.formState.phone,
-    zip: req.body.formState.zip,
-  });
-  console.log("New Shop Created!");
-});
+
 
 tacoShopRouter.post("/reviews/update", (req, res) => {
   console.log("Update Reviews Route Hit");
@@ -73,5 +51,76 @@ tacoShopRouter.post("/update", (req, res) => {
     (_err) => { }
   );
 });
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
+  }
+})
+
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
+
+tacoShopRouter.post("/", upload.single("file"), async (req, res) => {
+  let photoPath
+  if (req.file) {
+    photoPath = req.file.path
+  } else {
+    photoPath = "uploads\\ts1.jpg"
+  }
+  try {
+    await TacoShop.create({
+      shopName: req.body.name,
+      imagePath: photoPath,
+      reviews: req.body.reviews,
+      menuURL: req.body.menuURL,
+      rating: req.body.rating,
+      description: req.body.description,
+      featuredFood: req.body.featuredFood,
+      address: req.body.address,
+      location: req.body.location,
+      state: req.body.state,
+      city: req.body.city,
+      phone: req.body.phone,
+      zip: req.body.zip,
+    });
+    console.log("SHOP CREATED SUCCESSFULLY")
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = tacoShopRouter;

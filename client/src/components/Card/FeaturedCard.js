@@ -7,12 +7,12 @@ import { useAuth } from "../../util/auth";
 
 function FeaturedCard({
   ratingArray,
+  imagePath,
   id,
   shopName,
   menuURL,
   rating,
   numOfRatings,
-  src,
   description,
   location,
   phone,
@@ -73,8 +73,8 @@ function FeaturedCard({
     <div className="col-lg-12 m-1 featureCard">
       <div className="card-body" id="boxText">
         <img
-          src={src}
-          alt={src}
+          src={imagePath}
+          alt={imagePath}
           className="featured-img-control float-left mr-3"
         />
         <h2 className="card-title" id="boxText">
@@ -111,11 +111,11 @@ function FeaturedCard({
             View Their Menu
           </a>
           <i className="ml-auto">
-            <div class="d-flex justify-content-end">
+            <div className="d-flex justify-content-end">
               <strong>Average Rating: </strong>
               &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
             </div>
-            <div class="d-flex justify-content-end mr-2">
+            <div className="d-flex justify-content-end mr-2">
               {getRating(rating)}
             </div>
           </i>

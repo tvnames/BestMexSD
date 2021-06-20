@@ -19,12 +19,11 @@ const TacoShopSchema = new mongoose.Schema({
       trim: true,
     },
   ],
-  // reviews: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Review',
-  //   },
-  // ],
+  imagePath:
+  {
+    type: String,
+    trim: true,
+  },
   menuURL:
   {
     type: String,
