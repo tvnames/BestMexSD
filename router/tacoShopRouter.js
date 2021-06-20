@@ -53,26 +53,52 @@ tacoShopRouter.post("/update", (req, res) => {
 });
 
 
-tacoShopRouter.post("/", async (req, res) => {
-  console.log(req.file);
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
+  }
+})
+
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
+
+tacoShopRouter.post("/", upload.single("file"), async (req, res) => {
+  console.log(req.body);
   try {
-    // await TacoShop.create({
-    //   shopName: req.body.shopName,
-    //   imagePath: req.file.path,
-    //   reviews: req.body.reviews,
-    //   menuURL: req.body.url,
-    //   rating: req.body.rating,
-    //   description: req.body.description,
-    //   featuredFood: req.body.featuredFood,
-    //   address: req.body.address,
-    //   location: req.body.location,
-    //   state: req.body.state,
-    //   city: req.body.city,
-    //   phone: req.body.phone,
-    //   zip: req.body.zip,
-    // });
-    res.send(req.file)
-    console.log("SUCCESS")
+    await TacoShop.create({
+      shopName: req.body.name,
+      imagePath: req.file.path,
+      reviews: req.body.reviews,
+      menuURL: req.body.menuURL,
+      rating: req.body.rating,
+      description: req.body.description,
+      featuredFood: req.body.featuredFood,
+      address: req.body.address,
+      location: req.body.location,
+      state: req.body.state,
+      city: req.body.city,
+      phone: req.body.phone,
+      zip: req.body.zip,
+    });
+    console.log("SHOP CREATED SUCCESSFULLY")
   } catch (err) {
     console.log(err)
     res.status(500).json(err);

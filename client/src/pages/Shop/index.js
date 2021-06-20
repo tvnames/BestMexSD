@@ -100,6 +100,7 @@ function ShopPage() {
               id={singleShop._id}
               menuURL={singleShop.menuURL}
               shopName={singleShop.shopName}
+              imagePath={singleShop.imagePath}
               description={singleShop.description}
               location={singleShop.location}
               phone={singleShop.phone}

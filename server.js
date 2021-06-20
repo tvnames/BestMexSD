@@ -6,6 +6,7 @@ const connectDb = require("./config/connectDb");
 const session = require("./config/session");
 const errorMiddleware = require("./util/errorMiddleware");
 const checkEnv = require("./config/checkEnv");
+const cors = require('cors')
 
 checkEnv();
 
@@ -20,7 +21,8 @@ const PORT = process.env.PORT || 3001;
 
     // trust proxy required for using secure cookies on Heroku
     app.set("trust proxy", 1);
-    // app.use('/uploads', express.static('uploads'));
+    app.use('/uploads/', express.static('uploads'));
+    app.use('/shop/uploads/', express.static('uploads'));
 
     app.use(
       express.urlencoded({ extended: true }),
@@ -29,6 +31,8 @@ const PORT = process.env.PORT || 3001;
       router,
       errorMiddleware
     );
+
+    app.use(cors);
 
     mongoose.connect(
       process.env.MONGODB_URI || "mongodb://localhost/bestmexsd",

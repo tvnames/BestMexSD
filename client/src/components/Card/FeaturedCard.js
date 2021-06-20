@@ -7,12 +7,12 @@ import { useAuth } from "../../util/auth";
 
 function FeaturedCard({
   ratingArray,
+  imagePath,
   id,
   shopName,
   menuURL,
   rating,
   numOfRatings,
-  src,
   description,
   location,
   phone,
@@ -73,8 +73,8 @@ function FeaturedCard({
     <div className="col-lg-12 m-1 featureCard">
       <div className="card-body" id="boxText">
         <img
-          src={src}
-          alt={src}
+          src={imagePath}
+          alt={imagePath}
           className="featured-img-control float-left mr-3"
         />
         <h2 className="card-title" id="boxText">

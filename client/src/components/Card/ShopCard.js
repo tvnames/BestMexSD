@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 
 function ShopCard({
+  imagePath,
   address,
   featuredFood,
   avgRating,
@@ -17,13 +18,15 @@ function ShopCard({
     history.push(`/shop/${id}`);
   };
 
+
   return (
     <div
       className="card p-2 m-1 shopCard col-12 col-sm-12 col-md-4 col-lg-2"
       style={{ width: "20rem" }}
       onClick={redirect}
     >
-      <img className="card-img-top card-image-control" src={src} alt={src} />
+      {/* <img className="card-img-top card-image-control" src={src} alt={src} /> */}
+      <img className="card-img-top card-image-control" src={imagePath} alt={imagePath} />
       <div className="card-body">
         <h4 className="card-title" name={shopName}>
           {shopName}

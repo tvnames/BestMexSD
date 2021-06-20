@@ -81,14 +81,13 @@ function HomePage() {
     }
   });
 
-  console.log(filteredArray);
-
   function renderShops(filteredArray) {
     if (filteredArray.length > 0) {
       return filteredArray.map((restaurant) => (
         <ShopCard
           id={restaurant._id}
           src={VallartasPic}
+          imagePath={restaurant.imagePath}
           address={restaurant.address}
           avgRating={restaurant.rating.reduce((a, b) => a + b) / restaurant.rating.length}
           description={restaurant.description}
@@ -149,6 +148,7 @@ function HomePage() {
               id={currentShop._id}
               ratingArray={currentShop.rating}
               src={VallartasPic}
+              imagePath={currentShop.imagePath}
               shopName={currentShop.shopName}
               menuURL={currentShop.menuURL}
               description={currentShop.description}
