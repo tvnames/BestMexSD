@@ -12,20 +12,7 @@ function SubmitShopPage() {
   // const auth = useAuth();
   // return <h1>Hello, {auth.user.username}!</h1>;
 
-  // const [formState, setFormState] = useState({
-  //   shopName: "",
-  //   imagePath: "",
-  //   location: "",
-  //   address: "",
-  //   state: "CA",
-  //   zip: 92109,
-  //   phone: "",
-  //   description: "",
-  //   reviews: [],
-  //   rating: [],
-  //   menuURL: "https://bestmexsd.com",
-  //   featuredFood: "",
-  // });
+
 
   const [name, setName] = useState("Steve's Test Shop");
   const [imagePath, setImagePath] = useState("");

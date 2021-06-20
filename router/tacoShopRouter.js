@@ -81,11 +81,16 @@ const upload = multer({
 });
 
 tacoShopRouter.post("/", upload.single("file"), async (req, res) => {
-  console.log(req.body);
+  let photoPath
+  if (req.file) {
+    photoPath = req.file.path
+  } else {
+    photoPath = "uploads\\ts1.jpg"
+  }
   try {
     await TacoShop.create({
       shopName: req.body.name,
-      imagePath: req.file.path,
+      imagePath: photoPath,
       reviews: req.body.reviews,
       menuURL: req.body.menuURL,
       rating: req.body.rating,
