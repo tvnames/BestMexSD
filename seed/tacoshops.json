@@ -206,7 +206,7 @@
     "shopName": "Lucha Libre Taco Shop",
     "featuredFood": "Burritos",
     "id": "12",
-    "description": "Authentic Gourmet Mexican Food",
+    "description": "Located in near the San Diego Airport just off the I-5 Freeway, Lucha Libre offers Authentic Gourmet Mexican Food and is themed after the world famous Lucha Libre style of wrestling.",
     "rating": [5, 4, 5, 5, 5, 4, 4, 4, 4],
     "imagePath": "uploads\\ts11.jpg",
     "menuURL": "https://www.luchalibretacoshop.com/",

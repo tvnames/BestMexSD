@@ -4,18 +4,22 @@
 
 .featureCard {
   border-radius: 10px;
-  /* background: linear-gradient(rgb(255 0 0 / 20%), rgb(230 255 170 / 45%)),
-    url("../../images/oldTown.jpg"); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.72), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.featuredCardBody {
+}
+
+.featureCard:hover {
+  transform: scale(1.01);
+  transition-duration: 1s;
 }
 
 #locationBox {
-  /* background-color: transparent; */
-  /* color: whitesmoke; */
   opacity: 0.9;
 }
 
 #boxText {
-  /* color: whitesmoke; */
   opacity: 0.9;
 }
 

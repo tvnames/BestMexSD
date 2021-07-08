@@ -122,26 +122,12 @@ function HomePage() {
 
   return (
     <div className="container-fluid">
-      {/* ################# GeoCoding Test Area */}
-      {/* <div className="container border" style={{ height: '400px', width: '400px' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.googleAPIkey }}
-          defaultCenter={{ lat: 32.7283164, lng: -117.12889910000001 }}
-          defaultZoom={11}
-        >
-          <AnyReactComponent
-            lat={32.7283164}
-            lng={-117.12889910000001}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div> */}
       <Hero>Welcome to Best Mex SD!</Hero>
       <main className="col-12">
         <section className="page-title-text m-3">
           <HomepageText />
         </section>
-        <h3>This week's Top Shop:</h3>
+        <h3>This Week's Featured Shop:</h3>
         <section className="row m-3 featured-control">
           <div className="col-lg-12">
             <FeaturedCard
