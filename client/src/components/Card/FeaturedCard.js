@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 import RatingContainer from "../StarRating/RatingContainer";
 import getRating from "./getRatingFunction";
-import StarIcon from "../StarRating/StarIcon";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../util/auth";
 import { useHistory } from "react-router-dom";
@@ -102,33 +101,11 @@ function FeaturedCard({
                   </>
                 </div>
               )}
-
             </div>
           </div>
-
         </div>
-        {/* <img
-          src={imagePath}
-          alt={imagePath}
-          className="featured-img-control mr-3"
-        /> */}
-        {/* <h2 className="card-title" id="boxText">
-          {shopName}
-        </h2> */}
-
-        {/* <strong>About {shopName}: </strong>
-        {description} */}
       </div>
-
       <div className="card-body d-flex">
-        {/* <a
-          href={menuURL}
-          className="card-link"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          View Their Menu
-        </a> */}
       </div>
 
 

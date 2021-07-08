@@ -10,17 +10,17 @@ import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 import useDebounce from "../../util/useDebounce";
-import GoogleMapReact from "google-map-react";
+// import GoogleMapReact from "google-map-react";
 import useGeoLocation from "../../util/useGeolocation";
 import "./style.css";
 import axios from "axios";
-import { filter } from "lodash";
+// import { filter } from "lodash";
 
 function HomePage() {
-  const history = useHistory();
-  const auth = useAuth();
+  // const history = useHistory();
+  // const auth = useAuth();
   const location = useGeoLocation();
-  const API_key = process.env.REACT_APP_google_API_key;
+  // const API_key = process.env.REACT_APP_google_API_key;
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
@@ -42,7 +42,7 @@ function HomePage() {
   useEffect(() => {
     shopAPI()
       .then((res) => {
-        setRestaurantArray(res);
+        setRestaurantArray(res.reverse());
       })
       .then()
       .catch(console.error());
