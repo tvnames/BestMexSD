@@ -1,9 +1,11 @@
 import React from "react";
 import "./style.css";
 import RatingContainer from "../StarRating/RatingContainer";
-import StarIcon from "../StarRating/StarIcon";
+import getRating from "./getRatingFunction";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../util/auth";
+import { useHistory } from "react-router-dom";
+
 
 function FeaturedCard({
   ratingArray,
@@ -19,132 +21,98 @@ function FeaturedCard({
   address,
   featuredFood,
 }) {
-  function getRating(averageRating) {
-    let ratingNumber = parseInt(averageRating);
-    switch (true) {
-      case ratingNumber >= 4 && ratingNumber < 5:
-        return (
-          <div className="row">
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="none" />
-          </div>
-        );
-      case ratingNumber >= 3 && ratingNumber < 4:
-        return (
-          <div className="row">
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-          </div>
-        );
-      case ratingNumber >= 2 && ratingNumber < 3:
-        return (
-          <div className="row">
-            <StarIcon fill="green" />
-            <StarIcon fill="green" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-          </div>
-        );
-      case ratingNumber >= 1 && ratingNumber < 2:
-        return (
-          <div className="row">
-            <StarIcon fill="green" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-            <StarIcon fill="none" />
-          </div>
-        );
-      default:
-        return <p>This Restaurant Has Not Yet Been Rated!</p>;
-    }
-  }
 
+  const history = useHistory();
   const auth = useAuth();
+  const redirect = () => {
+    history.push(`/shop/${id}`);
+  };
+
 
   return (
-    <div className="col-lg-12 m-1 featureCard">
-      <div className="card-body" id="boxText">
-        <img
-          src={imagePath}
-          alt={imagePath}
-          className="featured-img-control float-left mr-3"
-        />
-        <h2 className="card-title" id="boxText">
-          {shopName}
-        </h2>
-        <h5 className="card-text" id="boxText">
-          <strong>Featured Food: </strong>
-          {featuredFood}
-          <br />
-          <strong>About {shopName}: </strong>
-        </h5>
-        {description}
+    <div className="col-lg-12 m-1 featureCard" onClick={redirect}>
+      <div className="card-body lg-3 featuredCardBody " id="boxText">
+        <div className="row">
+          <div className="col-lg-3 ">
+            <div className="d-flex justify-content-center">
+              <h2 className="card-title" id="boxText">
+                {shopName}
+              </h2>
+            </div>
+            <hr />
+            <div className="d-flex justify-content-center border border-dark m-2">
+              <img
+                src={imagePath}
+                alt={imagePath}
+                className="featured-img-control m-3 "
+              />
+            </div>
+            <hr />
+            <h5 className="card-text d-flex justify-content-center m-2" id="boxText">
+              <strong>Featured Food:&nbsp;</strong>
+              {featuredFood}
+              <br />
+            </h5>
+          </div>
+          <div className="col-lg-9 ">
+            <div className="m-2">
+              <strong>About {shopName}: </strong>{description}
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item" id="locationBox">
+                <strong>Location: </strong>
+                {location}
+              </li>
+              <li className="list-group-item" id="locationBox">
+                <strong>Address: </strong>
+                {address}
+              </li>
+              <li className="list-group-item" id="locationBox">
+                <strong>Phone: </strong>
+                {phone}
+              </li>
+              <li className="list-group-item" id="locationBox">
+                <a
+                  href={menuURL}
+                  className="card-link"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  View Their Menu
+                </a>
+                <i className="ml-auto">
+                  <div className="d-flex justify-content-end">
+                    <strong>Average Rating: </strong>
+                    &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
+                  </div>
+                  <div className="d-flex justify-content-end mr-2">
+                    {getRating(rating)}
+                  </div>
+                </i>
+              </li>
+            </ul>
+            <div className="mt-3">
+              {auth.isLoggedIn() ? (
+                <div className="">
+                  <RatingContainer id={id} ratingArray={ratingArray} />
+                </div>
+              ) : (
+                <div className="d-flex justify-content-end m-2">
+                  <>
+                    <Link to="/login">Login &nbsp;</Link>or{" "}
+                    <Link to="/signup">&nbsp; Sign Up &nbsp;</Link> to Submit your
+                    rating
+                  </>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item" id="locationBox">
-          <strong>Location: </strong>
-          {location}
-        </li>
-        <li className="list-group-item" id="locationBox">
-          <strong>Address: </strong>
-          {address}
-        </li>
-        <li className="list-group-item" id="locationBox">
-          <strong>Phone: </strong>
-          {phone}
-        </li>
-        <li className="list-group-item" id="locationBox">
-          <a
-            href={menuURL}
-            className="card-link"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            View Their Menu
-          </a>
-          <i className="ml-auto">
-            <div className="d-flex justify-content-end">
-              <strong>Average Rating: </strong>
-              &nbsp;{rating} out of 5 stars! ({numOfRatings} Ratings)
-            </div>
-            <div className="d-flex justify-content-end mr-2">
-              {getRating(rating)}
-            </div>
-          </i>
-        </li>
-      </ul>
       <div className="card-body d-flex">
-        {/* <a
-          href={menuURL}
-          className="card-link"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          View Their Menu
-        </a> */}
       </div>
 
-      {auth.isLoggedIn() ? (
-        <div className="">
-          <RatingContainer id={id} ratingArray={ratingArray} />
-        </div>
-      ) : (
-        <div className="d-flex justify-content-end m-2">
-          <>
-            <Link to="/login">Login &nbsp;</Link>or{" "}
-            <Link to="/signup">&nbsp; Sign Up &nbsp;</Link> to Submit your
-            rating
-          </>
-        </div>
-      )}
+
     </div>
   );
 }

@@ -10,17 +10,17 @@ import VallartasPic from "../../images/ts1.jpg";
 import restaurants from "../../shopSeed.json";
 import HomepageText from "../../components/HomepageText/HomepageText";
 import useDebounce from "../../util/useDebounce";
-import GoogleMapReact from "google-map-react";
+// import GoogleMapReact from "google-map-react";
 import useGeoLocation from "../../util/useGeolocation";
 import "./style.css";
 import axios from "axios";
-import { filter } from "lodash";
+// import { filter } from "lodash";
 
 function HomePage() {
-  const history = useHistory();
-  const auth = useAuth();
+  // const history = useHistory();
+  // const auth = useAuth();
   const location = useGeoLocation();
-  const API_key = process.env.REACT_APP_google_API_key;
+  // const API_key = process.env.REACT_APP_google_API_key;
 
   // HandleDeleteFunction can be referenced from the "Friends" class activity in react
   const [restaurantArray, setRestaurantArray] = useState(restaurants);
@@ -42,7 +42,7 @@ function HomePage() {
   useEffect(() => {
     shopAPI()
       .then((res) => {
-        setRestaurantArray(res);
+        setRestaurantArray(res.reverse());
       })
       .then()
       .catch(console.error());
@@ -122,26 +122,12 @@ function HomePage() {
 
   return (
     <div className="container-fluid">
-      {/* ################# GeoCoding Test Area */}
-      {/* <div className="container border" style={{ height: '400px', width: '400px' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.googleAPIkey }}
-          defaultCenter={{ lat: 32.7283164, lng: -117.12889910000001 }}
-          defaultZoom={11}
-        >
-          <AnyReactComponent
-            lat={32.7283164}
-            lng={-117.12889910000001}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div> */}
       <Hero>Welcome to Best Mex SD!</Hero>
       <main className="col-12">
         <section className="page-title-text m-3">
           <HomepageText />
         </section>
-        <h3>This week's Top Shop:</h3>
+        <h3>This Week's Featured Shop:</h3>
         <section className="row m-3 featured-control">
           <div className="col-lg-12">
             <FeaturedCard

@@ -7,12 +7,12 @@ function ReviewCard({ reviewDate, reviewText, userName }) {
     return (
         <div className="card m-2 border border-dark">
             <div className="card-header">
-                <strong>Date:</strong> {date}
+                <strong></strong> {date}
             </div>
             <div className="card-body">
                 <blockquote className="blockquote mb-0">
-                    <p><strong>---</strong> "{reviewText}"" </p>
-                    <footer className="blockquote-footer"><strong>Username: </strong>{userName}</footer>
+                    <p><strong>&nbsp;</strong> '{reviewText}' </p>
+                    <footer className="blockquote-footer"><strong></strong>{userName}</footer>
                 </blockquote>
             </div>
         </div>

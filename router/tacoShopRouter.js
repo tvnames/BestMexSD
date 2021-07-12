@@ -5,7 +5,6 @@ const multer = require('multer');
 
 // create route to return all tacoshops
 tacoShopRouter.get("/", async (req, res) => {
-  console.log("Get All Shops Request Received on Back-End");
   try {
     const tacoShopData = await TacoShop.find({})
     res.json(tacoShopData);
@@ -16,7 +15,6 @@ tacoShopRouter.get("/", async (req, res) => {
 });
 
 tacoShopRouter.get("/:id", async (req, res) => {
-  console.log("Get Single Shop Request Received on Back-End");
   try {
     const shopData = await TacoShop.findById(req.params.id)
     res.send(shopData);
@@ -28,7 +26,6 @@ tacoShopRouter.get("/:id", async (req, res) => {
 
 
 tacoShopRouter.post("/reviews/update", (req, res) => {
-  console.log("Update Reviews Route Hit");
   TacoShop.updateOne(
     { _id: req.body.shopId },
     {

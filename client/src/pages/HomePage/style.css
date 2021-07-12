@@ -1,12 +1,5 @@
 .shopBox {
   border-radius: 10px;
-  /* background: linear-gradient(
-    90deg,
-    rgba(58, 180, 127, 1) 0%,
-    rgba(255, 255, 255, 1) 33%,
-    rgba(254, 215, 210, 1) 67%,
-    rgba(252, 90, 69, 1) 100%
-  ); */
-  /* height: 75vh; */
+  height: 75vh;
   overflow-y: scroll;
 }

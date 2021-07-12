@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { postShopAPI } from "../../util/shopAPI";
 
 
 
@@ -307,52 +306,25 @@ function SubmitShopPage() {
                   <div
                     className="featured-food-control"
                     onChange={event => setshopfeaturedFood(event.target.value)}
+                  // onChange={event => window.alert(event.target.value)}
                   >
                     <label htmlFor="rating">
-                      What types of Mexican foods does this shop specialize in?
+                      What should this shop's Featured Food be?
                     </label>
                     <div className="featured-food-inner">
-                      {/* tacos */}
-                      <label htmlFor="Tacos">Tacos</label>
-                      <input
-                        type="radio"
-                        id="Tacos"
-                        name="featuredFood"
-                        defaultValue="Tacos"
-                      />
-                      {/* burritos */}
-                      <label htmlFor="Burritos">| Burritos</label>
-                      <input
-                        type="radio"
-                        id="Burritos"
-                        name="featuredFood"
-                        defaultValue="Burritos"
-                      />
-                      {/* mariscos */}
-                      <label htmlFor="Mariscos Tacos">| Mariscos Tacos</label>
-                      <input
-                        type="radio"
-                        id="Mariscos Tacos"
-                        name="featuredFood"
-                        defaultValue="Mariscos Tacos"
-                      />
-                      {/* quesadillas */}
-                      <label htmlFor="Quesadillas">| Quesadillas</label>
-                      <input
-                        type="radio"
-                        id="Quesadillas"
-                        name="featuredFood"
-                        defaultValue="Quesadillas"
-                      />
-                      {/* birria tacos */}
-                      <label htmlFor="Birria Tacos">| Birria Tacos</label>
-                      <input
-                        type="radio"
-                        id="Birria Tacos"
-                        name="featuredFood"
-                        defaultValue="Birria Tacos"
-                      />
-                      <br />
+                      <select className="form-select" aria-label="Default select example">
+                        <option selected disabled>Choose An Option from the List Below!</option>
+                        <option value="Tacos">Tacos</option>
+                        <option value="Fajitas">Fajitas</option>
+                        <option value="Fish Tacos">Fish Tacos</option>
+                        <option value="Rolled Tacos">Rolled Tacos</option>
+                        <option value="California Burrito">California Burrito</option>
+                        <option value="Carne Asada Burrito">Carne Asada Burrito</option>
+                        <option value="Breakfast Burrito">Breakfast Burrito</option>
+                        <option value="Carne Asada Fries">Carne Asada Fries</option>
+                        <option value="Quesadillas">Quesadillas</option>
+                        <option value="Margaritas">Margaritas</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -373,7 +345,7 @@ function SubmitShopPage() {
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
