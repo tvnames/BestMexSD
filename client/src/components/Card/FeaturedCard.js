@@ -34,16 +34,20 @@ function FeaturedCard({
       <div className="card-body lg-3 featuredCardBody " id="boxText">
         <div className="row">
           <div className="col-lg-3 ">
-            <h2 className="card-title" id="boxText">
-              {shopName}
-            </h2>
             <div className="d-flex justify-content-center">
+              <h2 className="card-title" id="boxText">
+                {shopName}
+              </h2>
+            </div>
+            <hr />
+            <div className="d-flex justify-content-center border border-dark m-2">
               <img
                 src={imagePath}
                 alt={imagePath}
-                className="featured-img-control mr-3"
+                className="featured-img-control m-3 "
               />
             </div>
+            <hr />
             <h5 className="card-text d-flex justify-content-center m-2" id="boxText">
               <strong>Featured Food:&nbsp;</strong>
               {featuredFood}
