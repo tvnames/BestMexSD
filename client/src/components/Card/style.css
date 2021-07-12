@@ -4,10 +4,8 @@
 
 .featureCard {
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.72), 0 4px 8px rgba(0, 0, 0, 0.06);
-}
-
-.featuredCardBody {
+  box-shadow: 1px 2px 20px rgb(0 0 0 / 72%), 0 4px 8px rgb(0 0 0 / 6%);
+  cursor: pointer;
 }
 
 .featureCard:hover {
