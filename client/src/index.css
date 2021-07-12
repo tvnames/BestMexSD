@@ -194,6 +194,10 @@ main h3 {
   padding-left: 15px;
 }
 
+#file {
+  border: 0 !important;
+}
+
 .submitshop-form-inner input {
   outline: none;
 }
@@ -372,6 +376,11 @@ main h3 {
 .submitreview-control a:hover {
   color: #ff0000;
   transition: 350ms all ease-in-out;
+}
+/* Review Footer Styles */
+.blockquote-footer {
+  width: 200px;
+  border-radius: 200px;
 }
 
 /* Footer Styles */
